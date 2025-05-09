@@ -1,0 +1,8 @@
+src/PartielsPy.egg-info/
+dist/
+__pycache__/
+tests/exports/*
+!tests/exports/*.py
+docs/_build/
+.venv
+TODO.md
