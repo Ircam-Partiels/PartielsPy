@@ -1,0 +1,3 @@
+recursive-include src/PartielsPy/ *
+recursive-include tests/samples *
+recursive-include tests/exports *
