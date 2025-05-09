@@ -1,0 +1,69 @@
+name: Build and Test Python Partiels (Linux)
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout your Python repo
+      uses: actions/checkout@v4
+
+    - name: Install system dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y unzip wget
+
+    - name: Download and extract Partiels binary
+      run: |
+        mkdir $HOME/vamp
+        TAG=$(curl -s https://api.github.com/repos/Ircam-Partiels/Partiels/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
+        wget https://github.com/Ircam-Partiels/Partiels/releases/download/$TAG/Partiels-Linux.tar.gz
+        tar -xzf Partiels-Linux.tar.gz
+        sh Partiels/Partiels-install.sh
+        cp Partiels/PlugIns/*.so $HOME/vamp
+        Partiels/Partiels --help
+
+    - name: Download Ircam Vamp Plugins
+      run: |
+        TAG=$(curl -s https://api.github.com/repos/Ircam-Partiels/ircam-vamp-plugins/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
+        wget https://github.com/Ircam-Partiels/ircam-vamp-plugins/releases/download/$TAG/Ircam-Vamp-Plugins-Linux.zip
+        wget https://github.com/Ircam-Partiels/ircam-vamp-plugins/releases/download/$TAG/VAX-Vamp-Plugin-v1.0.0-Linux.zip
+        TAG=$(curl -s https://api.github.com/repos/Ircam-Partiels/crepe-vamp-plugin/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
+        wget https://github.com/Ircam-Partiels/crepe-vamp-plugin/releases/download/$TAG/Crepe-Linux.tar.gz
+        TAG=$(curl -s https://api.github.com/repos/Ircam-Partiels/whisper-vamp-plugin/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
+        wget https://github.com/Ircam-Partiels/whisper-vamp-plugin/releases/download/$TAG/Whisper-Linux.tar.gz
+   
+    - name: Install Ircam Vamp Plugins
+      run: |
+        mkdir $HOME/.config/Ircam
+        unzip Ircam-Vamp-Plugins-Linux.zip
+        sh Ircam-Vamp-Plugins-Linux/Install.sh
+        unzip VAX-Vamp-Plugin-v1.0.0-Linux.zip
+        tar -xzf VAX-Vamp-Plugin-Linux.tar.gz
+        sh VAX-Vamp-Plugin/Install.sh
+        tar -xzf Crepe-Linux.tar.gz
+        sh Crepe/Install.sh
+        tar -xzf Whisper-Linux.tar.gz
+        sh Whisper/Install.sh
+
+    - name: list installed Ircam Vamp Plugins
+      run: |
+        ls $HOME/vamp
+
+    - name: Install Python dependencies
+      run: |
+        pip install build pytest
+
+    - name: Build PartielsPy
+      run: |
+        python -m build
+    
+    - name: Install PartielsPy
+      run: |
+        pip install dist/*.whl
+
+    - name: Run tests
+      run: |
+        pytest tests/
