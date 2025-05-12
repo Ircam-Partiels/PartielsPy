@@ -1,11 +1,11 @@
 """A main class for Partiels Wrapper"""
 
-from pathlib import Path
-
+# from pathlib import Path
 # from lxml import etree
+# import json
+
 import os
 import shutil
-import json
 import subprocess
 from .Version import Version
 from .Document import Document
@@ -136,9 +136,9 @@ class Partiels:
         """
         return ReaperExporter(self.exec_path, reaperType)
 
-    def createLabExporter(self):
+    def createLabExporter(self, nogrids: bool = False):
         """Create a LabExporter"""
-        return LabExporter(self.exec_path)
+        return LabExporter(self.exec_path, nogrids)
 
     def createJsonExporter(self, nogrids: bool = False, description: bool = False):
         """Create a JsonExporter

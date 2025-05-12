@@ -1,7 +1,7 @@
 """classes for TextExporter"""
 
-from .Exporter import Exporter
 from ..Document import Document
+from .Exporter import Exporter
 
 
 class TextExporter(Exporter):

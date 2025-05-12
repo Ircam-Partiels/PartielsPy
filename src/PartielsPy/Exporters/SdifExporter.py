@@ -1,7 +1,7 @@
 """A class for SdifExporter"""
 
-from .Exporter import Exporter
 from ..Document import Document
+from .Exporter import Exporter
 
 
 class SdifExporter(Exporter):

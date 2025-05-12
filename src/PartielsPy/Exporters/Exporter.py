@@ -1,4 +1,3 @@
-import pkg_resources
 import subprocess
 from ..Document import Document
 

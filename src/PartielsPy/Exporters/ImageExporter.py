@@ -1,7 +1,7 @@
 """A class for ImageExporter, used for jpeg and png formats"""
 
-from .Exporter import Exporter
 from ..Document import Document
+from .Exporter import Exporter
 
 
 class ImageExporter(Exporter):
