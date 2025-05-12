@@ -15,6 +15,9 @@ The aim of this project is to allow Partiels users to script and automate the cr
 - Default Templates : factory, supervp and partials
 
 ## Compilation
+
+> ⚠️ python build must be installed
+
 ```sh
 git clone git@github.com:Ircam-Partiels/PartielsPy.git
 cd PartielsPy

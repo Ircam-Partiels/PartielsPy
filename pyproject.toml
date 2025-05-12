@@ -2,7 +2,8 @@
 name = "PartielsPy"
 version = "0.0.0"
 authors = [
-  { name="Thomas barbé", email="thomas-barbe@hotmail.com" },
+  { name="Pierre Guillot", email="pierre.guillot@ircam.fr" },
+  { name="Thomas Barbé", email="thomas-barbe@hotmail.com" },
 ]
 dependencies = [
   "lxml >= 5.4.0"
