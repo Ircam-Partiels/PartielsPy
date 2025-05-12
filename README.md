@@ -58,3 +58,24 @@ document = partiels.createDocument('/path/to/your/sample', '/path/to/your/templa
 csv_exporter = partiels.createCsvExporter()
 csv_exporter.export(document, '/path/to/export/folder')
 ```
+
+## Code Style
+
+This project uses the following tools to enforce consistent code quality:
+
+- [`black`](https://black.readthedocs.io/en/stable/): an uncompromising Python code formatter.
+- [`isort`](https://pycqa.github.io/isort/): automatically sorts and organizes imports.
+- [`flake8`](https://flake8.pycqa.org/): checks code style and potential errors.
+
+### Custom Rules
+
+- Maximum line length: **88 characters** (as recommended by `black`)
+- Some `flake8` warnings are ignored for compatibility with `black`: `E203`, `W503`
+
+### Run Checks Locally
+
+```bash
+# Check code style without making changes
+black --check .
+isort --check-only .
+flake8 .
