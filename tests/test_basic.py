@@ -18,15 +18,21 @@ def test_check_version():
 
 def exports(partiels, document, dest):
     jpeg_exporter = partiels.createJpegExporter()
+    jpeg_exporter.setWidth(1200)
+    jpeg_exporter.setHeight(1000)
     assert jpeg_exporter.export(document, dest) == 0, "Export JPEG FAILED"
 
     png_exporter = partiels.createPngExporter()
+    png_exporter.setGroups(True)
     assert png_exporter.export(document, dest) == 0, "Export PNG FAILED"
 
     json_exporter = partiels.createJsonExporter()
+    json_exporter.setDescription(True)
     assert json_exporter.export(document, dest) == 0, "Export JSON FAILED"
 
     csv_exporter = partiels.createCsvExporter()
+    csv_exporter.setHeader(True)
+    csv_exporter.setSeparator(".")
     assert csv_exporter.export(document, dest) == 0, "Export CSV FAILED"
 
     lab_exporter = partiels.createLabExporter()
@@ -34,10 +40,14 @@ def exports(partiels, document, dest):
 
     cue_exporter = partiels.createCueExporter()
     assert cue_exporter.export(document, dest) != 0, "Export CUE SUCCESS"
+
     reaper_exporter = partiels.createReaperExporter()
+    reaper_exporter.setReaperType("marker")
     assert reaper_exporter.export(document, dest) != 0, "Export REAPER SUCCESS"
 
     sdif_exporter = partiels.createSdifExporter()
+    sdif_exporter.setFrame("bbbb")
+    sdif_exporter.setMatrix("cccc")
     err = sdif_exporter.export(document, dest)
     assert err == 0, "Export SDIF FAILED. ERROR CODE:" + str(err)
 
