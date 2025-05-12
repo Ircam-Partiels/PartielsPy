@@ -32,13 +32,10 @@ def exports(partiels, document, dest):
     lab_exporter = partiels.createLabExporter()
     assert lab_exporter.export(document, dest) == 0, "Export LAB FAILED"
 
-    """
     cue_exporter = partiels.createCueExporter()
-    err = cue_exporter.export(document, dest)
-    assert err == 0, "Export CUE FAILED, ERROR CODE" + str(err)
+    assert cue_exporter.export(document, dest) != 0, "Export CUE SUCCESS"
     reaper_exporter = partiels.createReaperExporter()
-    assert reaper_exporter.export(document, dest) == 0, "Export REAPER FAILED"
-    """
+    assert reaper_exporter.export(document, dest) != 0, "Export REAPER SUCCESS"
 
     sdif_exporter = partiels.createSdifExporter()
     err = sdif_exporter.export(document, dest)
