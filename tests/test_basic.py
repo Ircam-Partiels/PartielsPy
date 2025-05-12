@@ -1,4 +1,5 @@
 import pkg_resources
+
 from PartielsPy.Partiels import Partiels
 
 
