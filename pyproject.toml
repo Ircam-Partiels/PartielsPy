@@ -30,3 +30,6 @@ where = ["src"]
 
 [tool.dev-dependencies]
 pytest = "^7.0"
+
+[tool.isort]
+profile = "black"

@@ -70,7 +70,7 @@ class CsvExporter(TextExporter):
         return super().export(cmd)
 
 
-class ReaperExporter(Exporter):  # csv egalement
+class ReaperExporter(Exporter):  # Reaper is csv format
     def __init__(self, exec_path: str, reaperType: str):
         super().__init__(exec_path)
         if self.setReaperType(reaperType):
@@ -80,7 +80,8 @@ class ReaperExporter(Exporter):  # csv egalement
         """Set the reapertype
 
         Args:
-            value (str): Defines the type of the reaper format ('marker' or 'region', default is 'region')
+            value (str): Defines the type of the reaper format ('marker' or
+                'region', default is 'region')
         """
         if value != "region" and value != "marker":
             return super().error("reapertype", "should be region or marker")
@@ -105,9 +106,9 @@ class ReaperExporter(Exporter):  # csv egalement
         return super().export(cmd)
 
 
-class LabExporter(TextExporter):
-    def __init__(self, exec_path: str, nogrids: bool):
-        super().__init__(exec_path, nogrids)
+class LabExporter(Exporter):  # Lab is csv format
+    def __init__(self, exec_path: str):
+        super().__init__(exec_path)
 
     def getCmd(self, Document: Document, output: str):
         res = super().getCmd(Document, output)

@@ -5,7 +5,6 @@ from .Exporter import Exporter
 
 
 class ImageExporter(Exporter):
-
     def __init__(self, exec_path, format, width, height, groups):
         super().__init__(exec_path)
         self.width = 1000
@@ -44,7 +43,8 @@ class ImageExporter(Exporter):
         """Set the groups option
 
         Args:
-            value (bool): if True exports the images of group and not the image of the tracks
+            value (bool): if True exports the images of group and not the
+                image of the tracks
         """
         if super().checkBoolAttr("groups", value):
             return

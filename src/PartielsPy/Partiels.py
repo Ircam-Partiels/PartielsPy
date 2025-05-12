@@ -7,24 +7,24 @@
 import os
 import shutil
 import subprocess
-from .Version import Version
+
 from .Document import Document
 from .Exporters.ImageExporter import ImageExporter
+from .Exporters.SdifExporter import SdifExporter
 from .Exporters.TextExporter import (
     CsvExporter,
-    JsonExporter,
     CueExporter,
-    ReaperExporter,
+    JsonExporter,
     LabExporter,
+    ReaperExporter,
 )
-from .Exporters.SdifExporter import SdifExporter
+from .Version import Version
 
 PARTIELS_HANDLED_VERSION_MIN = "2.0.9"
 PARTIELS_HANDLED_VERSION_MAX = "2.0.10"
 
 
 class Partiels:
-
     def __init__(self):
         self.setExecPath(self.findExecPath())
         self.isHandledVersion = self.checkVersion()
@@ -88,7 +88,8 @@ class Partiels:
 
         Args:
             input (str): relative or absolute path of the audiofile
-            template (str): name of the default template. Options ar factory, supervp or partiels
+            template (str): name of the default template. Options ar factory,
+                supervp or partiels
         """
         return Document(input, template, True)
 
@@ -100,7 +101,8 @@ class Partiels:
         Args:
             width (int): the width of the target jpeg image
             height (int): the height of the target jpeg image
-            groups (bool): if True exports the images of group and not the image of the tracks
+            groups (bool): if True exports the images of group and not the
+                image of the tracks
         """
         return ImageExporter(self.exec_path, "jpeg", width, height, groups)
 
@@ -112,7 +114,8 @@ class Partiels:
         Args:
             width (int): the width of the target png image
             height (int): the height of the target png image
-            groups (bool): if True exports the images of group and not the image of the tracks
+            groups (bool): if True exports the images of group and not the
+                image of the tracks
         """
         return ImageExporter(self.exec_path, "png", width, height, groups)
 
@@ -124,7 +127,8 @@ class Partiels:
         Args:
             nogrids (bool): if True ignores the export of the grid tracks
             header (bool): if True includes header row before the data rows
-            separator (char): Defines the separator character between columns (default is ',')
+            separator (char): Defines the separator character between columns
+                (default is ',')
         """
         return CsvExporter(self.exec_path, nogrids, header, separator)
 
@@ -132,13 +136,14 @@ class Partiels:
         """Create a ReaperExporter
 
         Args:
-            reaperType (str): Defines the type of the reaper format: 'marker' or 'region', default is 'region'.
+            reaperType (str): Defines the type of the reaper format: 'marker'
+                or 'region', default is 'region'.
         """
         return ReaperExporter(self.exec_path, reaperType)
 
-    def createLabExporter(self, nogrids: bool = False):
+    def createLabExporter(self):
         """Create a LabExporter"""
-        return LabExporter(self.exec_path, nogrids)
+        return LabExporter(self.exec_path)
 
     def createJsonExporter(self, nogrids: bool = False, description: bool = False):
         """Create a JsonExporter
@@ -163,8 +168,10 @@ class Partiels:
         """Create a SdifExporter
 
         Args:
-            frame (str): <framesignature> Defines the 4 characters frame signaturer
-            matrix (str): <matrixsignature> Defines the 4 characters matrix signaturer
+            frame (str): <framesignature> Defines the 4 characters frame
+                signaturer
+            matrix (str): <matrixsignature> Defines the 4 characters matrix
+                signaturer
             colname (str): Defines the name of the column
         """
         return SdifExporter(self.exec_path, frame, matrix, colname)

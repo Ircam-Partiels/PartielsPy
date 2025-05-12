@@ -21,7 +21,8 @@ class Document:
 
         Args:
             path (str): absolute ot relative path for the audiofile
-            isDefault (bool): if True the path is used to select a default template: factory, partiels, supervp
+            isDefault (bool): if True the path is used to select a default
+                template: factory, partiels, supervp
         """
         if isDefault:
             self.template = pkg_resources.resource_filename(

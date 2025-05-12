@@ -12,12 +12,11 @@ def test_create_instance():
 def test_check_version():
     partiels = Partiels()
     assert (
-        partiels.isHandledVersion == True
+        partiels.isHandledVersion is True
     ), "Partiels Executable Version does not match the wrapper"
 
 
 def exports(partiels, document, dest):
-
     jpeg_exporter = partiels.createJpegExporter()
     assert jpeg_exporter.export(document, dest) == 0, "Export JPEG FAILED"
 
@@ -37,7 +36,6 @@ def exports(partiels, document, dest):
     cue_exporter = partiels.createCueExporter()
     err = cue_exporter.export(document, dest)
     assert err == 0, "Export CUE FAILED, ERROR CODE" + str(err)
-    
     reaper_exporter = partiels.createReaperExporter()
     assert reaper_exporter.export(document, dest) == 0, "Export REAPER FAILED"
     """
