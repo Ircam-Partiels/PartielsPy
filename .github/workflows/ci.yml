@@ -1,0 +1,59 @@
+name: CI
+
+on: [push, pull_request]
+
+env:
+  PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download/
+  PARTIELS_VERSION: 2.0.10
+
+jobs:
+  Ubuntu:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Prepare
+      run: sudo apt update && sudo apt install -y unzip wget
+    - name: Install dependencies
+      run: pip install pytest semver
+    - name: Download and install Partiels binary
+      run: |
+        wget $PARTIELS_URL/$PARTIELS_VERSION/Partiels-Linux.tar.gz
+        tar -xzf Partiels-Linux.tar.gz
+        sh Partiels/Partiels-install.sh
+    - name: Run tests
+      run: pytest -s tests/
+
+  Windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install pytest pytest-timeout semver
+      - name: Download and install Partiels binary
+        shell: powershell
+        run: |
+          $url = "$env:PARTIELS_URL/$env:PARTIELS_VERSION/Partiels-Windows.exe"
+          Invoke-WebRequest -Uri $url -OutFile "Partiels.exe"
+          Unblock-File -Path "./Partiels.exe"
+          .\Partiels.exe /VERYSILENT
+      - name: Add Partiels to PATH
+        shell: powershell
+        run: |
+          echo "C:\Program Files\Partiels" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Run tests
+        run: pytest --timeout=15 -s tests/
+  
+  MacOS:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install pytest semver
+      - name: Download and install Partiels binary
+        shell: bash
+        run: |
+          curl -L -v -o Partiels.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
+          MOUNT_DIR=$(hdiutil attach Partiels.dmg | grep Volumes | awk '{print $3}')
+          cp -r "$MOUNT_DIR/Partiels.app" /Applications/
+      - name: Run tests
+        run: pytest -s tests/
