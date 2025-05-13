@@ -1,0 +1,7 @@
+__pycache__/
+.venv
+*.egg-info
+dist
+docs/*
+!docs/index.rst
+!docs/conf.py
