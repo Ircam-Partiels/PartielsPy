@@ -7,6 +7,24 @@ A Python Wrapper for Partiels
 
 A Python Wrapper for **[Partiels](https://github.com/Ircam-Partiels/Partiels)**
 
+## Compilation
+
+```sh
+git clone git@github.com:Ircam-Partiels/PartielsPy.git
+cd PartielsPy
+
+# Linux, MacOS
+python3 -m venv .venv
+.venv/bin/python3 -m pip install build
+.venv/bin/python3 -m build
+.venv/bin/python3 -m pip install dist/partielspy-0.0.0-py3-none-any.whl
+
+# Windows
+py -m venv .venv
+.venv\Scripts\python.exe -m pip install build
+.venv\Scripts\python.exe -m build
+.venv\Scripts\python.exe -m pip install dist\partielspy-0.0.0-py3-none-any.whl
+```
 
 ## Code Style
 
