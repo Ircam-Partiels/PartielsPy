@@ -7,6 +7,8 @@ import subprocess
 
 import semver
 
+from .Document import Document
+
 
 class Partiels:
     """A class to manage Partiels executable
@@ -89,3 +91,22 @@ class Partiels:
         """Return the PartielsPy's compatibility version"""
 
         return self.__compatibility_version
+
+    def createDocument(self, input: str, template: str):
+        """Create a Document
+
+        Args:
+            input (str): relative or absolute path of the audiofile
+            template (str): relative or absolute path of the template (ptldoc)
+        """
+        return Document(input, template)
+
+    def createDefaultDocument(self, input: str, template: str):
+        """Create a Document with a default template
+
+        Args:
+            input (str): relative or absolute path of the audiofile
+            template (str): name of the default template. Options ar factory,
+                supervp or partiels
+        """
+        return Document(input, template, True)
