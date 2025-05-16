@@ -1,4 +1,4 @@
-from ..src.PartielsPy.Partiels import Partiels
+from PartielsPy.Partiels import Partiels
 
 
 def test_find_executable():
