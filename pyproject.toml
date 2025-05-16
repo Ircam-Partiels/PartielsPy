@@ -1,0 +1,36 @@
+[project]
+name = "PartielsPy"
+version = "0.0.0"
+authors = [
+  { name="Pierre Guillot", email="pierre.guillot@ircam.fr" },
+  { name="Thomas Barbé", email="thomas-barbe@hotmail.com" },
+]
+dependencies = [
+  "semver >= 3.0.4"
+]
+
+description = "A Python wrapper for Partiels"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/Ircam-Partiels/PartielsPy"
+Issues = "https://github.com/Ircam-Partiels/PartielsPy/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.dev-dependencies]
+pytest = "^7.0"
+
+[tool.isort]
+profile = "black"
