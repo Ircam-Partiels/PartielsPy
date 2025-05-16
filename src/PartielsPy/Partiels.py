@@ -53,7 +53,6 @@ class Partiels:
                 [self.__executable_path, "--version"],
                 capture_output=True,
                 text=True,
-                timeout=10,
             )
             .stdout.split(" v")[1]
             .strip()
