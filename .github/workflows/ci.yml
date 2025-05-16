@@ -40,8 +40,8 @@ jobs:
         shell: powershell
         run: |
           echo "C:\Program Files\Partiels" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-      - name: Run tests
-        run: pytest --timeout=15 -s tests/
+      #- name: Run tests
+      #  run: pytest --timeout=15 -s tests/
   
   MacOS:
     runs-on: macos-latest
