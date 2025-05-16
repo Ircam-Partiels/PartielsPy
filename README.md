@@ -25,6 +25,19 @@ py -m venv .venv
 .venv\Scripts\python.exe -m build
 .venv\Scripts\python.exe -m pip install dist\partielspy-0.0.0-py3-none-any.whl
 ```
+> ⚠️ Partiels must be installed to make use of PartielsPy 
+
+## Generate the Documentation
+```sh
+cd PartielsPy/docs
+
+# Linux, MacOS
+make html
+
+# Windows
+make.bat
+```
+The documentation files will be generated in PartielsPy/docs/_build
 
 ## Code Style
 
