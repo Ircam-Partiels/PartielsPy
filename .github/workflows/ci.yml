@@ -33,8 +33,14 @@ jobs:
         shell: powershell
         run: |
           Invoke-WebRequest -Uri $env:PARTIELS_URL/$env:PARTIELS_VERSION/Partiels-Windows.exe -OutFile "Partiels-Windows.exe"
-          Unblock-File -Path "./Partiels-Windows.exe"
-          .\Partiels-Windows.exe /SILENT
+          $signature = Get-AuthenticodeSignature .\Partiels-Windows.exe
+          if ($signature.Status -ne 'Valid') {
+            throw "The installer isn't signed or the signature is invalid"
+          }
+          $proc = Start-Process .\Partiels-Windows.exe -ArgumentList "/VERYSILENT /NORESTART /SP-" -Wait -PassThru
+          if ($proc.ExitCode -ne 0) {
+            throw "The installation failed with the exit code $($proc.ExitCode)"
+          }
       - name: Run tests
         run: pytest -s tests/
   
