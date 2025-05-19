@@ -26,7 +26,7 @@ jobs:
       run: isort . --check --diff
     - name: Run Flake8
       run: flake8 src tests
-      
+
   Ubuntu:
     runs-on: ubuntu-22.04
     needs: Format
@@ -34,13 +34,19 @@ jobs:
     - uses: actions/checkout@v4
     - name: Prepare
       run: sudo apt update && sudo apt install -y unzip wget
-    - name: Install dependencies
-      run: pip install pytest semver
     - name: Download and install Partiels binary
       run: |
         wget $PARTIELS_URL/$PARTIELS_VERSION/Partiels-Linux.tar.gz
         tar -xzf Partiels-Linux.tar.gz
         sh Partiels/Partiels-install.sh
+    - name: Upgrade pip and setuptools
+      run: python -m pip install --upgrade pip setuptools
+    - name: Install dependencies
+      run: pip install pytest build
+    - name: Build PartielsPy
+      run: python -m build
+    - name: Install PartielsPy
+      run: pip install dist/*.whl
     - name: Run tests
       run: pytest -s tests/
 
@@ -49,8 +55,6 @@ jobs:
     needs: Format
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: pip install pytest semver
       - name: Download and install Partiels binary
         shell: powershell
         run: |
@@ -63,6 +67,15 @@ jobs:
           if ($proc.ExitCode -ne 0) {
             throw "The installation failed with the exit code $($proc.ExitCode)"
           }
+      - name: Upgrade pip and setuptools
+        run: python -m pip install --upgrade pip setuptools
+      - name: Install dependencies
+        run: pip install pytest build
+      - name: Build PartielsPy
+        run: python -m build
+      - name: Install PartielsPy
+        shell: powershell
+        run: Get-ChildItem -Path dist\*.whl | ForEach-Object { pip install $_.FullName }
       - name: Run tests
         run: pytest -s tests/
   
@@ -71,13 +84,19 @@ jobs:
     needs: Format
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
-        run: pip install pytest semver
       - name: Download and install Partiels binary
         shell: bash
         run: |
           curl -L -v -o Partiels-MacOS.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
           MOUNT_DIR=$(hdiutil attach Partiels-MacOS.dmg | grep Volumes | awk '{print $3}')
           cp -r "$MOUNT_DIR/Partiels.app" /Applications/
+      - name: Upgrade pip and setuptools
+        run: python -m pip install --upgrade pip setuptools
+      - name: Install dependencies
+        run: pip install pytest build
+      - name: Build PartielsPy
+        run: python -m build
+      - name: Install PartielsPy
+        run: pip install dist/*.whl
       - name: Run tests
         run: pytest -s tests/
