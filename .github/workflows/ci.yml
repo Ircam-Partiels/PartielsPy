@@ -47,8 +47,8 @@ jobs:
       - name: Download and install Partiels binary
         shell: bash
         run: |
-          curl -L -v -o Partiels.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
-          MOUNT_DIR=$(hdiutil attach Partiels.dmg | grep Volumes | awk '{print $3}')
+          curl -L -v -o Partiels-MacOS.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
+          MOUNT_DIR=$(hdiutil attach Partiels-MacOS.dmg | grep Volumes | awk '{print $3}')
           cp -r "$MOUNT_DIR/Partiels.app" /Applications/
       - name: Run tests
         run: pytest -s tests/
