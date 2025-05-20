@@ -21,6 +21,24 @@ py -m venv .venv
 .venv\Scripts\python.exe -m pip install dist\partielspy-0.0.0-py3-none-any.whl
 ```
 
+## Generate the Documentation
+```sh
+cd PartielsPy
+pip install sphinx
+```
+- Linux, MacOS
+```
+sphinx-apidoc -o ./docs ./src/PartielsPy ./src/PartielsPy/templates/*
+sphinx-build -b html ./docs ./docs/_build/html
+```
+- Windows
+```
+sphinx-apidoc -o ./docs ./src/PartielsPy --force --no-toc --exclude-pattern=**/templates/**
+sphinx-build -b html ./docs ./docs/_build/html
+```
+
+The documentation files will be generated in PartielsPy/docs/_build
+
 ## Code Style
 This project uses the following tools to enforce consistent code quality:
 
