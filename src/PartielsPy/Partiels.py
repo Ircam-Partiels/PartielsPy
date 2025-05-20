@@ -9,18 +9,19 @@ import semver
 
 
 class Partiels:
-    def __init__(self):
-        """Initialize Partiels executable path and version
+    """A class to manage Partiels executable
 
-        The executable path is determined by searching the system's PATH environment variable.
-        If the executable is still not found, it checks common installation directories based \
-        on the operating system.
-        You can use the PARTIELS_PATH environment variable to set the executable path, in this \
-        case only the PARTIELS_PATH will be used.
-        If the executable is not found, it raises a RuntimeError.
-        If the executable is found, its version is compared to the PartielsPy compatibility \
-        version and a warning is trigger if not matching.
-        """
+    The executable path is determined by searching the system's PATH environment variable.
+    If the executable is still not found, it checks common installation directories based \
+    on the operating system.
+    You can use the PARTIELS_PATH environment variable to set the executable path, in this \
+    case only the PARTIELS_PATH will be used.
+    If the executable is not found, it raises a RuntimeError.
+    If the executable is found, its version is compared to the PartielsPy compatibility \
+    version and a warning is trigger if not matching.
+    """
+
+    def __init__(self):
         name = "Partiels"
         self.__compatibility_version = "2.0.10"
         if "PARTIELS_PATH" in os.environ:
