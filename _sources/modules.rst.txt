@@ -1,0 +1,7 @@
+PartielsPy
+==========
+
+.. toctree::
+   :maxdepth: 4
+
+   PartielsPy

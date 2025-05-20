@@ -1,0 +1,21 @@
+PartielsPy package
+==================
+
+Submodules
+----------
+
+PartielsPy.Partiels module
+--------------------------
+
+.. automodule:: PartielsPy.Partiels
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: PartielsPy
+   :members:
+   :show-inheritance:
+   :undoc-members:
