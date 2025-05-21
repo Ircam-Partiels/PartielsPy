@@ -4,6 +4,14 @@ PartielsPy package
 Submodules
 ----------
 
+PartielsPy.Document module
+--------------------------
+
+.. automodule:: PartielsPy.Document
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 PartielsPy.Partiels module
 --------------------------
 
