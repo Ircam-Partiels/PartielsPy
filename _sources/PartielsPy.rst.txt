@@ -4,18 +4,10 @@ PartielsPy package
 Submodules
 ----------
 
-PartielsPy.Document module
+PartielsPy.partiels module
 --------------------------
 
-.. automodule:: PartielsPy.Document
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-PartielsPy.Partiels module
---------------------------
-
-.. automodule:: PartielsPy.Partiels
+.. automodule:: PartielsPy.partiels
    :members:
    :show-inheritance:
    :undoc-members:
