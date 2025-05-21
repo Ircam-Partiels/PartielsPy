@@ -1,6 +1,6 @@
-from PartielsPy.Partiels import Partiels
+from PartielsPy.partiels import Partiels
 
 
 def test_find_executable():
-    assert Partiels().getExecutablePath() is not None, "Partiels Executable not found"
-    print(Partiels().getExecutablePath() + " v" + Partiels().getExecutableVersion())
+    assert Partiels().executable_path is not None, "Partiels Executable not found"
+    print(Partiels().executable_path + " v" + Partiels().executable_version)
