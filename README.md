@@ -58,3 +58,27 @@ black --check .
 isort --check-only .
 flake8 src tests
 ```
+
+## Example
+
+```python
+from PartielsPy import Partiels, ExportConfigImage
+
+partiels = Partiels()
+audiofile = "path/to/audiofile"
+output = "path/to/output/folder"
+template = "path/to/template"
+
+config = ExportConfigImage()
+partiels.export(audiofile, template, output, config)
+
+config.adapt_to_sample_rate = True
+config.format = ExportConfigImage.Formats.PNG
+config.width = 600
+config.height = 600
+config.group_overlay = True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigImage(format=ExportConfigImage.Formats.PNG, width=200, height=200)
+partiels.export(audiofile, template, output, config)
+```
