@@ -43,7 +43,22 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.export_config_image.ExportConfigImage">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PartielsPy.export_configs.export_config_image.</span></span><span class="sig-name descname"><span class="pre">ExportConfigImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'jpeg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PartielsPy.export_configs.export_config_image.ExportConfigImage" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfig</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExportConfig</span></code></p>
+<p>Image export configuration class</p>
+<p>This class is used to configure the export of the image.
+Images format is jpeg or png.
+This class is use in the export method of the Partiels class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> (<em>str</em>) – the format of the image: jpeg or png. (default: jpeg)</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – the width of the image in pixels (default: 1280)</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the height of the image in pixels (default: 720)</p></li>
+<li><p><strong>groups</strong> (<em>bool</em>) – if True exports the images of group and not the image
+of the tracks (default: False)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.export_config_image.ExportConfigImage.FormatEnum">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FormatEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PartielsPy.export_configs.export_config_image.ExportConfigImage.FormatEnum" title="Link to this definition">¶</a></dt>
@@ -72,7 +87,7 @@ The default format is jpeg.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.export_config_image.ExportConfigImage.getArgs">
 <span class="sig-name descname"><span class="pre">getArgs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PartielsPy.export_configs.export_config_image.ExportConfigImage.getArgs" title="Link to this definition">¶</a></dt>
-<dd><p>Get the command arguments to execute.</p>
+<dd><p>Get the command line arguments.</p>
 </dd></dl>
 
 <dl class="py property">
