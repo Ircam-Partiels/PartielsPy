@@ -4,6 +4,7 @@ import os
 import platform
 import shutil
 import subprocess
+import warnings
 
 import semver
 
@@ -63,16 +64,20 @@ class Partiels:
             self.__executable_version
         )
         if version_diff < 0:
-            print(
-                "Warning: PartielsPy version is older than Partiels's executable version.\n"
-                "Please, check if there is a newer version of PartielsPy fully compatible \
-                with the executable version"
+            warnings.warn(
+                "PartielsPy version is older than Partiels's executable version.\n"
+                "Please check if there is a newer version of PartielsPy fully compatible "
+                "with the executable version.",
+                category=UserWarning,
+                stacklevel=2,
             )
         elif version_diff > 0:
-            print(
+            warnings.warn(
                 "Warning: PartielsPy version is newer than Partiels's executable version.\n"
-                "Please, update the version of Partiels to compatibility version:",
-                self.__compatibility_version,
+                "Please, update the version of Partiels to compatibility version:"
+                + str(self.__compatibility_version),
+                category=UserWarning,
+                stacklevel=2,
             )
 
     def getExecutablePath(self):
