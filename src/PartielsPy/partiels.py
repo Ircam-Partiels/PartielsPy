@@ -80,17 +80,17 @@ class Partiels:
                 stacklevel=2,
             )
 
-    def getExecutablePath(self):
+    @property
+    def executable_path(self):
         """Return Partiels's executable path"""
-
         return self.__executable_path
 
-    def getExecutableVersion(self):
+    @property
+    def executable_version(self):
         """Return Partiels's executable version"""
-
         return self.__executable_version
 
-    def getCompatibilityVersion(self):
+    @property
+    def compatibility_version(self):
         """Return the PartielsPy's compatibility version"""
-
         return self.__compatibility_version
