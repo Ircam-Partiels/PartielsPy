@@ -1,6 +1,14 @@
 PartielsPy package
 ==================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   PartielsPy.export_configs
+
 Submodules
 ----------
 
