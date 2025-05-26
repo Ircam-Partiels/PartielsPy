@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 env:
-  PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download/
+  PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download
   PARTIELS_VERSION: 2.0.10
 
 jobs:
