@@ -32,6 +32,10 @@ jobs:
     needs: Format
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
     - name: Prepare
       run: sudo apt update && sudo apt install -y unzip wget
     - name: Download and install Partiels binary
@@ -39,6 +43,7 @@ jobs:
         wget $PARTIELS_URL/$PARTIELS_VERSION/Partiels-Linux.tar.gz
         tar -xzf Partiels-Linux.tar.gz
         sh Partiels/Partiels-install.sh
+        echo "VAMP_PATH=/opt/Partiels/PlugIns" >> $GITHUB_ENV
     - name: Upgrade pip and setuptools
       run: python -m pip install --upgrade pip setuptools
     - name: Install dependencies
@@ -55,6 +60,10 @@ jobs:
     needs: Format
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
       - name: Download and install Partiels binary
         shell: powershell
         run: |
@@ -67,6 +76,7 @@ jobs:
           if ($proc.ExitCode -ne 0) {
             throw "The installation failed with the exit code $($proc.ExitCode)"
           }
+          Add-Content -Path $env:GITHUB_ENV -Value "VAMP_PATH=$env:ProgramFiles\Partiels\PlugIns"
       - name: Upgrade pip and setuptools
         run: python -m pip install --upgrade pip setuptools
       - name: Install dependencies
@@ -84,12 +94,17 @@ jobs:
     needs: Format
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
       - name: Download and install Partiels binary
         shell: bash
         run: |
           curl -L -v -o Partiels-MacOS.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
           MOUNT_DIR=$(hdiutil attach Partiels-MacOS.dmg | grep Volumes | awk '{print $3}')
           cp -r "$MOUNT_DIR/Partiels.app" /Applications/
+          echo "VAMP_PATH=/Applications/Partiels.app/Contents/PlugIns" >> $GITHUB_ENV
       - name: Upgrade pip and setuptools
         run: python -m pip install --upgrade pip setuptools
       - name: Install dependencies
