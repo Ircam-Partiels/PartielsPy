@@ -4,10 +4,10 @@ PartielsPy.export\_configs package
 Submodules
 ----------
 
-PartielsPy.export\_configs.export\_config\_image module
--------------------------------------------------------
+PartielsPy.export\_configs.image module
+---------------------------------------
 
-.. automodule:: PartielsPy.export_configs.export_config_image
+.. automodule:: PartielsPy.export_configs.image
    :members:
    :show-inheritance:
    :undoc-members:
