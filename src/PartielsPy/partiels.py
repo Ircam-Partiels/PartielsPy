@@ -1,5 +1,6 @@
 """A main class for Partiels Wrapper"""
 
+import logging
 import os
 import platform
 import shutil
@@ -7,6 +8,8 @@ import subprocess
 import warnings
 
 import semver
+
+from .export_configs.base import ExportConfigBase
 
 
 class Partiels:
@@ -65,7 +68,11 @@ class Partiels:
         )
         if version_diff < 0:
             warnings.warn(
-                "PartielsPy version is older than Partiels's executable version.\n"
+                "PartielsPy compatibility version ("
+                + str(self.__compatibility_version)
+                + ") is older than Partiels's executable version ("
+                + str(self.__executable_version)
+                + ").\n"
                 "Please check if there is a newer version of PartielsPy fully compatible "
                 "with the executable version.",
                 category=UserWarning,
@@ -73,9 +80,12 @@ class Partiels:
             )
         elif version_diff > 0:
             warnings.warn(
-                "Warning: PartielsPy version is newer than Partiels's executable version.\n"
-                "Please, update the version of Partiels to compatibility version:"
-                + str(self.__compatibility_version),
+                "PartielsPy compatibility version ("
+                + str(self.__compatibility_version)
+                + ") is newer than Partiels's executable version. ("
+                + str(self.__executable_version)
+                + ").\n"
+                "Please, update the version of Partiels to compatibility version.",
                 category=UserWarning,
                 stacklevel=2,
             )
@@ -94,3 +104,29 @@ class Partiels:
     def compatibility_version(self):
         """Return the PartielsPy's compatibility version"""
         return self.__compatibility_version
+
+    def export(
+        self,
+        audiofile_path: str,
+        template_path: str,
+        output_path: str,
+        export_config: ExportConfigBase,
+    ):
+        """Export the audiofile with the template and export configuration
+
+        Args:
+            audiofile_path (str): the path to the audio file
+            template_path (str): the path to the template
+            output_path (str): the path to the output folder
+            export_config (ExportConfigBase): the export configuration
+        """
+        cmd = [
+            self.__executable_path,
+            "--export",
+            "--input=" + audiofile_path,
+            "--template=" + template_path,
+            "--output=" + output_path,
+        ]
+        cmd += export_config.to_cli_args()
+        logging.getLogger(__name__).debug(cmd)
+        return subprocess.run(cmd, capture_output=True, text=True, check=True)
