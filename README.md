@@ -1,6 +1,10 @@
 # PartielsPy
 A Python Wrapper for **[Partiels](https://github.com/Ircam-Partiels/Partiels)**
 
+## Prerequisites
+
+This package requires **Python 3.11 or later**.
+
 ## Compilation
 ```sh
 git clone https://github.com/Ircam-Partiels/PartielsPy.git
