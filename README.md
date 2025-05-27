@@ -62,12 +62,14 @@ flake8 src tests
 ## Example
 
 ```python
-from PartielsPy import Partiels, ExportConfigImage
+from PartielsPy import *
 
 partiels = Partiels()
 audiofile = "path/to/audiofile"
 output = "path/to/output/folder"
 template = "path/to/template"
+
+# Export an Image file
 
 config = ExportConfigImage()
 partiels.export(audiofile, template, output, config)
@@ -81,4 +83,67 @@ partiels.export(audiofile, template, output, config)
 
 config = ExportConfigImage(format=ExportConfigImage.Formats.PNG, width=200, height=200)
 partiels.export(audiofile, template, output, config)
+
+# Export a CSV file
+
+config = ExportConfigCsv()
+partiels.export(audiofile, template, output, config)
+
+config.include_header=True
+config.columns_separator=ExportConfigCsv.Separators.COMMA
+config.ignore_matrix_tracks=True
+config.adapt_to_sample_rate=True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigCsv(include_header=True, columns_separator=ExportConfigCsv.Separators.COMMA, ignore_matrix_tracks=True, adapt_to_sample_rate=True)
+partiels.export(audiofile, template, output, config)
+
+# Export a CUE file
+
+config = ExportConfigCue()
+partiels.export(audiofile, template, output, config)
+
+config.ignore_matrix_tracks=True
+config.adapt_to_sample_rate=True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigCue(ignore_matrix_tracks=True, adapt_to_sample_rate=True)
+partiels.export(audiofile, template, output, config)
+
+# Export a JSON file
+
+config = ExportConfigJson()
+partiels.export(audiofile, template, output, config)
+
+config.include_plugin_description=True
+config.ignore_matrix_tracks=True
+config.adapt_to_sample_rate=True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigJson(include_plugin_description=True, ignore_matrix_tracks=True, adapt_to_sample_rate=True)
+partiels.export(audiofile, template, output, config)
+
+# Export a Lab file
+
+config = ExportConfigLab()
+partiels.export(audiofile, template, output, config)
+
+config.adapt_to_sample_rate=True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigLab(adapt_to_sample_rate=True)
+partiels.export(audiofile, template, output, config)
+
+# Export a Reaper file
+
+config = ExportConfigReaper()
+partiels.export(audiofile, template, output, config)
+
+config.reaper_type=ExportConfigReaper.ReaperTypes.MARKER
+config.adapt_to_sample_rate=True
+partiels.export(audiofile, template, output, config)
+
+config = ExportConfigReaper(reaper_type=ExportConfigReaper.ReaperTypes.MARKER, adapt_to_sample_rate=True)
+partiels.export(audiofile, template, output, config)
+
 ```
