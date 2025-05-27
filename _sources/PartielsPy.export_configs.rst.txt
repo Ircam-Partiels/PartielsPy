@@ -4,6 +4,14 @@ PartielsPy.export\_configs package
 Submodules
 ----------
 
+PartielsPy.export\_configs.base module
+--------------------------------------
+
+.. automodule:: PartielsPy.export_configs.base
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 PartielsPy.export\_configs.image module
 ---------------------------------------
 

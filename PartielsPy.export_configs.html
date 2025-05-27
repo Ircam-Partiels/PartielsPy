@@ -37,23 +37,50 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
+<section id="module-PartielsPy.export_configs.base">
+<span id="partielspy-export-configs-base-module"></span><h2>PartielsPy.export_configs.base module<a class="headerlink" href="#module-PartielsPy.export_configs.base" title="Link to this heading">¶</a></h2>
+<p>An abstract class for export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PartielsPy.export_configs.base.ExportConfigBase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PartielsPy.export_configs.base.</span></span><span class="sig-name descname"><span class="pre">ExportConfigBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PartielsPy.export_configs.base.ExportConfigBase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Export base configuration class</p>
+<p>This is the base class used to configure the export of the document. Is not intended to     be used directly but inherited by the ExportConfig classes:
+- <a class="reference internal" href="#module-PartielsPy.export_configs.image" title="PartielsPy.export_configs.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.image</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapt_to_sample_rate</strong> (<em>bool</em>) – the block size and the step size of the analyzes         are adapted following the sample rate (default: False)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PartielsPy.export_configs.base.ExportConfigBase.adapt_to_sample_rate">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adapt_to_sample_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PartielsPy.export_configs.base.ExportConfigBase.adapt_to_sample_rate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PartielsPy.export_configs.base.ExportConfigBase.to_cli_args">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PartielsPy.export_configs.base.ExportConfigBase.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
 <section id="module-PartielsPy.export_configs.image">
 <span id="partielspy-export-configs-image-module"></span><h2>PartielsPy.export_configs.image module<a class="headerlink" href="#module-PartielsPy.export_configs.image" title="Link to this heading">¶</a></h2>
-<p>A class for export image configuration, used for jpeg and png formats</p>
+<p>A class for export image configuration</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PartielsPy.export_configs.image.</span></span><span class="sig-name descname"><span class="pre">ExportConfigImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PartielsPy.export_configs.image.ExportConfigImage.Formats" title="PartielsPy.export_configs.image.ExportConfigImage.Formats"><span class="pre">Formats</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Formats.JPEG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PartielsPy.export_configs.image.</span></span><span class="sig-name descname"><span class="pre">ExportConfigImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PartielsPy.export_configs.image.ExportConfigImage.Formats" title="PartielsPy.export_configs.image.ExportConfigImage.Formats"><span class="pre">Formats</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Formats.JPEG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PartielsPy.export_configs.base.ExportConfigBase" title="PartielsPy.export_configs.base.ExportConfigBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></a></p>
 <p>Image export configuration class</p>
-<p>This class is used to configure the export of the image,    it is used in the export method of the Partiels class.</p>
+<p>This class is used to configure the export of the image,    it is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.partiels</span></code> class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>format</strong> (<a class="reference internal" href="#PartielsPy.export_configs.image.ExportConfigImage.Formats" title="PartielsPy.export_configs.image.ExportConfigImage.Formats"><em>Formats</em></a>) – the format of the image: jpeg or png (default: jpeg)</p></li>
+<li><p><strong>format</strong> (<a class="reference internal" href="#PartielsPy.export_configs.image.ExportConfigImage.Formats" title="PartielsPy.export_configs.image.ExportConfigImage.Formats"><em>Formats</em></a>) – the format of the image (default: Formats.JPEG)</p></li>
 <li><p><strong>width</strong> (<em>int</em>) – the width of the image in pixels (default: 1280)</p></li>
 <li><p><strong>height</strong> (<em>int</em>) – the height of the image in pixels (default: 720)</p></li>
-<li><p><strong>group_overlay</strong> (<em>bool</em>) – Defines if the images of groups or the images
-of tracks are exported (default: False)</p></li>
+<li><p><strong>group_overlay</strong> (<em>bool</em>) – the images of groups are exported instead of the images of tracks         (default: False)</p></li>
 </ul>
 </dd>
 </dl>
@@ -76,56 +103,28 @@ of tracks are exported (default: False)</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage.format">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.format" title="Link to this definition">¶</a></dt>
-<dd><p>jpeg).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The image format</p>
-</dd>
-<dt class="field-even">Type<span class="colon">:</span></dt>
-<dd class="field-even"><p>jpeg or png (default</p>
-</dd>
-</dl>
-</dd></dl>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#PartielsPy.export_configs.image.ExportConfigImage.Formats" title="PartielsPy.export_configs.image.ExportConfigImage.Formats"><span class="pre">Formats</span></a></em><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage.group_overlay">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">group_overlay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.group_overlay" title="Link to this definition">¶</a></dt>
-<dd><p>False).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Defines if the images of the groups are exported instead of the images         of the tracks (default</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage.height">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.height" title="Link to this definition">¶</a></dt>
-<dd><p>720).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The image height in pixels, a positive non-zero integer (default</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage.to_cli_args">
 <span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.to_cli_args" title="Link to this definition">¶</a></dt>
-<dd><p>Get the command line arguments.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.image.ExportConfigImage.width">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#PartielsPy.export_configs.image.ExportConfigImage.width" title="Link to this definition">¶</a></dt>
-<dd><p>1280).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The image width in pixels, a positive non-zero integer (default</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
