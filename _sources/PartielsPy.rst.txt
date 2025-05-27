@@ -12,14 +12,6 @@ Subpackages
 Submodules
 ----------
 
-PartielsPy.config module
-------------------------
-
-.. automodule:: PartielsPy.config
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 PartielsPy.partiels module
 --------------------------
 
