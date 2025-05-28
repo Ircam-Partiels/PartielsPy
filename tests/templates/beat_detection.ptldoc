@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document MiscModelVersion="131081" grid="1">
+
+  <layout value="2a93e4ac88a54ca0900d76d5c5482ca5"/>
+
+  <groups MiscModelVersion="131081" identifier="2a93e4ac88a54ca0900d76d5c5482ca5"
+          name="Group 1" height="144" colour="0" expanded="1" referenceid="">
+    <layout value="ee3b81fbb6db40879bd2e9904e2cfe99"/>
+    <zoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="1.0"
+          minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="1.0">
+      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+            tickPowerBase="2.0" tickDivisionFactor="5.0"/>
+    </zoom>
+  </groups>
+
+  <tracks MiscModelVersion="131081" identifier="ee3b81fbb6db40879bd2e9904e2cfe99"
+          name="Beat Detection" input="" sampleRate="48000.0" height="120"
+          font="Nunito Sans; 14.0 Regular" lineWidth="1.0" showInGroup="1"
+          sendViaOsc="0" zoomValueMode="0" zoomLogScale="0" zoomLink="1">
+    <file path="" commit="">
+      <args/>
+    </file>
+    <description name="Beat Detection" inputDomain="0" maker="Ircam" version="3"
+                 category="" details="Beat marker detection performed by IrcamBeat&#10;Copyright 2024 Ircam. All rights reserved. Plugin by Pierre Guillot and Matthew Harris. IrcamBeat by Geoffroy Peeters and Fr&#233;d&#233;ric Cornu.">
+      <defaultState blockSize="64" stepSize="0" windowType="3">
+        <parameters key="constanttempo" value="0.0"/>
+        <parameters key="meterestimation" value="3.0"/>
+        <parameters key="tempodeviation" value="30.0"/>
+        <parameters key="tempoestimation" value="120.0"/>
+      </defaultState>
+      <parameters>
+        <value identifier="tempoestimation" name="Tempo Estimation" description="Estimation of the source tempo"
+               unit="BPM" minValue="1.0" maxValue="300.0" defaultValue="120.0"
+               isQuantized="1" quantizeStep="1.0"/>
+      </parameters>
+      <parameters>
+        <value identifier="tempodeviation" name="Tempo Deviation" description="Estimation of the possible source tempo deviation"
+               unit="BPM" minValue="0.1000000014901161" maxValue="50.0" defaultValue="30.0"
+               isQuantized="0" quantizeStep="0.0"/>
+      </parameters>
+      <parameters>
+        <value identifier="meterestimation" name="Meter / Beat Subdivision"
+               description="Meter / beat subdivision structure template" unit=""
+               minValue="0.0" maxValue="3.0" defaultValue="3.0" isQuantized="1"
+               quantizeStep="1.0">
+          <valueNames value="Binary grouping / Binary division"/>
+          <valueNames value="Binary grouping / Ternary division"/>
+          <valueNames value="Ternary grouping / Binary division"/>
+          <valueNames value="Auto"/>
+        </value>
+      </parameters>
+      <parameters>
+        <value identifier="constanttempo" name="Constant Tempo" description="Determines whether the source tempo is considered to be fixed throughout its length"
+               unit="" minValue="0.0" maxValue="1.0" defaultValue="0.0" isQuantized="1"
+               quantizeStep="1.0"/>
+      </parameters>
+      <output identifier="beatmarker" name="Beat Marker" description="The detected beat position"
+              unit="" hasFixedBinCount="1" binCount="0" hasKnownExtents="0"
+              minValue="0.0" maxValue="0.0" isQuantized="0" quantizeStep="0.0"
+              sampleType="2" sampleRate="0.0" hasDuration="0"/>
+      <input identifier="" name="" description="" unit="" hasFixedBinCount="0"
+             binCount="0" hasKnownExtents="0" minValue="0.0" maxValue="0.0"
+             isQuantized="0" quantizeStep="0.0" sampleType="0" sampleRate="0.0"
+             hasDuration="0"/>
+    </description>
+    <key identifier="ircambeat:ircambeatdetection" feature="beatmarker"/>
+    <state blockSize="64" stepSize="64" windowType="3">
+      <parameters key="constanttempo" value="0.0"/>
+      <parameters key="meterestimation" value="3.0"/>
+      <parameters key="tempodeviation" value="30.0"/>
+      <parameters key="tempoestimation" value="120.0"/>
+    </state>
+    <colours map="7" background="0" foreground="ff7e7a7d" duration="667e7a7d"
+             text="0" shadow="0"/>
+    <valueZoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="0.0"
+               minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="0.0">
+      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+            tickPowerBase="2.0" tickDivisionFactor="5.0"/>
+    </valueZoom>
+    <binZoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="0.0"
+             minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="0.0">
+      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+            tickPowerBase="2.0" tickDivisionFactor="5.0"/>
+    </binZoom>
+  </tracks>
+</document>
+
