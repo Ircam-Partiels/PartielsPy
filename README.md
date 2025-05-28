@@ -28,15 +28,16 @@ py -m venv .venv
 ## Generate the Documentation
 ```sh
 cd PartielsPy
-pip install sphinx
 ```
 - Linux, MacOS
 ```
+.venv/bin/python3 -m pip install sphinx
 sphinx-apidoc -o ./docs ./src/PartielsPy ./src/PartielsPy/templates/*
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 - Windows
 ```
+.venv\Scripts\python.exe -m pip install sphinx
 sphinx-apidoc -o ./docs ./src/PartielsPy --force --no-toc --exclude-pattern=**/templates/**
 sphinx-build -b html ./docs ./docs/_build/html
 ```
