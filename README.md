@@ -32,13 +32,13 @@ cd PartielsPy
 - Linux, MacOS
 ```
 .venv/bin/python3 -m pip install sphinx
-sphinx-apidoc -o ./docs ./src/PartielsPy ./src/PartielsPy/templates/*
+sphinx-apidoc -o ./docs ./src/PartielsPy ./src/PartielsPy/templates/* --private --separate --force --no-toc
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 - Windows
 ```
 .venv\Scripts\python.exe -m pip install sphinx
-sphinx-apidoc -o ./docs ./src/PartielsPy --force --no-toc --exclude-pattern=**/templates/**
+sphinx-apidoc -o ./docs ./src/PartielsPy --exclude-pattern=**/templates/** --private --separate --force --no-toc
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 
