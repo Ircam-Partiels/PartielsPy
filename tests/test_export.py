@@ -123,6 +123,7 @@ def test_export_image_without_vamp_path():
     vamp_path = os.environ.get("VAMP_PATH", "")
     print("vamp_path:", vamp_path)
     os.environ["VAMP_PATH"] = "/dummy/path/"
+    shutil.rmtree(output, ignore_errors=True)
     try:
         partiels.export(audiofile, template_factory, output, export_config)
     except subprocess.CalledProcessError as e:
