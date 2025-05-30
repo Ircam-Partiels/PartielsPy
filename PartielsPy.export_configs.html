@@ -80,8 +80,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>includes_header</strong> (<em>bool</em>) – includes header row before the data rows (default: False)</p></li>
-<li><p><strong>columns_separator</strong> (<a class="reference internal" href="#PartielsPy.export_configs.csv.ExportConfigCsv.Separators" title="PartielsPy.export_configs.csv.ExportConfigCsv.Separators"><em>ExportConfigCsv.Separators</em></a>) – defines the separator character        between columns (default: COMMA)</p></li>
+<li><p><strong>includes_header</strong> (<em>bool</em>) – the header row is include before the data rows (default: False)</p></li>
+<li><p><strong>columns_separator</strong> (<a class="reference internal" href="#PartielsPy.export_configs.csv.ExportConfigCsv.Separators" title="PartielsPy.export_configs.csv.ExportConfigCsv.Separators"><em>ExportConfigCsv.Separators</em></a>) – the separator character between         columns (default: COMMA)</p></li>
 </ul>
 </dd>
 </dl>
@@ -232,7 +232,7 @@
 <p>This class is used to configure the export of the json,    it is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.partiels</span></code> class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>plugin_description</strong> (<em>bool</em>) – includes the plugin description (default: False)</p>
+<dd class="field-odd"><p><strong>plugin_description</strong> (<em>bool</em>) – the plugin description is include (default: False)</p>
 </dd>
 </dl>
 <dl class="py property">
@@ -276,7 +276,7 @@
 <p>This class is used to configure the export of the reaper,    it is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.partiels</span></code> class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>reaper_type</strong> (<a class="reference internal" href="#PartielsPy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="PartielsPy.export_configs.reaper.ExportConfigReaper.ReaperTypes"><em>ExportConfigReaper.ReaperTypes</em></a>) – Defines the type of the reaper format        (default: REGION)</p>
+<dd class="field-odd"><p><strong>reaper_type</strong> (<a class="reference internal" href="#PartielsPy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="PartielsPy.export_configs.reaper.ExportConfigReaper.ReaperTypes"><em>ExportConfigReaper.ReaperTypes</em></a>) – the type of the reaper format        (default: REGION)</p>
 </dd>
 </dl>
 <dl class="py class">
@@ -319,8 +319,12 @@
 <p>This is the base text class used to configure the export of the document. Is not intended to     be used directly but inherited by the ExportConfig classes:
 - <a class="reference internal" href="#PartielsPy.export_configs.csv.ExportConfigCsv" title="PartielsPy.export_configs.csv.ExportConfigCsv"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.csv.ExportConfigCsv</span></code></a>
 - <a class="reference internal" href="#PartielsPy.export_configs.json.ExportConfigJson" title="PartielsPy.export_configs.json.ExportConfigJson"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.json.ExportConfigJson</span></code></a>
-- <a class="reference internal" href="#PartielsPy.export_configs.cue.ExportConfigCue" title="PartielsPy.export_configs.cue.ExportConfigCue"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.cue.ExportConfigCue</span></code></a>
-The ignore_grid_tracks option defines if the export ignores the grid tracks (default: False).</p>
+- <a class="reference internal" href="#PartielsPy.export_configs.cue.ExportConfigCue" title="PartielsPy.export_configs.cue.ExportConfigCue"><code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.cue.ExportConfigCue</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ignore_grid_tracks</strong> (<em>bool</em>) – the grid tracks are ignored (default: False)</p>
+</dd>
+</dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="PartielsPy.export_configs.text_base.ExportConfigTextBase.ignore_grid_tracks">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ignore_grid_tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PartielsPy.export_configs.text_base.ExportConfigTextBase.ignore_grid_tracks" title="Link to this definition">¶</a></dt>
