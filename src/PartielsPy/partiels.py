@@ -1,5 +1,6 @@
 """A main class for Partiels Wrapper"""
 
+import json
 import logging
 import os
 import platform
@@ -9,8 +10,11 @@ import warnings
 from pathlib import Path
 
 import semver
+from lxml import etree
 
+from .document import Document
 from .export_configs.base import ExportConfigBase
+from .plugins.key import PluginKey
 
 
 class Partiels:
@@ -24,6 +28,8 @@ class Partiels:
     If the executable is not found, it raises a RuntimeError.
     If the executable is found, its version is compared to the PartielsPy compatibility \
     version and a warning is trigger if not matching.
+    The class provides methods to export audio files with templates and export configurations.
+    It also provides a list of available plugins in Partiels.
     """
 
     def __init__(self):
@@ -90,6 +96,12 @@ class Partiels:
                 category=UserWarning,
                 stacklevel=2,
             )
+        cmd = [self.executable_path, "--plugin-list", "--format=json"]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        data = json.loads(result.stdout)["plugins"]
+        self.__plugin_list = []
+        for plugin in data:
+            self.__plugin_list.append([plugin["identifier"], plugin["feature"]])
 
     @property
     def executable_path(self) -> str:
@@ -105,6 +117,11 @@ class Partiels:
     def compatibility_version(self) -> str:
         """Return the PartielsPy's compatibility version"""
         return self.__compatibility_version
+
+    @property
+    def plugin_list(self) -> list[PluginKey]:
+        """Return the list of plugins available in Partiels"""
+        return self.__plugin_list
 
     def export(
         self,
@@ -131,3 +148,12 @@ class Partiels:
         cmd += export_config.to_cli_args()
         logging.getLogger(__name__).debug(cmd)
         return subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+    """
+    def save(self, filepath: str | Path, document: Document):
+        version = semver.VersionInfo.parse(self.__executable_version)
+        MiscModelVersion = (
+            (version.major << 16) | (version.minor << 8) | (version.patch)
+        )
+        document.save(MiscModelVersion)
+    """
