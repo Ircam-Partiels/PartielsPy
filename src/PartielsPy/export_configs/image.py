@@ -1,4 +1,4 @@
-"""A class for export image configuration"""
+"""A class for image export configuration"""
 
 from enum import StrEnum, auto
 
@@ -8,8 +8,8 @@ from .base import ExportConfigBase
 class ExportConfigImage(ExportConfigBase):
     """Image export configuration class
 
-    This class is used to configure the export of the image,\
-    it is used in the export method of the :class:`PartielsPy.partiels` class.
+    This class is used to configure the export of files in image formats.
+    It is used in the export method of the :class:`PartielsPy.partiels` class.
 
     Args:
         format (Formats): the format of the image (default: Formats.JPEG)
@@ -33,7 +33,7 @@ class ExportConfigImage(ExportConfigBase):
         group_overlay: bool = False,
         adapt_to_sample_rate: bool = False,
     ):
-        super().__init__(adapt_to_sample_rate)
+        super().__init__(adapt_to_sample_rate=adapt_to_sample_rate)
         self.format = format
         self.width = width
         self.height = height
