@@ -5,7 +5,8 @@ authors = [
   { name="Pierre Guillot", email="pierre.guillot@ircam.fr" },
   { name="Thomas Barbé", email="thomas-barbe@hotmail.com" },
 ]
-dependencies = [
+dependencies = [  
+  "lxml >= 5.4.0",
   "semver >= 3.0.4"
 ]
 
