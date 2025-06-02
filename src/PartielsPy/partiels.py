@@ -91,17 +91,17 @@ class Partiels:
             )
 
     @property
-    def executable_path(self):
+    def executable_path(self) -> str:
         """Return Partiels's executable path"""
         return self.__executable_path
 
     @property
-    def executable_version(self):
+    def executable_version(self) -> str:
         """Return Partiels's executable version"""
         return self.__executable_version
 
     @property
-    def compatibility_version(self):
+    def compatibility_version(self) -> str:
         """Return the PartielsPy's compatibility version"""
         return self.__compatibility_version
 
