@@ -6,6 +6,7 @@ import platform
 import shutil
 import subprocess
 import warnings
+from pathlib import Path
 
 import semver
 
@@ -107,9 +108,9 @@ class Partiels:
 
     def export(
         self,
-        audiofile_path: str,
-        template_path: str,
-        output_path: str,
+        audiofile_path: str | Path,
+        template_path: str | Path,
+        output_path: str | Path,
         export_config: ExportConfigBase,
     ):
         """Export the audiofile with the template and export configuration
@@ -123,9 +124,9 @@ class Partiels:
         cmd = [
             self.__executable_path,
             "--export",
-            "--input=" + audiofile_path,
-            "--template=" + template_path,
-            "--output=" + output_path,
+            f"--input={audiofile_path}",
+            f"--template={template_path}",
+            f"--output={output_path}",
         ]
         cmd += export_config.to_cli_args()
         logging.getLogger(__name__).debug(cmd)
