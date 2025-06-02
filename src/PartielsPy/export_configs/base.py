@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 
 class ExportConfigBase(ABC):
-    """Export base configuration class
+    """Base export configuration class
 
     This is the base class used to configure the export of the document. Is not intended to \
     be used directly but inherited by the ExportConfig classes:
