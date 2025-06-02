@@ -8,7 +8,6 @@ Welcome to PartielsPy's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: API Reference:
+   :caption: Contents:
 
-   PartielsPy.partiels
-   PartielsPy.export_configs
+   modules
