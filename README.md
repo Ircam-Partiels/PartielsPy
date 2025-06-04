@@ -3,9 +3,28 @@ A Python Wrapper for **[Partiels](https://github.com/Ircam-Partiels/Partiels)**
 
 ## Prerequisites
 
-This package requires **Python 3.11 or later**.
+This package requires:
+- **Python 3.11 or later**
+- **Partiels**
+- **Partiels's plugin suite** 
 
-## Compilation
+## Installation
+
+You can install PartielsPy via Github or alternately download the source code and compile it yourself.
+
+### Installation via Github
+- Linux and MacOS
+```sh
+python3 -m venv .venv
+.venv/bin/python3 -m pip install git+https://github.com/Ircam-Partiels/PartielsPy.git
+```
+- Windows
+```sh
+py -m venv .venv
+.venv\Scripts\python.exe -m pip install git+https://github.com/Ircam-Partiels/PartielsPy.git
+```
+
+### Compilation
 ```sh
 git clone https://github.com/Ircam-Partiels/PartielsPy.git
 cd PartielsPy
@@ -30,13 +49,13 @@ py -m venv .venv
 cd PartielsPy
 ```
 - Linux, MacOS
-```
+```sh
 .venv/bin/python3 -m pip install sphinx
 sphinx-apidoc -o ./docs ./src/partielspy ./src/partielspy/templates/* --private --separate --force --no-toc
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 - Windows
-```
+```sh
 .venv\Scripts\python.exe -m pip install sphinx
 sphinx-apidoc -o ./docs ./src/partielspy --exclude-pattern=**/templates/** --private --separate --force --no-toc
 sphinx-build -b html ./docs ./docs/_build/html
@@ -52,11 +71,20 @@ This project uses the following tools to enforce consistent code quality:
 - [`flake8`](https://flake8.pycqa.org/): checks code style and potential errors.
 
 You can run the checks locally using :
-```bash
+```sh
 # Check code style without making changes
 black --check .
 isort --check-only .
 flake8 src tests
+```
+
+## Debug
+
+You can show the debug messages of PartielsPy by configuring Python's logging module to accept DEBUG-level messages.
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
 ```
 
 ## Example
