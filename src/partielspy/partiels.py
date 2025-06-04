@@ -24,6 +24,10 @@ class Partiels:
     If the executable is not found, it raises a RuntimeError.
     If the executable is found, its version is compared to the PartielsPy compatibility \
     version and a warning is trigger if not matching.
+    For each call to the Partiels's CLI The VAMP_PATH environment variable is set to include \
+    the Partiels plugins. If the VAMP_PATH environment variable is already set, it is \
+    prepended to the Partiels plugins path. If not set, the default VAMP plugins directories \
+    are used.
     """
 
     def __init__(self):
@@ -91,6 +95,41 @@ class Partiels:
                 stacklevel=2,
             )
 
+    def __substitute_vamp_path(self):
+        self.__vamp_path_backup = os.environ.get("VAMP_PATH", "")
+        if platform.system() == "Linux":
+            partiels_plugins_path = "/opt/Partiels/PlugIns"
+            vamp_plugins_paths = [
+                os.path.join(os.environ.get("HOME"), "vamp"),
+                os.path.join(os.environ.get("HOME"), ".vamp"),
+                "/usr/local/lib/vamp",
+                "/usr/lib/vamp",
+            ]
+            separator = ":"
+        elif platform.system() == "Windows":
+            partiels_plugins_path = os.path.join(
+                os.environ.get("ProgramFiles"), "Partiels", "PlugIns"
+            )
+            vamp_plugins_paths = [
+                os.path.join(os.environ.get("ProgramFiles"), "Vamp Plugins")
+            ]
+            separator = ";"
+        elif platform.system() == "Darwin":
+            partiels_plugins_path = "/Applications/Partiels.app/Contents/PlugIns"
+            vamp_plugins_paths = [
+                os.path.join(os.environ.get("HOME"), "Library/Audio/Plug-Ins/Vamp"),
+                "/Library/Audio/Plug-Ins/Vamp",
+            ]
+            separator = ":"
+        else:
+            return
+        if self.__vamp_path_backup != "":
+            path = separator.join([partiels_plugins_path, self.__vamp_path_backup])
+        else:
+            vamp_plugins_paths.insert(0, partiels_plugins_path)
+            path = separator.join(vamp_plugins_paths)
+        os.environ["VAMP_PATH"] = path
+
     @property
     def executable_path(self) -> str:
         """Return Partiels's executable path"""
@@ -130,4 +169,11 @@ class Partiels:
         ]
         cmd += export_config.to_cli_args()
         logging.getLogger(__name__).debug(cmd)
-        return subprocess.run(cmd, capture_output=True, text=True, check=True)
+        self.__substitute_vamp_path()
+        try:
+            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError:
+            raise
+        finally:
+            os.environ["VAMP_PATH"] = self.__vamp_path_backup
+        return ret
