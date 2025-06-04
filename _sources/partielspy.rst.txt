@@ -1,4 +1,4 @@
-PartielsPy package
+partielspy package
 ==================
 
 Subpackages
@@ -7,15 +7,15 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   PartielsPy.export_configs
+   partielspy.export_configs
 
 Submodules
 ----------
 
-PartielsPy.partiels module
+partielspy.partiels module
 --------------------------
 
-.. automodule:: PartielsPy.partiels
+.. automodule:: partielspy.partiels
    :members:
    :show-inheritance:
    :undoc-members:
@@ -23,7 +23,7 @@ PartielsPy.partiels module
 Module contents
 ---------------
 
-.. automodule:: PartielsPy
+.. automodule:: partielspy
    :members:
    :show-inheritance:
    :undoc-members:

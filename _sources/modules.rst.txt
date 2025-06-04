@@ -1,7 +1,7 @@
-PartielsPy
+partielspy
 ==========
 
 .. toctree::
    :maxdepth: 4
 
-   PartielsPy
+   partielspy

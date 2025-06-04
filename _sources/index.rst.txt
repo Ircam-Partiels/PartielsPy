@@ -10,5 +10,5 @@ Welcome to PartielsPy's documentation!
    :maxdepth: 2
    :caption: API Reference:
 
-   PartielsPy.partiels
-   PartielsPy.export_configs
+   partielspy.partiels
+   partielspy.export_configs

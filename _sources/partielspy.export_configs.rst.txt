@@ -1,69 +1,69 @@
-PartielsPy.export\_configs package
+partielspy.export\_configs package
 ==================================
 
 Submodules
 ----------
 
-PartielsPy.export\_configs.base module
+partielspy.export\_configs.base module
 --------------------------------------
 
-.. automodule:: PartielsPy.export_configs.base
+.. automodule:: partielspy.export_configs.base
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.csv module
+partielspy.export\_configs.csv module
 -------------------------------------
 
-.. automodule:: PartielsPy.export_configs.csv
+.. automodule:: partielspy.export_configs.csv
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.cue module
+partielspy.export\_configs.cue module
 -------------------------------------
 
-.. automodule:: PartielsPy.export_configs.cue
+.. automodule:: partielspy.export_configs.cue
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.image module
+partielspy.export\_configs.image module
 ---------------------------------------
 
-.. automodule:: PartielsPy.export_configs.image
+.. automodule:: partielspy.export_configs.image
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.json module
+partielspy.export\_configs.json module
 --------------------------------------
 
-.. automodule:: PartielsPy.export_configs.json
+.. automodule:: partielspy.export_configs.json
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.lab module
+partielspy.export\_configs.lab module
 -------------------------------------
 
-.. automodule:: PartielsPy.export_configs.lab
+.. automodule:: partielspy.export_configs.lab
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.reaper module
+partielspy.export\_configs.reaper module
 ----------------------------------------
 
-.. automodule:: PartielsPy.export_configs.reaper
+.. automodule:: partielspy.export_configs.reaper
    :members:
    :show-inheritance:
    :undoc-members:
 
-PartielsPy.export\_configs.text\_base module
+partielspy.export\_configs.text\_base module
 --------------------------------------------
 
-.. automodule:: PartielsPy.export_configs.text_base
+.. automodule:: partielspy.export_configs.text_base
    :members:
    :show-inheritance:
    :undoc-members:
@@ -71,7 +71,7 @@ PartielsPy.export\_configs.text\_base module
 Module contents
 ---------------
 
-.. automodule:: PartielsPy.export_configs
+.. automodule:: partielspy.export_configs
    :members:
    :show-inheritance:
    :undoc-members:

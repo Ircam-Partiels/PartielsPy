@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>partielspy.export_configs package &#8212; PartielsPy 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=7026087e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to PartielsPy’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="partielspy-export-configs-package">
+<h1>partielspy.export_configs package<a class="headerlink" href="#partielspy-export-configs-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-partielspy.export_configs.base">
+<span id="partielspy-export-configs-base-module"></span><h2>partielspy.export_configs.base module<a class="headerlink" href="#module-partielspy.export_configs.base" title="Link to this heading">¶</a></h2>
+<p>An abstract class for export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.base.ExportConfigBase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.base.</span></span><span class="sig-name descname"><span class="pre">ExportConfigBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.base.ExportConfigBase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base export configuration class</p>
+<p>This is the base class used to configure the export of the document. Is not intended to     be used directly but inherited by the ExportConfig classes:
+- <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.image</span></code>
+- <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.lab</span></code>
+- <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.reaper</span></code>
+- <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.export_configs.text_base</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adapt_to_sample_rate</strong> (<em>bool</em>) – the block size and the step size of the analyzes         are adapted following the sample rate (default: False)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.base.ExportConfigBase.adapt_to_sample_rate">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adapt_to_sample_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_configs.base.ExportConfigBase.adapt_to_sample_rate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.base.ExportConfigBase.to_cli_args">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.base.ExportConfigBase.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.csv">
+<span id="partielspy-export-configs-csv-module"></span><h2>partielspy.export_configs.csv module<a class="headerlink" href="#module-partielspy.export_configs.csv" title="Link to this heading">¶</a></h2>
+<p>A class for CSV export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.csv.</span></span><span class="sig-name descname"><span class="pre">ExportConfigCsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators" title="partielspy.export_configs.csv.ExportConfigCsv.Separators"><span class="pre">Separators</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Separators.COMMA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.text_base.ExportConfigTextBase" title="partielspy.export_configs.text_base.ExportConfigTextBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigTextBase</span></code></a></p>
+<p>CSV export configuration class</p>
+<p>This class is used to configure the export of files in CSV format.
+It is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.partiels</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_header</strong> (<em>bool</em>) – the header row is included before the data rows (default: False)</p></li>
+<li><p><strong>columns_separator</strong> (<a class="reference internal" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators" title="partielspy.export_configs.csv.ExportConfigCsv.Separators"><em>ExportConfigCsv.Separators</em></a>) – the separator character between         columns (default: COMMA)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Separators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the columns separator</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.COLON">
+<span class="sig-name descname"><span class="pre">COLON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colon'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.COLON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.COMMA">
+<span class="sig-name descname"><span class="pre">COMMA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comma'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.COMMA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.PIPE">
+<span class="sig-name descname"><span class="pre">PIPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pipe'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.PIPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.SLASH">
+<span class="sig-name descname"><span class="pre">SLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slash'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.SLASH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.SPACE">
+<span class="sig-name descname"><span class="pre">SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'space'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.SPACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.Separators.TAB">
+<span class="sig-name descname"><span class="pre">TAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tab'</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators.TAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.columns_separator">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">columns_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_configs.csv.ExportConfigCsv.Separators" title="partielspy.export_configs.csv.ExportConfigCsv.Separators"><span class="pre">Separators</span></a></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.columns_separator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.include_header">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">include_header</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.include_header" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.csv.ExportConfigCsv.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.csv.ExportConfigCsv.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.cue">
+<span id="partielspy-export-configs-cue-module"></span><h2>partielspy.export_configs.cue module<a class="headerlink" href="#module-partielspy.export_configs.cue" title="Link to this heading">¶</a></h2>
+<p>A class for cue export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.cue.ExportConfigCue">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.cue.</span></span><span class="sig-name descname"><span class="pre">ExportConfigCue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.cue.ExportConfigCue" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.text_base.ExportConfigTextBase" title="partielspy.export_configs.text_base.ExportConfigTextBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigTextBase</span></code></a></p>
+<p>cue export configuration class</p>
+<p>This class is used to configure the export of files in cue format.
+It is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.partiels</span></code> class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.cue.ExportConfigCue.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.cue.ExportConfigCue.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.image">
+<span id="partielspy-export-configs-image-module"></span><h2>partielspy.export_configs.image module<a class="headerlink" href="#module-partielspy.export_configs.image" title="Link to this heading">¶</a></h2>
+<p>A class for image export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.image.</span></span><span class="sig-name descname"><span class="pre">ExportConfigImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_configs.image.ExportConfigImage.Formats" title="partielspy.export_configs.image.ExportConfigImage.Formats"><span class="pre">Formats</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Formats.JPEG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.base.ExportConfigBase" title="partielspy.export_configs.base.ExportConfigBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></a></p>
+<p>Image export configuration class</p>
+<p>This class is used to configure the export of files in image formats.
+It is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">PartielsPy.partiels</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> (<a class="reference internal" href="#partielspy.export_configs.image.ExportConfigImage.Formats" title="partielspy.export_configs.image.ExportConfigImage.Formats"><em>Formats</em></a>) – the format of the image (default: Formats.JPEG)</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – the width of the image in pixels (default: 1280)</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – the height of the image in pixels (default: 720)</p></li>
+<li><p><strong>group_overlay</strong> (<em>bool</em>) – the images of groups are exported instead of the images of tracks         (default: False)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.Formats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Formats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.Formats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the image format</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.Formats.JPEG">
+<span class="sig-name descname"><span class="pre">JPEG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jpeg'</span></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.Formats.JPEG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.Formats.PNG">
+<span class="sig-name descname"><span class="pre">PNG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'png'</span></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.Formats.PNG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.format">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_configs.image.ExportConfigImage.Formats" title="partielspy.export_configs.image.ExportConfigImage.Formats"><span class="pre">Formats</span></a></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.group_overlay">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">group_overlay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.group_overlay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.height">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.height" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.image.ExportConfigImage.width">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.export_configs.image.ExportConfigImage.width" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.json">
+<span id="partielspy-export-configs-json-module"></span><h2>partielspy.export_configs.json module<a class="headerlink" href="#module-partielspy.export_configs.json" title="Link to this heading">¶</a></h2>
+<p>A class for JSON export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.json.ExportConfigJson">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.json.</span></span><span class="sig-name descname"><span class="pre">ExportConfigJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_plugin_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.json.ExportConfigJson" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.text_base.ExportConfigTextBase" title="partielspy.export_configs.text_base.ExportConfigTextBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigTextBase</span></code></a></p>
+<p>JSON export configuration class</p>
+<p>This class is used to configure the export of files in JSON format.
+It is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.partiels</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_plugin_description</strong> (<em>bool</em>) – the plugin description is included (default: False)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.json.ExportConfigJson.include_plugin_description">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">include_plugin_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_configs.json.ExportConfigJson.include_plugin_description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.json.ExportConfigJson.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.json.ExportConfigJson.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.lab">
+<span id="partielspy-export-configs-lab-module"></span><h2>partielspy.export_configs.lab module<a class="headerlink" href="#module-partielspy.export_configs.lab" title="Link to this heading">¶</a></h2>
+<p>A class for Lab export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.lab.ExportConfigLab">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.lab.</span></span><span class="sig-name descname"><span class="pre">ExportConfigLab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.lab.ExportConfigLab" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.base.ExportConfigBase" title="partielspy.export_configs.base.ExportConfigBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></a></p>
+<p>Lab export configuration class</p>
+<p>This class is used to configure the export of files in Lab format.
+It is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.partiels</span></code> class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.lab.ExportConfigLab.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.lab.ExportConfigLab.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.reaper">
+<span id="partielspy-export-configs-reaper-module"></span><h2>partielspy.export_configs.reaper module<a class="headerlink" href="#module-partielspy.export_configs.reaper" title="Link to this heading">¶</a></h2>
+<p>A class for Reaper export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.reaper.</span></span><span class="sig-name descname"><span class="pre">ExportConfigReaper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reaper_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes"><span class="pre">ReaperTypes</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ReaperTypes.REGION</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.base.ExportConfigBase" title="partielspy.export_configs.base.ExportConfigBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></a></p>
+<p>Reaper export configuration class</p>
+<p>This class is used to configure the export of files in Reaper format.
+it is used in the export method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.partiels</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reaper_type</strong> (<a class="reference internal" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes"><em>ExportConfigReaper.ReaperTypes</em></a>) – the type of the reaper format        (default: REGION)</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReaperTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes.MARKER">
+<span class="sig-name descname"><span class="pre">MARKER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'marker'</span></em><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes.MARKER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes.REGION">
+<span class="sig-name descname"><span class="pre">REGION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'region'</span></em><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes.REGION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper.reaper_type">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reaper_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes" title="partielspy.export_configs.reaper.ExportConfigReaper.ReaperTypes"><span class="pre">ReaperTypes</span></a></em><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper.reaper_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.reaper.ExportConfigReaper.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.reaper.ExportConfigReaper.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs.text_base">
+<span id="partielspy-export-configs-text-base-module"></span><h2>partielspy.export_configs.text_base module<a class="headerlink" href="#module-partielspy.export_configs.text_base" title="Link to this heading">¶</a></h2>
+<p>An abstract class for text export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_configs.text_base.ExportConfigTextBase">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_configs.text_base.</span></span><span class="sig-name descname"><span class="pre">ExportConfigTextBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_configs.text_base.ExportConfigTextBase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#partielspy.export_configs.base.ExportConfigBase" title="partielspy.export_configs.base.ExportConfigBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfigBase</span></code></a></p>
+<p>Text export configuration class</p>
+<p>This is the base text class used to configure the export of the document. Is not intended to     be used directly but inherited by the ExportConfig classes:
+- <a class="reference internal" href="#partielspy.export_configs.csv.ExportConfigCsv" title="partielspy.export_configs.csv.ExportConfigCsv"><code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.export_configs.csv.ExportConfigCsv</span></code></a>
+- <a class="reference internal" href="#partielspy.export_configs.json.ExportConfigJson" title="partielspy.export_configs.json.ExportConfigJson"><code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.export_configs.json.ExportConfigJson</span></code></a>
+- <a class="reference internal" href="#partielspy.export_configs.cue.ExportConfigCue" title="partielspy.export_configs.cue.ExportConfigCue"><code class="xref py py-class docutils literal notranslate"><span class="pre">partielspy.export_configs.cue.ExportConfigCue</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ignore_matrix_tracks</strong> (<em>bool</em>) – the matrix tracks are ignored (default: False)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_configs.text_base.ExportConfigTextBase.ignore_matrix_tracks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ignore_matrix_tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_configs.text_base.ExportConfigTextBase.ignore_matrix_tracks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_configs.text_base.ExportConfigTextBase.to_cli_args">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_configs.text_base.ExportConfigTextBase.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-partielspy.export_configs">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-partielspy.export_configs" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PartielsPy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">partielspy.export_configs package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.base">partielspy.export_configs.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.csv">partielspy.export_configs.csv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.cue">partielspy.export_configs.cue module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.image">partielspy.export_configs.image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.json">partielspy.export_configs.json module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.lab">partielspy.export_configs.lab module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.reaper">partielspy.export_configs.reaper module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs.text_base">partielspy.export_configs.text_base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-partielspy.export_configs">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to PartielsPy’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Pierre Guillot - Thomas Barbé.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/partielspy.export_configs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
