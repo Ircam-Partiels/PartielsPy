@@ -49,7 +49,6 @@ jobs:
         wget $PARTIELS_URL/$PARTIELS_VERSION/Partiels-Linux.tar.gz
         tar -xzf Partiels-Linux.tar.gz
         sh Partiels/Partiels-install.sh
-        echo "VAMP_PATH=/opt/Partiels/PlugIns:$HOME/vamp" >> $GITHUB_ENV
     - name: Download Vamp Plugins
       run: |
         wget $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-Linux.zip
@@ -100,10 +99,6 @@ jobs:
           if ($proc.ExitCode -ne 0) {
             throw "The installation failed with the exit code $($proc.ExitCode)"
           }
-          $partielsPath = Join-Path $env:ProgramFiles 'Partiels\PlugIns'
-          $pluginsPath = Join-Path $env:ProgramFiles 'Vamp Plugins'
-          Add-Content -Path $env:GITHUB_ENV -Value "VAMP_PATH=$partielsPath;$pluginsPath"
-
       - name: Download Vamp Plugins
         run: |
           Invoke-WebRequest -Uri $env:IRCAM_VAMP_URL/$env:IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-Windows.zip -OutFile "Ircam-Vamp-Plugins-Windows.zip"
@@ -146,7 +141,6 @@ jobs:
           curl -L -v -o Partiels-MacOS.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
           MOUNT_DIR=$(hdiutil attach Partiels-MacOS.dmg | grep Volumes | awk '{print $3}')
           cp -r "$MOUNT_DIR/Partiels.app" /Applications/
-          echo "VAMP_PATH=/Applications/Partiels.app/Contents/PlugIns:/Library/Audio/Plug-Ins/Vamp/" >> $GITHUB_ENV
       - name: Download Vamp Plugins
         run: |
           curl -L -v -o Ircam-Vamp-Plugins-MacOS.zip $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-MacOS.zip
