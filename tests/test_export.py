@@ -84,6 +84,22 @@ def test_export_image_with_arguments():
     ), "Exported files do not match with expected files."
 
 
+def test_export_image_with_wrong_vamp_path():
+    partiels = Partiels()
+    output = remove_and_get_output_folder(path="factory/jpeg2")
+    export_config = ExportConfigImage()
+    vamp_path = os.environ.get("VAMP_PATH", "")
+    os.environ["VAMP_PATH"] = "/dummy/path/"
+    partiels.export(audiofile, template_factory, output, export_config)
+    assert (
+        os.environ.get("VAMP_PATH") == "/dummy/path/"
+    ), "VAMP_PATH should not be changed."
+    os.environ["VAMP_PATH"] = vamp_path
+    assert sorted(os.listdir(output)) == get_expected_filenames(
+        filenames=expected_filenames_factory, extension="jpeg"
+    ), "Exported files do not match with expected files."
+
+
 def test_export_image_with_wrong_parameters():
     partiels = Partiels()
     output = remove_and_get_output_folder(path="factory/error")
@@ -108,24 +124,6 @@ def test_export_image_with_wrong_parameters():
     except subprocess.CalledProcessError as e:
         assert e.returncode != 0, "Export didn't fail with unvalid height"
 
-    assert (
-        os.listdir(output) == []
-    ), "Exported files should not exist with wrong parameters"
-
-
-def test_export_image_without_vamp_path():
-    partiels = Partiels()
-    output = remove_and_get_output_folder(path="factory/error")
-    export_config = ExportConfigImage()
-    vamp_path = os.environ.get("VAMP_PATH", "")
-    print("vamp_path:", vamp_path)
-    os.environ["VAMP_PATH"] = "/dummy/path/"
-    try:
-        partiels.export(audiofile, template_factory, output, export_config)
-    except subprocess.CalledProcessError as e:
-        assert e.returncode == 1, "Export didn't fail without a valid VAMP_PATH"
-    print(str(vamp_path))
-    os.environ["VAMP_PATH"] = vamp_path
     assert (
         os.listdir(output) == []
     ), "Exported files should not exist with wrong parameters"
@@ -381,3 +379,23 @@ def test_export_vamp_plugins():
     ) == get_expected_filenames_harmonic_partials_tracking(
         "json"
     ), "Exported files do not match with expected files."
+
+
+def test_export_vamp_plugins_with_wrong_vamp_path():
+    partiels = Partiels()
+    output = remove_and_get_output_folder(path="waveform_fft/error")
+    export_config = ExportConfigImage()
+    vamp_path = os.environ.get("VAMP_PATH", "")
+    print("vamp_path:", vamp_path)
+    os.environ["VAMP_PATH"] = "/dummy/path/"
+    try:
+        partiels.export(audiofile, template_waveform_fft, output, export_config)
+    except subprocess.CalledProcessError as e:
+        assert e.returncode != 0, "Export didn't fail with wrong VAMP_PATH"
+    assert (
+        os.environ.get("VAMP_PATH") == "/dummy/path/"
+    ), "VAMP_PATH should not be changed."
+    os.environ["VAMP_PATH"] = vamp_path
+    assert (
+        sorted(os.listdir(output)) == []
+    ), "Exported files should not exist with wrong VAMP_PATH"
