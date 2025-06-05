@@ -30,6 +30,11 @@ class Partiels:
     are used.
     """
 
+    class ExportError(subprocess.CalledProcessError):
+        """An Error Class for Partiels export method"""
+
+        pass
+
     def __init__(self):
         name = "Partiels"
         self.__compatibility_version = "2.0.10"
@@ -172,8 +177,8 @@ class Partiels:
         self.__substitute_vamp_path()
         try:
             ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        except subprocess.CalledProcessError:
-            raise
+        except subprocess.CalledProcessError as e:
+            raise Partiels.ExportError(e.returncode, e.cmd, e.output, e.stderr) from e
         finally:
             os.environ["VAMP_PATH"] = self.__vamp_path_backup
         return ret
