@@ -90,25 +90,20 @@ def test_export_image_with_wrong_parameters():
     partiels = Partiels()
     output = remove_and_get_output_folder(path="factory/error")
     export_config = ExportConfigImage()
-    try:
+    with pytest.raises(ValueError):
         export_config.format = "dummy"
-        assert False, "ExportConfigImage didn't raise an error with unvalid format"
-    except ValueError:
-        pass
 
     export_config = ExportConfigImage()
     export_config.width = -100
-    try:
+    with pytest.raises(subprocess.CalledProcessError) as excinfo:
         partiels.export(audiofile, template_factory, output, export_config)
-    except subprocess.CalledProcessError as e:
-        assert e.returncode != 0, "Export didn't fail with unvalid width"
+    assert excinfo.value.returncode != 0, "Export didn't fail with unvalid width"
 
     export_config = ExportConfigImage()
     export_config.height = -100
-    try:
+    with pytest.raises(subprocess.CalledProcessError) as excinfo:
         partiels.export(audiofile, template_factory, output, export_config)
-    except subprocess.CalledProcessError as e:
-        assert e.returncode != 0, "Export didn't fail with unvalid height"
+    assert excinfo.value.returncode != 0, "Export didn't fail with unvalid height"
 
     assert (
         os.listdir(output) == []
@@ -162,11 +157,8 @@ def test_export_csv_with_arguments():
 
 def test_export_csv_with_wrong_parameters():
     export_config = ExportConfigCsv()
-    try:
+    with pytest.raises(ValueError):
         export_config.columns_separator = "dummy"
-        assert False, "ExportConfigCsv didn't raise an error with unvalid separator"
-    except ValueError:
-        pass
 
 
 def test_export_reaper_default():
@@ -207,10 +199,9 @@ def test_export_reaper_with_no_marker_template():
     partiels = Partiels()
     export_config = ExportConfigReaper()
     output = remove_and_get_output_folder(path="factory/reaper4")
-    try:
+    with pytest.raises(subprocess.CalledProcessError) as excinfo:
         partiels.export(audiofile, template_factory, output, export_config)
-    except subprocess.CalledProcessError as e:
-        assert e.returncode != 0, "Export didn't fail with no marker template"
+    assert excinfo.value.returncode != 0, "Export didn't fail with no marker template"
     assert (
         sorted(os.listdir(output)) == []
     ), "Exported files do not match with expected files."
@@ -218,11 +209,8 @@ def test_export_reaper_with_no_marker_template():
 
 def test_export_reaper_with_wrong_parameters():
     export_config = ExportConfigReaper()
-    try:
+    with pytest.raises(ValueError):
         export_config.reaper_type = "dummy"
-        assert False, "ExportConfigReaper didn't raise an error with unvalid type"
-    except ValueError:
-        pass
 
 
 def test_export_lab_default():
@@ -337,10 +325,9 @@ def test_export_cue_with_no_marker_template():
     partiels = Partiels()
     export_config = ExportConfigCue()
     output = remove_and_get_output_folder(path="factory/cue4")
-    try:
+    with pytest.raises(subprocess.CalledProcessError) as excinfo:
         partiels.export(audiofile, template_factory, output, export_config)
-    except subprocess.CalledProcessError as e:
-        assert e.returncode != 0, "Export didn't fail with no marker template"
+    assert excinfo.value.returncode != 0, "Export didn't fail with no marker template"
     assert (
         sorted(os.listdir(output)) == []
     ), "Exported files do not match with expected files."
