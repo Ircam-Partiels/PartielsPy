@@ -8,12 +8,12 @@ import pytest
 from partielspy import *
 
 root = Path(__file__).resolve().parent.parent
-audiofile = root / "tests/samples/Sound.wav"
+audiofile = root / "resource/Sound.wav"
 
-template_factory = root / "src/partielspy/templates/factory.ptldoc"
-template_harmonic_partials_tracking = root / "src/partielspy/templates/harmonic_partials_tracking.ptldoc"  # fmt: skip
-template_waveform_fft = root / "src/partielspy/templates/waveform_fft.ptldoc"
-template_beat_detection = root / "tests/templates/beat_detection.ptldoc"
+template_factory = root / "templates/factory.ptldoc"
+template_harmonic_partials_tracking = root / "templates/harmonic_partials_tracking.ptldoc"  # fmt: skip
+template_waveform_fft = root / "templates/waveform_fft.ptldoc"
+template_beat_detection = root / "templates/beat_detection.ptldoc"
 
 expected_filenames_default = ["Sound Group 1", "Sound Group 2"]
 expected_filenames_factory = ["Sound Group 1_Spectrogram", "Sound Group 2_Waveform"]
