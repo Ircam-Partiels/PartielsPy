@@ -6,3 +6,4 @@ docs/*
 !docs/index.rst
 !docs/conf.py
 tests/exports
+examples/exports
