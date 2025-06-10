@@ -31,7 +31,7 @@ jobs:
     - name: Check import order with isort
       run: isort . --check --diff
     - name: Run Flake8
-      run: flake8 src tests
+      run: flake8 src tests examples
 
   Ubuntu:
     runs-on: ubuntu-22.04
