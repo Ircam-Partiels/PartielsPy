@@ -7,3 +7,5 @@ docs/*
 !docs/conf.py
 tests/exports
 examples/exports
+tests/templates
+examples/templates
