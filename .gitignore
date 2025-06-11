@@ -8,3 +8,4 @@ docs/*
 tests/exports
 examples/exports
 tests/templates
+examples/templates
