@@ -6,7 +6,8 @@ authors = [
   { name="Thomas Barbé", email="thomas-barbe@hotmail.com" },
 ]
 dependencies = [
-  "semver >= 3.0.4"
+  "semver >= 3.0.4",
+  "lxml >= 5.4.0" 
 ]
 
 description = "A Python wrapper for Partiels"
