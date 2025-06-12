@@ -52,6 +52,14 @@ partielspy.version module
    :show-inheritance:
    :undoc-members:
 
+partielspy.xml\_layout\_element module
+--------------------------------------
+
+.. automodule:: partielspy.xml_layout_element
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 Module contents
 ---------------
 
