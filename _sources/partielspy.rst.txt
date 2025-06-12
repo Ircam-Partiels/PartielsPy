@@ -36,26 +36,18 @@ partielspy.partiels module
    :show-inheritance:
    :undoc-members:
 
-partielspy.plugin\_key module
------------------------------
-
-.. automodule:: partielspy.plugin_key
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-partielspy.plugin\_list module
-------------------------------
-
-.. automodule:: partielspy.plugin_list
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 partielspy.track module
 -----------------------
 
 .. automodule:: partielspy.track
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+partielspy.version module
+-------------------------
+
+.. automodule:: partielspy.version
    :members:
    :show-inheritance:
    :undoc-members:
