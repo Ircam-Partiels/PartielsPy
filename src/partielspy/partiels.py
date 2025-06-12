@@ -11,6 +11,7 @@ from pathlib import Path
 import semver
 
 from .export_configs.base import ExportConfigBase
+from .version import Version
 
 
 class Partiels:
@@ -32,7 +33,6 @@ class Partiels:
 
     def __init__(self):
         name = "Partiels"
-        self.__compatibility_version = "2.0.11"
         if "PARTIELS_PATH" in os.environ:
             self.__executable_path = shutil.which(
                 name, path=os.environ.get("PARTIELS_PATH")
@@ -68,13 +68,13 @@ class Partiels:
             .stdout.split(" v")[1]
             .strip()
         )
-        version_diff = semver.VersionInfo.parse(self.__compatibility_version).compare(
-            self.__executable_version
-        )
+        version_diff = semver.VersionInfo.parse(
+            Version.get_compatibility_version()
+        ).compare(self.__executable_version)
         if version_diff < 0:
             warnings.warn(
                 "PartielsPy compatibility version ("
-                + str(self.__compatibility_version)
+                + str(Version.get_compatibility_version())
                 + ") is older than Partiels's executable version ("
                 + str(self.__executable_version)
                 + ").\n"
@@ -86,7 +86,7 @@ class Partiels:
         elif version_diff > 0:
             warnings.warn(
                 "PartielsPy compatibility version ("
-                + str(self.__compatibility_version)
+                + str(Version.get_compatibility_version())
                 + ") is newer than Partiels's executable version. ("
                 + str(self.__executable_version)
                 + ").\n"
@@ -94,41 +94,6 @@ class Partiels:
                 category=UserWarning,
                 stacklevel=2,
             )
-
-    def __substitute_vamp_path(self):
-        self.__vamp_path_backup = os.environ.get("VAMP_PATH", "")
-        if platform.system() == "Linux":
-            partiels_plugins_path = "/opt/Partiels/PlugIns"
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("HOME"), "vamp"),
-                os.path.join(os.environ.get("HOME"), ".vamp"),
-                "/usr/local/lib/vamp",
-                "/usr/lib/vamp",
-            ]
-            separator = ":"
-        elif platform.system() == "Windows":
-            partiels_plugins_path = os.path.join(
-                os.environ.get("ProgramFiles"), "Partiels", "PlugIns"
-            )
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("ProgramFiles"), "Vamp Plugins")
-            ]
-            separator = ";"
-        elif platform.system() == "Darwin":
-            partiels_plugins_path = "/Applications/Partiels.app/Contents/PlugIns"
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("HOME"), "Library/Audio/Plug-Ins/Vamp"),
-                "/Library/Audio/Plug-Ins/Vamp",
-            ]
-            separator = ":"
-        else:
-            return
-        if self.__vamp_path_backup != "":
-            path = separator.join([partiels_plugins_path, self.__vamp_path_backup])
-        else:
-            vamp_plugins_paths.insert(0, partiels_plugins_path)
-            path = separator.join(vamp_plugins_paths)
-        os.environ["VAMP_PATH"] = path
 
     @property
     def executable_path(self) -> str:
@@ -139,11 +104,6 @@ class Partiels:
     def executable_version(self) -> str:
         """Return Partiels's executable version"""
         return self.__executable_version
-
-    @property
-    def compatibility_version(self) -> str:
-        """Return the PartielsPy's compatibility version"""
-        return self.__compatibility_version
 
     def export(
         self,
@@ -169,11 +129,7 @@ class Partiels:
         ]
         cmd += export_config.to_cli_args()
         logging.getLogger(__name__).debug(cmd)
-        self.__substitute_vamp_path()
-        try:
-            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        except subprocess.CalledProcessError:
-            raise
-        finally:
-            os.environ["VAMP_PATH"] = self.__vamp_path_backup
+        ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        if template_path.exists():
+            os.remove(template_path)
         return ret
