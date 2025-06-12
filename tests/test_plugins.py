@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 
 from partielspy import *
+from partielspy.plugin_key import PluginKey
+from partielspy.plugin_list import PluginList
 
 root = Path(__file__).parent
 
@@ -49,3 +51,13 @@ def test_basic_errors():
         group.remove_track(
             track
         ), "Should raise ValueError when removing non-existent track"
+
+
+def test_plugin_key():
+    key = PluginKey(identifier="1234", feature="Test Feature")
+    assert key.identifier == "1234", "PluginKey identifier should be '1234'"
+    assert key.feature == "Test Feature", "PluginKey feature should be 'Test Feature'"
+
+    key_list = Partiels().plugin_list()
+    assert isinstance(key_list, PluginList), "Should return a PluginList instance"
+    assert len(key_list) > 0, "PluginList should contain at least one PluginKey"
