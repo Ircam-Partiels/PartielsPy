@@ -7,7 +7,6 @@ from .group import Group
 
 class Document:
     def __init__(self):
-        self.__MiscModelVersion = None
         self.__groups = {}
 
     @property
@@ -26,12 +25,7 @@ class Document:
                 return
         raise ValueError("Group not found in document")
 
-    def _to_xml(self, root: etree, MiscModelVersion: str):
-        MiscModelVersion = (
-            MiscModelVersion if not self.__MiscModelVersion else self.__MiscModelVersion
-        )
-        root.set("MiscModelVersion", MiscModelVersion)
-
+    def _to_xml(self, root: etree):
         def element_to_xml(
             parent_node: etree, identifier: str, element: object, tag: str
         ):
@@ -40,7 +34,6 @@ class Document:
             parent_node.append(layout)
             element_node = etree.Element(tag)
             element_node.set("identifier", identifier)
-            element_node.set("MiscModelVersion", MiscModelVersion)
             element._to_xml(element_node)
             root.append(element_node)
             return element_node
