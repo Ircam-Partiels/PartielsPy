@@ -1,14 +1,45 @@
 import uuid
+from pathlib import Path
 
 from lxml import etree
 
 from .group import Group
+from .track import Track
 
 
 class Document:
-    def __init__(self):
-        self.__MiscModelVersion = None
+    def __init__(self, path: str | Path = None):
         self.__groups = {}
+        self.__xml_attributes = {}
+        self.__xml_children = []
+        if path:
+            self._from_xml(path)
+
+    def _from_xml(self, path: str | Path):
+        if not isinstance(path, (str, Path)):
+            raise TypeError("Path must be a string or Path object")
+        with open(path, "rb") as file:
+            xml_content = file.read()
+        root = etree.fromstring(xml_content)
+        if root.tag != "document":
+            raise ValueError("Invalid XML document: root tag must be 'document'")
+        self.__xml_attributes = root.attrib
+        for child in root:
+            if (
+                child.tag != "layout"
+                and child.tag != "groups"
+                and child.tag != "tracks"
+            ):
+                self.__xml_children.append(child)
+        for group_layout in root.findall("layout"):
+            layout_value = group_layout.get("value")
+            group_node = root.find(f"./groups[@identifier='{layout_value}']")
+            group = Group._from_xml(group_node)
+            for track_layout in group_node.findall("layout"):
+                track_layout_value = track_layout.get("value")
+                track_node = root.find(f"./tracks[@identifier='{track_layout_value}']")
+                group._tracks_items[track_layout_value] = Track._from_xml(track_node)
+            self.__groups[layout_value] = group
 
     @property
     def groups(self) -> list[Group]:
@@ -26,11 +57,12 @@ class Document:
                 return
         raise ValueError("Group not found in document")
 
-    def _to_xml(self, root: etree, MiscModelVersion: str):
-        MiscModelVersion = (
-            MiscModelVersion if not self.__MiscModelVersion else self.__MiscModelVersion
-        )
-        root.set("MiscModelVersion", MiscModelVersion)
+    def _to_xml(self, root: etree):
+        root.tag = "document"
+        for key, value in self.__xml_attributes.items():
+            root.set(key, value)
+        for child in self.__xml_children:
+            root.append(child)
 
         def element_to_xml(
             parent_node: etree, identifier: str, element: object, tag: str
@@ -40,7 +72,6 @@ class Document:
             parent_node.append(layout)
             element_node = etree.Element(tag)
             element_node.set("identifier", identifier)
-            element_node.set("MiscModelVersion", MiscModelVersion)
             element._to_xml(element_node)
             root.append(element_node)
             return element_node
