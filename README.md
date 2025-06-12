@@ -62,7 +62,7 @@ python3 -m venv .venv
 source .venv/bin/activate  # Activate the virtual environment
 pip install build
 python -m build
-pip install dist/partielspy-0.0.0-py3-none-any.whl
+pip install dist/partielspy-0.1.0-py3-none-any.whl
 ```
 
 **Windows**
@@ -71,7 +71,7 @@ py -m venv .venv
 .venv\Scripts\activate  # Activate the virtual environment
 pip install build
 python -m build
-pip install dist\partielspy-0.0.0-py3-none-any.whl
+pip install dist\partielspy-0.1.0-py3-none-any.whl
 ```
 
 ## Documentation
