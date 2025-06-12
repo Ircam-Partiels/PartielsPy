@@ -22,10 +22,6 @@ class Group:
     def tracks(self) -> list[Track]:
         return list(self.__tracks.values())
 
-    @property
-    def _tracks_items(self) -> dict[str, Track]:
-        return self.__tracks
-
     def add_track(self, track: Track):
         if not isinstance(track, Track):
             raise TypeError("Expected a Track instance")
@@ -37,6 +33,18 @@ class Group:
                 del self.__tracks[identifier]
                 return
         raise ValueError("Track not found in group")
+
+    def _to_xml(self, node: etree):
+        node.set("name", self.__name)
+        node.getparent().set("value", self.__name)
+        for track_identifier, track in self.__tracks.items():
+            layout_node = etree.Element("layout")
+            layout_node.set("value", track_identifier)
+            node.append(layout_node)
+            track_node = etree.Element("tracks")
+            track_node.set("identifier", track_identifier)
+            track._to_xml(track_node)
+            node.getparent()._to_xml(track_node)
 
     def _to_xml(self, node: etree):
         node.set("name", self.__name)

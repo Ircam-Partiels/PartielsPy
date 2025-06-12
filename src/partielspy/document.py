@@ -25,23 +25,15 @@ class Document:
                 return
         raise ValueError("Group not found in document")
 
-    def _to_xml(self, root: etree):
-        def element_to_xml(
-            parent_node: etree, identifier: str, element: object, tag: str
-        ):
-            layout = etree.Element("layout")
-            layout.set("value", identifier)
-            parent_node.append(layout)
-            element_node = etree.Element(tag)
-            element_node.set("identifier", identifier)
-            element._to_xml(element_node)
-            root.append(element_node)
-            return element_node
-
+    def _to_xml(self, node: etree):
         for group_identifier, group in self.__groups.items():
-            group_node = element_to_xml(root, group_identifier, group, "groups")
-            for track_identifier, track in group._tracks_items.items():
-                element_to_xml(group_node, track_identifier, track, "tracks")
+            layout_node = etree.Element("layout")
+            layout_node.set("value", group_identifier)
+            node.append(layout_node)
+            group_node = etree.Element("groups")
+            group_node.set("identifier", group_identifier)
+            group._to_xml(group_node)
+            node.append(group_node)
 
     def __str__(self):
         res = ""
