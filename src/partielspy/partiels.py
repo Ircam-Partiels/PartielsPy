@@ -13,6 +13,7 @@ from lxml import etree
 
 from .document import Document
 from .export_configs.base import ExportConfigBase
+from .plugin_list import PluginList
 
 
 class Partiels:
@@ -147,6 +148,17 @@ class Partiels:
         """Return the PartielsPy's compatibility version"""
         return self.__compatibility_version
 
+    def __run_subprocess(self, cmd: list[str]):
+        logging.getLogger(__name__).debug(cmd)
+        self.__substitute_vamp_path()
+        try:
+            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError:
+            raise
+        finally:
+            os.environ["VAMP_PATH"] = self.__vamp_path_backup
+        return ret
+
     def export(
         self,
         audiofile_path: str | Path,
@@ -170,27 +182,44 @@ class Partiels:
             f"--output={output_path}",
         ]
         cmd += export_config.to_cli_args()
-        logging.getLogger(__name__).debug(cmd)
-        self.__substitute_vamp_path()
-        try:
-            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        except subprocess.CalledProcessError:
-            raise
-        finally:
-            os.environ["VAMP_PATH"] = self.__vamp_path_backup
-        return ret
+        return self.__run_subprocess(cmd)
 
     def document_to_xml(self, document: Document, filepath: str | Path):
-        version = semver.VersionInfo.parse(self.__executable_version)
-        MiscModelVersion = str(
-            (version.major << 16) | (version.minor << 8) | (version.patch)
-        )
         root = etree.Element("document")
-        document._to_xml(root, MiscModelVersion)
+        document._to_xml(root)
         xml = etree.ElementTree(root)
         if isinstance(filepath, str):
             filepath = Path(filepath)
         if not filepath.parent.exists():
             filepath.parent.mkdir(parents=True, exist_ok=True)
-        with open(filepath, "wb") as f:
+        temp_filepath = filepath.with_suffix(".tmp")
+        with open(temp_filepath, "wb") as f:
             xml.write(f, pretty_print=True, xml_declaration=True, encoding="UTF-8")
+        temp_audio_filepath = filepath.with_suffix(".tmp.wav")
+        open(temp_audio_filepath, "w")
+        cmd = [
+            self.__executable_path,
+            "--new",
+            f"--input={temp_audio_filepath}",
+            f"--template={temp_filepath}",
+            f"--output={filepath}",
+        ]
+        try:
+            ret = self.__run_subprocess(cmd)
+        except subprocess.CalledProcessError:
+            raise
+        finally:
+            if temp_filepath.exists():
+                os.remove(temp_filepath)
+            if temp_audio_filepath.exists():
+                os.remove(temp_audio_filepath)
+        return ret
+
+    def plugin_list(self) -> dict[str, str]:
+        cmd = [self.__executable_path, "--plugin-list", "--format=json"]
+        ret = self.__run_subprocess(cmd)
+        if ret.stdout == "":
+            raise RuntimeError(
+                "No plugins found. Please check your Partiels installation."
+            )
+        return PluginList(ret.stdout)
