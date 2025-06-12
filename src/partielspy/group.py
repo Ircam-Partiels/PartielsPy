@@ -9,6 +9,17 @@ class Group:
     def __init__(self, name: str = "New Group"):
         self.__name = name
         self.__tracks = {}
+        self.__xml_attributes = {}
+        self.__xml_children = []
+
+    @classmethod
+    def _from_xml(cls, node: etree):
+        group = cls(node.get("name", "New Group"))
+        group.__xml_attributes = node.attrib
+        for child in node:
+            if child.tag != "layout":
+                group.__xml_children.append(child)
+        return group
 
     @property
     def name(self) -> str:
@@ -39,6 +50,10 @@ class Group:
         raise ValueError("Track not found in group")
 
     def _to_xml(self, node: etree):
+        for key, value in self.__xml_attributes.items():
+            node.set(key, value)
+        for child in self.__xml_children:
+            node.append(child)
         node.set("name", self.__name)
 
     def __str__(self):
