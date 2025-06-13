@@ -13,6 +13,7 @@ from lxml import etree
 
 from .document import Document
 from .export_configs.base import ExportConfigBase
+from .plugin_list import PluginList
 from .version import Version
 
 
@@ -188,3 +189,12 @@ class Partiels:
             filepath.parent.mkdir(parents=True, exist_ok=True)
         with open(filepath, "wb") as f:
             xml.write(f, pretty_print=True, xml_declaration=True, encoding="UTF-8")
+
+    def plugin_list(self) -> dict[str, str]:
+        cmd = [self.__executable_path, "--plugin-list", "--format=json"]
+        ret = self.__run_subprocess(cmd)
+        if ret.stdout == "":
+            raise RuntimeError(
+                "No plugins found. Please check your Partiels installation."
+            )
+        return PluginList(ret.stdout)
