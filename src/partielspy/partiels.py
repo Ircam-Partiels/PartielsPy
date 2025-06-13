@@ -142,6 +142,17 @@ class Partiels:
         """Return Partiels's executable version"""
         return self.__executable_version
 
+    def __run_subprocess(self, cmd: list[str]) -> subprocess.CompletedProcess:
+        logging.getLogger(__name__).debug(cmd)
+        self.__substitute_vamp_path()
+        try:
+            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError:
+            raise
+        finally:
+            os.environ["VAMP_PATH"] = self.__vamp_path_backup
+        return ret
+
     def export(
         self,
         audiofile_path: str | Path,
@@ -165,15 +176,7 @@ class Partiels:
             f"--output={output_path}",
         ]
         cmd += export_config.to_cli_args()
-        logging.getLogger(__name__).debug(cmd)
-        self.__substitute_vamp_path()
-        try:
-            ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        except subprocess.CalledProcessError:
-            raise
-        finally:
-            os.environ["VAMP_PATH"] = self.__vamp_path_backup
-        return ret
+        return self.__run_subprocess(cmd)
 
     def save(self, document: Document, filepath: str | Path):
         root = etree.Element("document")
