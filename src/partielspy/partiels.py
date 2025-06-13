@@ -11,6 +11,7 @@ from pathlib import Path
 import semver
 
 from .export_configs.base import ExportConfigBase
+from .version import Version
 
 
 class Partiels:
@@ -32,7 +33,6 @@ class Partiels:
 
     def __init__(self):
         name = "Partiels"
-        self.__compatibility_version = "2.0.11"
         if "PARTIELS_PATH" in os.environ:
             self.__executable_path = shutil.which(
                 name, path=os.environ.get("PARTIELS_PATH")
@@ -68,13 +68,13 @@ class Partiels:
             .stdout.split(" v")[1]
             .strip()
         )
-        version_diff = semver.VersionInfo.parse(self.__compatibility_version).compare(
-            self.__executable_version
-        )
+        version_diff = semver.VersionInfo.parse(
+            Version.get_compatibility_version()
+        ).compare(self.__executable_version)
         if version_diff < 0:
             warnings.warn(
                 "PartielsPy compatibility version ("
-                + str(self.__compatibility_version)
+                + str(Version.get_compatibility_version())
                 + ") is older than Partiels's executable version ("
                 + str(self.__executable_version)
                 + ").\n"
@@ -86,7 +86,7 @@ class Partiels:
         elif version_diff > 0:
             warnings.warn(
                 "PartielsPy compatibility version ("
-                + str(self.__compatibility_version)
+                + str(Version.get_compatibility_version())
                 + ") is newer than Partiels's executable version. ("
                 + str(self.__executable_version)
                 + ").\n"
@@ -139,11 +139,6 @@ class Partiels:
     def executable_version(self) -> str:
         """Return Partiels's executable version"""
         return self.__executable_version
-
-    @property
-    def compatibility_version(self) -> str:
-        """Return the PartielsPy's compatibility version"""
-        return self.__compatibility_version
 
     def export(
         self,
