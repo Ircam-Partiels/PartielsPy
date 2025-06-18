@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 env:
   PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download
-  PARTIELS_VERSION: 2.0.10
+  PARTIELS_VERSION: 2.0.12-dev1
   IRCAM_VAMP_URL : https://github.com/Ircam-Partiels/ircam-vamp-plugins/releases/download
   IRCAM_VAMP_VERSION: 2.1.0
   CREPE_VAMP_URL : https://github.com/Ircam-Partiels/crepe-vamp-plugin/releases/download
