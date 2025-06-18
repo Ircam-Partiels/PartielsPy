@@ -57,9 +57,8 @@ class Group:
             track_node.set("MiscModelVersion", Version.get_compatibility_version_int())
             track._to_xml(track_node)
 
-    def __str__(self):
-        res = "\tGroup: " + self.name + "\n"
+    def _to_json(self) -> dict:
+        res = {"name": self.name, "tracks": []}
         for track in self.tracks:
-            res += "\t\tTrack: " + track.__str__()
-            res += "\n" if track != self.tracks[-1] else ""
+            res["tracks"].append(track._to_json())
         return res
