@@ -19,10 +19,12 @@ def test_basic_creation():
     assert len(group.tracks) == 1, "Group should have one track after adding"
     doc.add_group(group)
     assert len(doc.groups) == 1, "Document should have one group after adding"
-    output = root / "templates" / "test_basic_creation.ptldoc"
-    if output.exists():
-        os.remove(output)
-    Partiels().save(doc, output)
+    output_dir = root / "templates"
+    output = output_dir / "test_basic_creation.ptldoc"
+    if not output_dir.exists():
+        os.mkdir(output_dir)
+    with open(output, "wb") as f:
+        doc.save(f)
     assert output.exists(), "Output file was not created"
     group.remove_track(track)
     assert len(group.tracks) == 0, "Group should have no tracks after removal"
