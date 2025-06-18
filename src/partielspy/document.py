@@ -1,4 +1,5 @@
 import uuid
+from pathlib import Path
 
 from lxml import etree
 
@@ -28,7 +29,7 @@ class Document:
                 return
         raise ValueError("Group not found in document")
 
-    def _to_xml(self, root: etree):
+    def to_xml(self, root: etree):
         root.set("MiscModelVersion", Version.get_compatibility_version_int())
         for group_identifier, group in self.__groups.items():
             layout = etree.Element("layout")
@@ -40,9 +41,14 @@ class Document:
             group_node.set("MiscModelVersion", Version.get_compatibility_version_int())
             group._to_xml(group_node)
 
-    def __str__(self):
-        res = "Document:\n"
+    def save(self, file: str | Path):
+        root = etree.Element("document")
+        self.to_xml(root)
+        xml = etree.ElementTree(root)
+        xml.write(file, pretty_print=True, xml_declaration=True, encoding="UTF-8")
+
+    def to_json(self) -> dict:
+        res = []
         for group in self.groups:
-            res += group.__str__()
-            res += "\n" if group != self.groups[-1] else ""
+            res.append(group._to_json())
         return res
