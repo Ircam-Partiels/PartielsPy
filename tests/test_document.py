@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 import pytest
@@ -20,9 +19,8 @@ def test_basic_creation():
     doc.add_group(group)
     assert len(doc.groups) == 1, "Document should have one group after adding"
     output = root / "templates" / "test_basic_creation.ptldoc"
-    if output.exists():
-        os.remove(output)
-    Partiels().save(doc, output)
+    Path(output).parent.mkdir(parents=True, exist_ok=True)
+    doc.save(output)
     assert output.exists(), "Output file was not created"
     group.remove_track(track)
     assert len(group.tracks) == 0, "Group should have no tracks after removal"
