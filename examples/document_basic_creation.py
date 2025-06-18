@@ -24,5 +24,6 @@ track_copy_copy.name = "Another Track Name"
 group_copy.add_track(track_copy_copy)
 doc.add_group(group_copy)
 
-print(doc)
-Partiels().save(doc, root / "templates/" / "example.xml")
+print(doc.to_json())
+with open(root / "templates" / "example.xml", "wb") as f:
+    doc.save(f)
