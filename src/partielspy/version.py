@@ -2,7 +2,7 @@ import semver
 
 
 class Version:
-    __compatibility_version = "2.0.11"
+    __compatibility_version = "2.0.12-dev1"
 
     @staticmethod
     def get_compatibility_version():
