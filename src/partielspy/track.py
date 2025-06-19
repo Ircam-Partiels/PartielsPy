@@ -1,6 +1,6 @@
 from lxml import etree
 
-from .plugin import Plugin
+from .plugin.plugin import Plugin
 
 
 class Track:

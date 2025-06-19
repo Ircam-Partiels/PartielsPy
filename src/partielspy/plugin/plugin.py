@@ -1,6 +1,6 @@
 from lxml import etree
 
-from .plugin_key import PluginKey
+from .key import PluginKey
 
 
 class Plugin:

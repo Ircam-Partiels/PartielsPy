@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from partielspy import *
-from partielspy.plugin import Plugin
+from partielspy.plugin.plugin import Plugin
 
 root = Path(__file__).parent
 audio_file = root.parent / "resource" / "Sound.wav"

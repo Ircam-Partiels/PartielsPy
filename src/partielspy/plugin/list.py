@@ -1,7 +1,7 @@
 import json
 
+from .key import PluginKey
 from .plugin import Plugin
-from .plugin_key import PluginKey
 
 
 class PluginList(list[Plugin]):

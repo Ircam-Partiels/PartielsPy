@@ -12,7 +12,7 @@ from pathlib import Path
 import semver
 
 from .export_configs.base import ExportConfigBase
-from .plugin_list import PluginList
+from .plugin.list import PluginList
 from .version import Version
 
 
