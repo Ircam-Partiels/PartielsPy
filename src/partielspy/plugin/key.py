@@ -14,6 +14,12 @@ class PluginKey:
     def feature(self) -> str:
         return self.__feature
 
+    @classmethod
+    def _from_xml(cls, node: etree):
+        identifier = node.get("identifier", "")
+        feature = node.get("feature", "")
+        return cls(identifier=identifier, feature=feature)
+
     def _to_xml(self, node: etree):
         node.set("identifier", self.__identifier)
         node.set("feature", self.__feature)
