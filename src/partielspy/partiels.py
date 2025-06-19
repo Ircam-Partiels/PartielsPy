@@ -9,9 +9,7 @@ import warnings
 from pathlib import Path
 
 import semver
-from lxml import etree
 
-from .document import Document
 from .export_configs.base import ExportConfigBase
 from .version import Version
 
@@ -174,14 +172,3 @@ class Partiels:
         finally:
             os.environ["VAMP_PATH"] = self.__vamp_path_backup
         return ret
-
-    def save(self, document: Document, filepath: str | Path):
-        root = etree.Element("document")
-        document._to_xml(root)
-        xml = etree.ElementTree(root)
-        if isinstance(filepath, str):
-            filepath = Path(filepath)
-        if not filepath.parent.exists():
-            filepath.parent.mkdir(parents=True, exist_ok=True)
-        with open(filepath, "wb") as f:
-            xml.write(f, pretty_print=True, xml_declaration=True, encoding="UTF-8")
