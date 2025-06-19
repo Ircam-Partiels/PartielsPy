@@ -1,5 +1,6 @@
 """A main class for Partiels Wrapper"""
 
+import json
 import logging
 import os
 import platform
@@ -11,6 +12,7 @@ from pathlib import Path
 import semver
 
 from .export_configs.base import ExportConfigBase
+from .plugin_list import PluginList
 from .version import Version
 
 
@@ -176,3 +178,7 @@ class Partiels:
         ]
         cmd += export_config.to_cli_args()
         return self.__run_subprocess(cmd)
+
+    def get_plugin_list(self) -> dict:
+        cmd = [self.__executable_path, "--plugin-list"]
+        return PluginList.from_json(json.loads(self.__run_subprocess(cmd).stdout))
