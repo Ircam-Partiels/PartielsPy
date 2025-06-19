@@ -5,12 +5,20 @@ from lxml import etree
 
 from .track import Track
 from .version import Version
+from .xml_element import XmlElement
 
 
-class Group:
+class Group(XmlElement):
+    __ignored_attributes = ["identifier", "name"]
+    __ignored_children = ["layout"]
+
     def __init__(self, name: str = "New Group"):
         self.__name = name
         self.__tracks = {}
+        super().__init__(
+            ignored_attributes=Group.__ignored_attributes,
+            ignored_children=Group.__ignored_children,
+        )
 
     @property
     def name(self) -> str:
@@ -40,12 +48,27 @@ class Group:
 
     def __deepcopy__(self, memo):
         res = type(self)(self.__name)
+        super(type(self), res).__deepcopy__(memo)
         res.__tracks = {
             uuid.uuid4().hex: copy.deepcopy(track, memo) for track in self.tracks
         }
         return res
 
+    @classmethod
+    def _from_xml(cls, node: etree):
+        group = cls()
+        group.from_xml(node)
+        group.name = node.get("name", "New Group")
+        for track_layout in node.findall("layout"):
+            track_layout_value = track_layout.get("value")
+            track_node = node.getparent().find(
+                f"./tracks[@identifier='{track_layout_value}']"
+            )
+            group.__tracks[track_layout_value] = Track._from_xml(track_node)
+        return group
+
     def _to_xml(self, node: etree):
+        super().to_xml(node)
         node.set("name", self.__name)
         for identifier, track in self.__tracks.items():
             layout = etree.Element("layout")
