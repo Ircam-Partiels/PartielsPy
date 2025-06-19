@@ -16,6 +16,11 @@ class Plugin:
     def key(self) -> PluginKey:
         return self.__key
 
+    @classmethod
+    def _from_xml(cls, key_node: etree):
+        key = PluginKey._from_xml(key_node)
+        return cls(key)
+
     def _to_xml(self, node):
         key_node = etree.SubElement(node, "key")
         self.__key._to_xml(key_node)
