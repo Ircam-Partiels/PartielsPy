@@ -47,3 +47,32 @@ def test_basic_errors():
     group.add_track(track)
     with pytest.raises(ValueError, match="Track already exists in group"):
         group.add_track(track)
+
+
+def test_load_save():
+    input_file = root.parent / "templates" / "factory.ptldoc"
+    output_file = root / "templates" / "test_load_save.ptldoc"
+    audio_file = root.parent / "resource" / "Sound.wav"
+
+    doc = Document.load(input_file)
+    assert len(doc.groups) > 0, "Document should have groups after loading"
+
+    Path(output_file).parent.mkdir(parents=True, exist_ok=True)
+    doc.save(output_file)
+    assert output_file.exists(), "Output file was not created after saving"
+
+    export_dir = root / "exports" / "test_load_save"
+    expected_export_dir = export_dir / "expected"
+    result_export_dir = export_dir / "result"
+    expected_files = ["Sound Group 1_Spectrogram.csv", "Sound Group 2_Waveform.csv"]
+    partiels = Partiels()
+    config = ExportConfigCsv()
+    partiels.export(audio_file, input_file, expected_export_dir, config)
+    partiels.export(audio_file, output_file, result_export_dir, config)
+    for expected_file in expected_files:
+        expected_path = expected_export_dir / expected_file
+        result_path = result_export_dir / expected_file
+        assert expected_path.exists(), f"Expected file {expected_file} does not exist"
+        assert result_path.exists(), f"Result file {expected_file} does not exist"
+        with open(expected_path, "r") as ef, open(result_path, "r") as rf:
+            assert ef.read() == rf.read(), f"File {expected_file} contents do not match"
