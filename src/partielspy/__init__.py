@@ -7,6 +7,7 @@ from .export_configs.lab import ExportConfigLab
 from .export_configs.reaper import ExportConfigReaper
 from .group import Group
 from .partiels import Partiels
+from .plugin_key import PluginKey
 from .track import Track
 
 __all__ = [
@@ -20,4 +21,5 @@ __all__ = [
     "Document",
     "Group",
     "Track",
+    "PluginKey",
 ]
