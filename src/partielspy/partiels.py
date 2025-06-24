@@ -9,8 +9,10 @@ import warnings
 from pathlib import Path
 
 import semver
+from lxml import etree
 
 from .export_configs.base import ExportConfigBase
+from .plugin_list import PluginList
 from .version import Version
 
 
@@ -178,3 +180,9 @@ class Partiels:
         ]
         cmd += export_config.to_cli_args()
         return self.__run_subprocess(cmd)
+
+    def get_plugin_list(self) -> dict:
+        cmd = [self.__executable_path, "--plugin-list", "--format=xml"]
+        return PluginList._from_xml(
+            etree.fromstring(self.__run_subprocess(cmd, text=False).stdout)
+        )
