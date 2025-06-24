@@ -12,3 +12,7 @@ class Version:
     def get_compatibility_version_int():
         version = semver.VersionInfo.parse(Version.__compatibility_version)
         return str((version.major << 16) | (version.minor << 8) | (version.patch))
+
+
+if __name__ == "__main__":
+    print(Version.get_compatibility_version())
