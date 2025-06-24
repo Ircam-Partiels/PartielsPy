@@ -5,6 +5,9 @@ from .export_configs.image import ExportConfigImage
 from .export_configs.json import ExportConfigJson
 from .export_configs.lab import ExportConfigLab
 from .export_configs.reaper import ExportConfigReaper
+from .file_info.base import FileInfo
+from .file_info.csv import FileInfoCsv
+from .file_info.lab import FileInfoLab
 from .group import Group
 from .partiels import Partiels
 from .plugin_key import PluginKey
@@ -22,4 +25,7 @@ __all__ = [
     "Group",
     "Track",
     "PluginKey",
+    "FileInfo",
+    "FileInfoCsv",
+    "FileInfoLab",
 ]
