@@ -1,10 +1,13 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 8 * * 1' # Each Monday at 8 am
 
 env:
   PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download
-  PARTIELS_VERSION: 2.0.12-dev2
   IRCAM_VAMP_URL : https://github.com/Ircam-Partiels/ircam-vamp-plugins/releases/download
   IRCAM_VAMP_VERSION: 2.1.0
   CREPE_VAMP_URL : https://github.com/Ircam-Partiels/crepe-vamp-plugin/releases/download
@@ -13,6 +16,33 @@ env:
   WHISPER_VAMP_VERSION: 3.0.0
   
 jobs:
+  Prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      partiels_version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install semver
+      - name: Get latest Partiels tag if scheduled, else use default
+        id: version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            version=$(curl -s -H "Authorization: token $GH_TOKEN" \
+              https://api.github.com/repos/Ircam-Partiels/Partiels/releases/latest \
+              | jq -r '.tag_name')
+          else
+            version=$(python src/partielspy/version.py)
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
   Format:
     runs-on: ubuntu-latest
     steps:
@@ -34,8 +64,10 @@ jobs:
       run: flake8 src tests examples
 
   Ubuntu:
+    needs: [Prepare, Format]
     runs-on: ubuntu-22.04
-    needs: Format
+    env:
+      PARTIELS_VERSION: ${{ needs.Prepare.outputs.partiels_version }}
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -79,8 +111,10 @@ jobs:
       run: pytest -s tests/
 
   Windows:
+    needs: [Prepare, Format]
     runs-on: windows-latest
-    needs: Format
+    env:
+      PARTIELS_VERSION: ${{ needs.Prepare.outputs.partiels_version }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -127,8 +161,10 @@ jobs:
         run: pytest -s tests/
   
   MacOS:
+    needs: [Prepare, Format]
     runs-on: macos-latest
-    needs: Format
+    env:
+      PARTIELS_VERSION: ${{ needs.Prepare.outputs.partiels_version }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
