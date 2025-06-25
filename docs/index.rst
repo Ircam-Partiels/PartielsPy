@@ -12,3 +12,9 @@ Welcome to PartielsPy's documentation!
 
    partielspy.partiels
    partielspy.export_configs
+   partielspy.document
+   partielspy.group
+   partielspy.track
+   partielspy.plugin_key
+   partielspy.plugin_list
+   partielspy.version
