@@ -181,7 +181,12 @@ class Partiels:
         cmd += export_config.to_cli_args()
         return self.__run_subprocess(cmd)
 
-    def get_plugin_list(self) -> dict:
+    def get_plugin_list(self) -> PluginList:
+        """Get the list of available plugins from Partiels
+
+        Returns:
+            PluginList: A :class:`partielspy.plugin_list` object containing the list of plugins
+        """
         cmd = [self.__executable_path, "--plugin-list", "--format=xml"]
         return PluginList._from_xml(
             etree.fromstring(self.__run_subprocess(cmd, text=False).stdout)
