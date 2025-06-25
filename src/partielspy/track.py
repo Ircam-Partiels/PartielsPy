@@ -1,3 +1,5 @@
+"""PartielsPy - Track Module"""
+
 import copy
 
 from lxml import etree
@@ -10,6 +12,14 @@ from .version import Version
 
 
 class Track:
+    """This class represents a track in PartielsPy.
+
+    Args:
+        name (str): The name of the track (default: "New Track")
+        plugin_key (partielspy.plugin_key.PluginKey): The plugin key associated with the track\
+        (default: a new empty PluginKey instance)
+    """
+
     def __init__(self, name: str = "New Track"):
         self.__xml_node = etree.Element("tracks")
         self.__name = name
