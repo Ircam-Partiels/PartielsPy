@@ -1,3 +1,5 @@
+"""PartielsPy - Group Module"""
+
 import copy
 import uuid
 
@@ -8,6 +10,14 @@ from .version import Version
 
 
 class Group:
+    """This class represents a group of tracks in PartielsPy.
+
+    It contains a name and a collection of :class:`partielspy.track`.
+
+    Args:
+        name (str): The name of the group (default: "New Group")
+    """
+
     def __init__(self, name: str = "New Group"):
         self.__xml_node = etree.Element("groups")
         self.__name = name
@@ -23,9 +33,22 @@ class Group:
 
     @property
     def tracks(self) -> list[Track]:
+        """Return a list of tracks in the group."""
         return list(self.__tracks.values())
 
     def add_track(self, track: Track):
+        """Add a track to the group.
+
+        This method checks if the track is an instance of :class:`partielspy.track` and if it \
+        already exists in the group.
+        If the track is valid and not already present, it adds the track to the group's tracks.
+
+        Args:
+            track (partielspy.track.Track): The track to add to the group.
+        Raises:
+            TypeError: If the track is not an instance of :class:`partielspy.track`.
+            ValueError: If the track already exists in the group.
+        """
         if not isinstance(track, Track):
             raise TypeError("Expected a Track instance")
         if track in self.tracks:
@@ -33,6 +56,15 @@ class Group:
         self.__tracks[uuid.uuid4().hex] = track
 
     def remove_track(self, track: Track):
+        """Remove a track from the group.
+
+        This method searches for the track in the group's tracks and removes it if found.
+
+        Args:
+            track (partielspy.track.Track): The track to remove from the group.
+        Raises:
+            ValueError: If the track is not found in the group.
+        """
         for identifier, value in self.__tracks.items():
             if track == value:
                 del self.__tracks[identifier]
