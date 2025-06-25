@@ -1,3 +1,5 @@
+"""PartielsPy - Document Module"""
+
 import copy
 import uuid
 from pathlib import Path
@@ -10,6 +12,13 @@ from .version import Version
 
 
 class Document:
+    """This class represents a document in PartielsPy.
+
+    It contains a collection of :class:`partielspy.group` class,\
+    each of which can contain multiple :class:`partielspy.track` class.
+    The document can be loaded from and saved to an XML (ptldoc) file.
+    """
+
     def __init__(self):
         self.__xml_node = etree.Element("document")
         self.__groups = {}
@@ -19,6 +28,18 @@ class Document:
         return list(self.__groups.values())
 
     def add_group(self, group: Group):
+        """Add a group to the document.
+
+        This method checks if the group is an instance of :class:`partielspy.group` and if it \
+        already exists in the document.
+        If the group is valid and not already present, it adds the group to the document's groups.
+
+        Args:
+            group (partielspy.group.Group): The group to add to the document.
+        Raises:
+            TypeError: If the group is not an instance of Group.
+            ValueError: If the group already exists in the document.
+        """
         if not isinstance(group, Group):
             raise TypeError("Expected a Group instance")
         if group in self.groups:
@@ -26,6 +47,15 @@ class Document:
         self.__groups[uuid.uuid4().hex] = group
 
     def remove_group(self, group: Group):
+        """Remove a group from the document.
+
+        This method searches for the group in the document's groups and removes it if found.
+
+        Args:
+            group (partielspy.group.Group): The group to remove from the document.
+        Raises:
+            ValueError: If the group is not found in the document.
+        """
         for key, value in self.__groups.items():
             if value == group:
                 del self.__groups[key]
@@ -46,6 +76,17 @@ class Document:
 
     @classmethod
     def load(cls, file: Any):
+        """Load a document from an XML (ptldoc) file.
+
+        Args:
+            file (Any): The file to load.
+        Returns:
+            Document: An instance of the Document class populated with data from \
+            the XML (ptldoc) file.
+        Raises:
+            ValueError: If the XML document is invalid (does not have the correct \
+            root 'document' tag).
+        """
         tree = etree.parse(file)
         root = tree.getroot()
         if root.tag != "document":
@@ -65,6 +106,11 @@ class Document:
         return root
 
     def save(self, file: str | Path):
+        """Save the document to an XML (ptldoc) file.
+
+        Args:
+            file (str | Path): The path to the file where the document will be saved.
+        """
         root = self._to_xml()
         xml = etree.ElementTree(root)
         xml.write(file, pretty_print=True, xml_declaration=True, encoding="UTF-8")
