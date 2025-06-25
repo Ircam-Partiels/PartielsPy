@@ -4,7 +4,12 @@
    contain the root `toctree` directive.
 
 Welcome to PartielsPy's documentation!
-======================================
+--------------------------------------
+PartielsPy is a python wrapper for the audio analysis program `Partiels <https://github.com/Ircam-Partiels/Partiels>`_ 
+developped by Pierre Guillot.
+Please visit the `Github Page <https://github.com/Ircam-Partiels/PartielsPy>`_ of the project for more informations.
+Some pratical examples are avalaibles `here <https://github.com/Ircam-Partiels/PartielsPy/tree/main/examples>`_.
+
 
 .. toctree::
    :maxdepth: 2
@@ -12,3 +17,10 @@ Welcome to PartielsPy's documentation!
 
    partielspy.partiels
    partielspy.export_configs
+   partielspy.document
+   partielspy.group
+   partielspy.track
+   partielspy.plugin_key
+   partielspy.plugin_list
+   partielspy.file_info
+   partielspy.version
