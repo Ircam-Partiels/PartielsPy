@@ -28,3 +28,13 @@ exclude_patterns = ["_build", ".DS_Store"]
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "alabaster"
+
+
+def skip_member(app, what, name, obj, skip, options):
+    if name.startswith("_"):
+        return True
+    return skip
+
+
+def setup(app):
+    app.connect("autodoc-skip-member", skip_member)
