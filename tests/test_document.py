@@ -1,10 +1,14 @@
+import shutil
 from pathlib import Path
 
 import pytest
 
 from partielspy import *
+from partielspy.export_configs.base import ExportConfigBase
 
 root = Path(__file__).parent
+
+audio_file = root.parent / "resource" / "Sound.wav"
 
 
 def test_basic_creation():
@@ -52,7 +56,6 @@ def test_basic_errors():
 def test_load_save():
     input_file = root.parent / "templates" / "factory.ptldoc"
     output_file = root / "templates" / "test_load_save.ptldoc"
-    audio_file = root.parent / "resource" / "Sound.wav"
 
     doc = Document.load(input_file)
     assert len(doc.groups) > 0, "Document should have groups after loading"
@@ -76,3 +79,50 @@ def test_load_save():
         assert result_path.exists(), f"Result file {expected_file} does not exist"
         with open(expected_path, "r") as ef, open(result_path, "r") as rf:
             assert ef.read() == rf.read(), f"File {expected_file} contents do not match"
+
+
+def export_document_with_file(
+    extension: str, config: ExportConfigBase, file_info: FileInfo
+):
+    src = root / "results" / "document_with_file" / f"src.{extension}"
+    template = root / "templates" / "file" / extension / "doc_with_file.ptldoc"
+    output = (
+        root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
+    )
+
+    partiels = Partiels()
+    doc = Document()
+    group = Group("Group")
+    track = Track("Track")
+    track.file_info = file_info(src)
+    doc.add_group(group)
+    group.add_track(track)
+
+    shutil.rmtree(template.parent, ignore_errors=True)
+    Path(template).parent.mkdir(parents=True, exist_ok=True)
+    doc.save(template)
+
+    shutil.rmtree(output.parent, ignore_errors=True)
+    partiels.export(audio_file, template, output.parent, config)
+
+    with (
+        open(src, "r") as ef,
+        open(output, "r") as rf,
+    ):
+        assert ef.read() == rf.read(), f"File contents do not match for {extension}"
+
+
+def test_document_with_file_csv():
+    export_document_with_file("csv", ExportConfigCsv(), FileInfoCsv)
+
+
+def test_document_with_file_lab():
+    export_document_with_file("lab", ExportConfigLab(), FileInfoLab)
+
+
+def test_document_with_file_json():
+    export_document_with_file("json", ExportConfigJson(), FileInfo)
+
+
+def test_document_with_file_cue():
+    export_document_with_file("cue", ExportConfigCue(), FileInfo)
