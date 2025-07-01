@@ -16,6 +16,6 @@ group.add_track(track)
 document.add_group(group)
 
 audio_file = folder.parent / "resource" / "Sound.wav"
-config = ExportConfigCsv()
-output = folder / "exports" / "document_with_file"
+config = ExportConfigJson()
+output = folder / "exports" / "document_track_with_file"
 partiels.export(audio_file, document, output, config)
