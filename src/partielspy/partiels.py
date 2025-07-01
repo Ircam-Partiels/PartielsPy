@@ -97,41 +97,6 @@ class Partiels:
                 stacklevel=2,
             )
 
-    def __substitute_vamp_path(self):
-        self.__vamp_path_backup = os.environ.get("VAMP_PATH", "")
-        if platform.system() == "Linux":
-            partiels_plugins_path = "/opt/Partiels/PlugIns"
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("HOME"), "vamp"),
-                os.path.join(os.environ.get("HOME"), ".vamp"),
-                "/usr/local/lib/vamp",
-                "/usr/lib/vamp",
-            ]
-            separator = ":"
-        elif platform.system() == "Windows":
-            partiels_plugins_path = os.path.join(
-                os.environ.get("ProgramFiles"), "Partiels", "PlugIns"
-            )
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("ProgramFiles"), "Vamp Plugins")
-            ]
-            separator = ";"
-        elif platform.system() == "Darwin":
-            partiels_plugins_path = "/Applications/Partiels.app/Contents/PlugIns"
-            vamp_plugins_paths = [
-                os.path.join(os.environ.get("HOME"), "Library/Audio/Plug-Ins/Vamp"),
-                "/Library/Audio/Plug-Ins/Vamp",
-            ]
-            separator = ":"
-        else:
-            return
-        if self.__vamp_path_backup != "":
-            path = separator.join([partiels_plugins_path, self.__vamp_path_backup])
-        else:
-            vamp_plugins_paths.insert(0, partiels_plugins_path)
-            path = separator.join(vamp_plugins_paths)
-        os.environ["VAMP_PATH"] = path
-
     @property
     def executable_path(self) -> str:
         """Return Partiels's executable path"""
@@ -146,14 +111,11 @@ class Partiels:
         self, cmd: list[str], text: bool = True
     ) -> subprocess.CompletedProcess:
         logging.getLogger(__name__).debug(cmd)
-        self.__substitute_vamp_path()
         try:
             ret = subprocess.run(cmd, capture_output=True, text=text, check=True)
         except Exception as e:
             logging.error(f"Subprocess failed: {e}")
             raise
-        finally:
-            os.environ["VAMP_PATH"] = self.__vamp_path_backup
         return ret
 
     def export(
