@@ -1,3 +1,5 @@
+"""A class for tracks CSV file information"""
+
 from enum import StrEnum
 from pathlib import Path
 
@@ -7,6 +9,19 @@ from .base import FileInfo
 
 
 class FileInfoCsv(FileInfo):
+    """This class represents CSV file information in a track.
+
+    It contains the path to the CSV file used by the track for the export.
+    This class is inherited by the class:
+    - :class:`PartielsPy.file_info.csv.FileInfoLab`
+
+    Args:
+        path (Path | str): The path to the CSV file associated with the track (default: "")
+        columns_separator (FileInfoCsv.Separators): The separator used in the CSV file
+            (default: FileInfoCsv.Separators.COMMA)
+        use_end_time (bool): Whether to use the end time in the CSV file (default: False)
+    """
+
     class Separators(StrEnum):
         """Enum for the columns separator"""
 
@@ -58,7 +73,7 @@ class FileInfoCsv(FileInfo):
             node.remove(args_node)
         super()._from_xml(node)
 
-    def _to_xml(self):
+    def _to_xml(self) -> etree.Element:
         node = super()._to_xml()
         args_node = etree.Element("args")
         args_node.append(
