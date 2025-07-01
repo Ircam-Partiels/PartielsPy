@@ -312,3 +312,36 @@ partiels.export(audio_file_2, document, output_folder, config)
 document = Document.load(template_file_2)
 partiels.export(audio_file_3, document, output_folder, config)
 ```
+
+### Document Example
+```python
+from partielspy import *
+
+# Create a Document
+document = Document()
+
+# Create a Group
+group = Group("Group")
+
+# Create a Track and set the plugin_key
+track_1 = Track("Track With Plugin")
+track_1.plugin_key = PluginKey("plugin-identifier", "plugin-feature")
+
+# Create a Track and set the file_info
+track_2 = Track("Track With File")
+track_2.file_info = FileInfo("path/to/import/file")
+
+# Add Tracks to the group
+group.add_track(track_1)
+group.add_track(track_2)
+
+# Add Group to the Document
+document.add_group(group)
+
+# Save the Document to an XML (.ptldoc) file
+document.save("path/to/save/file.ptldoc")
+
+# Export the Document as CSV and JPEG
+partiels.export(audio_file, document, output_folder, ExportConfigCsv())
+partiels.export(audio_file, document, output_folder, ExportConfigImage())
+```
