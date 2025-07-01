@@ -167,10 +167,11 @@ If the export process fails, `PartielsPy` raises a `subprocess.CalledProcessErro
 You can catch and handle this exception to inspect error details:
 
 ```python
-from partielspy import ExportConfigImage
+from partielspy import Document, ExportConfigImage
 
+document = Document.load(template_file)
 try:
-    partiels.export(audio_file, template_file, output_folder, ExportConfigImage())
+    partiels.export(audio_file, document, output_folder, ExportConfigImage())
 except subprocess.CalledProcessError as e:
     print(e.stderr)  # Prints detailed error message from the export process
 ```
@@ -180,11 +181,12 @@ except subprocess.CalledProcessError as e:
 Export analysis as visual representations:
 
 ```python
-from partielspy import ExportConfigImage
+from partielspy import Document, ExportConfigImage
 
 # Simple export with default settings
+document = Document.load(template_file)
 config = ExportConfigImage()
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 
 # Customized image export
 config = ExportConfigImage(
@@ -194,7 +196,7 @@ config = ExportConfigImage(
     group_overlay=True,                    # Overlay all analysis groups
     adapt_to_sample_rate=True              # Adjust analysis to sample rate
 )
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 ### Structured Data Exports
@@ -204,8 +206,9 @@ partiels.export(audio_file, template_file, output_folder, config)
 Export analysis data in tabular format:
 
 ```python
-from partielspy import ExportConfigCsv
+from partielspy import Document, ExportConfigCsv
 
+document = Document.load(template_file)
 # Export with custom CSV settings
 config = ExportConfigCsv(
     include_header=True,                         # Include column headers
@@ -213,7 +216,7 @@ config = ExportConfigCsv(
     ignore_matrix_tracks=True,                   # Skip matrix data
     adapt_to_sample_rate=True                    # Adjust to audio sample rate
 )
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 #### JSON Export
@@ -221,14 +224,16 @@ partiels.export(audio_file, template_file, output_folder, config)
 Export analysis as structured JSON data:
 
 ```python
-from partielspy import ExportConfigJson
+from partielspy import Document, ExportConfigJson
 
+document = Document.load(template_file)
+# Export with custom JSON settings
 config = ExportConfigJson(
     include_plugin_description=True,  # Include details about processing plugins
     ignore_matrix_tracks=True,        # Exclude matrix track data
     adapt_to_sample_rate=True         # Adjust analysis to sample rate
 )
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 ### Timeline Exports
@@ -238,13 +243,15 @@ partiels.export(audio_file, template_file, output_folder, config)
 Generate CUE files for CD authoring or audio marking:
 
 ```python
-from partielspy import ExportConfigCue
+from partielspy import Document, ExportConfigCue
 
+document = Document.load(template_file)
+# Export with custom CUE settings
 config = ExportConfigCue(
     ignore_matrix_tracks=True,   # Skip matrix data
     adapt_to_sample_rate=True    # Adjust to audio sample rate
 )
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 #### LAB File Export
@@ -252,10 +259,12 @@ partiels.export(audio_file, template_file, output_folder, config)
 Create label files compatible with various audio editors:
 
 ```python
-from partielspy import ExportConfigLab
+from partielspy import Document, ExportConfigLab
 
+document = Document.load(template_file)
+# Export with custom LAB settings
 config = ExportConfigLab(adapt_to_sample_rate=True)
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 #### Reaper Project Export
@@ -263,13 +272,15 @@ partiels.export(audio_file, template_file, output_folder, config)
 Generate files for direct import into Reaper DAW:
 
 ```python
-from partielspy import ExportConfigReaper
+from partielspy import Document, ExportConfigReaper
 
+document = Document.load(template_file)
+# Export with custom Reaper settings
 config = ExportConfigReaper(
     reaper_type=ExportConfigReaper.ReaperTypes.MARKER,  # Export as Reaper markers
     adapt_to_sample_rate=True                          # Adjust to audio sample rate
 )
-partiels.export(audio_file, template_file, output_folder, config)
+partiels.export(audio_file, document, output_folder, config)
 ```
 
 ### Working with Multiple Export Types
@@ -277,12 +288,13 @@ partiels.export(audio_file, template_file, output_folder, config)
 You can process a single audio file with multiple export configurations:
 
 ```python
-from partielspy import ExportConfigImage, ExportConfigCsv, ExportConfigJson
+from partielspy import Document, ExportConfigImage, ExportConfigCsv, ExportConfigJson
 
-#export in multiple formats
-partiels.export(audio_file, template_file, output_folder, ExportConfigImage())
-partiels.export(audio_file, template_file, output_folder, ExportConfigCsv())
-partiels.export(audio_file, template_file, output_folder, ExportConfigJson())
+document = Document.load(template_file)
+# Export in multiple formats
+partiels.export(audio_file, document, output_folder, ExportConfigImage())
+partiels.export(audio_file, document, output_folder, ExportConfigCsv())
+partiels.export(audio_file, document, output_folder, ExportConfigJson())
 ```
 
 ### Working with Multiple Audio Files and Templates
@@ -290,11 +302,13 @@ partiels.export(audio_file, template_file, output_folder, ExportConfigJson())
 You can process multiple audio files or templates with a single export configurations:
 
 ```python
-from partielspy import ExportConfigImage
+from partielspy import Document, ExportConfigImage
 
 config = ExportConfigImage()
-# export mutiple audio files and templates with a single export format
-partiels.export(audio_file_1, template_file_1, output_folder, config)
-partiels.export(audio_file_2, template_file_1, output_folder, config)
-partiels.export(audio_file_3, template_file_2, output_folder, config)
+# Export mutiple audio files and templates with a single export format
+document = Document.load(template_file_1)
+partiels.export(audio_file_1, document, output_folder, config)
+partiels.export(audio_file_2, document, output_folder, config)
+document = Document.load(template_file_2)
+partiels.export(audio_file_3, document, output_folder, config)
 ```
