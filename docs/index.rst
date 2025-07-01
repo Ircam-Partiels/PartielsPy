@@ -17,4 +17,5 @@ Welcome to PartielsPy's documentation!
    partielspy.track
    partielspy.plugin_key
    partielspy.plugin_list
+   partielspy.file_info
    partielspy.version
