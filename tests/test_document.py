@@ -70,8 +70,10 @@ def test_load_save():
     expected_files = ["Sound Group 1_Spectrogram.csv", "Sound Group 2_Waveform.csv"]
     partiels = Partiels()
     config = ExportConfigCsv()
-    partiels.export(audio_file, input_file, expected_export_dir, config)
-    partiels.export(audio_file, output_file, result_export_dir, config)
+    document = Document.load(input_file)
+    partiels.export(audio_file, document, expected_export_dir, config)
+    document = Document.load(output_file)
+    partiels.export(audio_file, document, result_export_dir, config)
     for expected_file in expected_files:
         expected_path = expected_export_dir / expected_file
         result_path = result_export_dir / expected_file
@@ -85,25 +87,20 @@ def export_document_with_file(
     extension: str, config: ExportConfigBase, file_info: FileInfo
 ):
     src = root / "results" / "document_with_file" / f"src.{extension}"
-    template = root / "templates" / "file" / extension / "doc_with_file.ptldoc"
     output = (
         root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
     )
 
     partiels = Partiels()
-    doc = Document()
+    document = Document()
     group = Group("Group")
     track = Track("Track")
     track.file_info = file_info(src)
-    doc.add_group(group)
+    document.add_group(group)
     group.add_track(track)
 
-    shutil.rmtree(template.parent, ignore_errors=True)
-    Path(template).parent.mkdir(parents=True, exist_ok=True)
-    doc.save(template)
-
     shutil.rmtree(output.parent, ignore_errors=True)
-    partiels.export(audio_file, template, output.parent, config)
+    partiels.export(audio_file, document, output.parent, config)
 
     with (
         open(src, "r") as ef,
