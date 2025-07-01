@@ -107,17 +107,6 @@ class Partiels:
         """Return Partiels's executable version"""
         return self.__executable_version
 
-    def __run_subprocess(
-        self, cmd: list[str], text: bool = True
-    ) -> subprocess.CompletedProcess:
-        logging.getLogger(__name__).debug(cmd)
-        try:
-            ret = subprocess.run(cmd, capture_output=True, text=text, check=True)
-        except Exception as e:
-            logging.error(f"Subprocess failed: {e}")
-            raise
-        return ret
-
     def export(
         self,
         audiofile_path: str | Path,
@@ -141,7 +130,8 @@ class Partiels:
             f"--output={output_path}",
         ]
         cmd += export_config.to_cli_args()
-        return self.__run_subprocess(cmd)
+        logging.getLogger(__name__).debug(cmd)
+        return subprocess.run(cmd, capture_output=True, text=True, check=True)
 
     def get_plugin_list(self) -> PluginList:
         """Get the list of available plugins from Partiels
@@ -151,5 +141,7 @@ class Partiels:
         """
         cmd = [self.__executable_path, "--plugin-list", "--format=xml"]
         return PluginList._from_xml(
-            etree.fromstring(self.__run_subprocess(cmd, text=False).stdout)
+            etree.fromstring(
+                subprocess.run(cmd, capture_output=True, text=False, check=True).stdout
+            )
         )
