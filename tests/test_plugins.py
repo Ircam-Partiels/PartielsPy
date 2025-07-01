@@ -48,8 +48,10 @@ def test_create_document_with_factory_plugins():
     export_output_expected = export_output / "expected"
     export_output_result = export_output / "result"
     export_config = ExportConfigCsv()
-    partiels.export(audio_file, template_factory, export_output_expected, export_config)
-    partiels.export(audio_file, template_output, export_output_result, export_config)
+    document = Document.load(template_factory)
+    partiels.export(audio_file, document, export_output_expected, export_config)
+    document = Document.load(template_output)
+    partiels.export(audio_file, document, export_output_result, export_config)
 
     exported_filename = "Sound Group 2_Waveform.csv"
 
