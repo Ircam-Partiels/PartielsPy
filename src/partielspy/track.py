@@ -14,10 +14,15 @@ from .version import Version
 class Track:
     """This class represents a track in PartielsPy.
 
+    A track contains a plugin key and file information, along with a name.
+    If the file_info is set (with a non-empty path) the plugin_key will be ignored for the export.
+
     Args:
         name (str): The name of the track (default: "New Track")
         plugin_key (partielspy.plugin_key.PluginKey): The plugin key associated with the track\
         (default: a new empty PluginKey instance)
+        file_info (partielspy.file_info.base): The file associated with the track\
+        (default: a new empty FileInfo instance).
     """
 
     def __init__(self, name: str = "New Track"):
