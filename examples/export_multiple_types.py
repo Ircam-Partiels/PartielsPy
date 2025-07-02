@@ -8,6 +8,7 @@ template_file = root / "templates" / "factory.ptldoc"
 output_folder = root / "examples" / "exports" / "multiple"
 
 partiels = Partiels()
-partiels.export(audio_file, template_file, output_folder, ExportConfigImage())
-partiels.export(audio_file, template_file, output_folder, ExportConfigCsv())
-partiels.export(audio_file, template_file, output_folder, ExportConfigJson())
+document = Document.load(template_file)
+partiels.export(audio_file, document, output_folder, ExportConfigImage())
+partiels.export(audio_file, document, output_folder, ExportConfigCsv())
+partiels.export(audio_file, document, output_folder, ExportConfigJson())

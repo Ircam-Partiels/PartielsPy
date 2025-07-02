@@ -47,9 +47,10 @@ def get_expected_filenames_harmonic_partials_tracking(extension):
 
 def test_export_image_default():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigImage()
     output = remove_and_get_output_folder(path="factory/jpeg")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="jpeg"
     ), "Exported files do not match with expected files."
@@ -57,6 +58,7 @@ def test_export_image_default():
 
 def test_export_image_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigImage()
     export_config.adapt_to_sample_rate = True
     export_config.format = ExportConfigImage.Formats.PNG
@@ -65,7 +67,7 @@ def test_export_image_editing_arguments():
     export_config.group_overlay = True
     export_config.pixels_per_inch = 100
     output = remove_and_get_output_folder(path="factory/png")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_default, extension="png"
     ), "Exported files do not match with expected files."
@@ -73,6 +75,7 @@ def test_export_image_editing_arguments():
 
 def test_export_image_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigImage(
         format=ExportConfigImage.Formats.PNG,
         width=200,
@@ -82,7 +85,7 @@ def test_export_image_with_arguments():
         adapt_to_sample_rate=True,
     )
     output = remove_and_get_output_folder(path="factory/png2")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_default, extension="png"
     ), "Exported files do not match with expected files."
@@ -90,6 +93,7 @@ def test_export_image_with_arguments():
 
 def test_export_image_with_wrong_parameters():
     partiels = Partiels()
+    document = Document.load(template_factory)
     output = remove_and_get_output_folder(path="factory/error")
     export_config = ExportConfigImage()
     with pytest.raises(ValueError):
@@ -98,13 +102,13 @@ def test_export_image_with_wrong_parameters():
     export_config = ExportConfigImage()
     export_config.width = -100
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
-        partiels.export(audiofile, template_factory, output, export_config)
+        partiels.export(audiofile, document, output, export_config)
     assert excinfo.value.returncode != 0, "Export didn't fail with unvalid width"
 
     export_config = ExportConfigImage()
     export_config.height = -100
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
-        partiels.export(audiofile, template_factory, output, export_config)
+        partiels.export(audiofile, document, output, export_config)
     assert excinfo.value.returncode != 0, "Export didn't fail with unvalid height"
 
     assert (
@@ -114,9 +118,10 @@ def test_export_image_with_wrong_parameters():
 
 def test_export_csv_default():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigCsv()
     output = remove_and_get_output_folder(path="factory/csv")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="csv"
     ), "Exported files do not match with expected files."
@@ -124,13 +129,14 @@ def test_export_csv_default():
 
 def test_export_csv_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigCsv()
     export_config.include_header = True
     export_config.columns_separator = ExportConfigCsv.Separators.SPACE
     export_config.ignore_matrix_tracks = True
     export_config.adapt_to_sample_rate = True
     output = remove_and_get_output_folder(path="factory/csv2")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     expected = [
         get_expected_filenames(filenames=expected_filenames_factory, extension="csv")[1]
     ]
@@ -141,6 +147,7 @@ def test_export_csv_editing_arguments():
 
 def test_export_csv_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigCsv(
         include_header=True,
         columns_separator=ExportConfigCsv.Separators.SPACE,
@@ -148,7 +155,7 @@ def test_export_csv_with_arguments():
         adapt_to_sample_rate=True,
     )
     output = remove_and_get_output_folder(path="factory/csv3")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     expected = get_expected_filenames(
         filenames=expected_filenames_factory, extension="csv"
     )
@@ -165,9 +172,10 @@ def test_export_csv_with_wrong_parameters():
 
 def test_export_reaper_default():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigReaper()
     output = remove_and_get_output_folder(path="beat_detection/reaper")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="csv"
     ), "Exported files do not match with expected files."
@@ -175,11 +183,12 @@ def test_export_reaper_default():
 
 def test_export_reaper_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigReaper()
     export_config.reaper_type = ExportConfigReaper.ReaperTypes.MARKER
     export_config.adapt_to_sample_rate = True
     output = remove_and_get_output_folder(path="beat_detection/reaper2")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="csv"
     ), "Exported files do not match with expected files."
@@ -187,11 +196,12 @@ def test_export_reaper_editing_arguments():
 
 def test_export_reaper_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigReaper(
         reaper_type=ExportConfigReaper.ReaperTypes.MARKER, adapt_to_sample_rate=True
     )
     output = remove_and_get_output_folder(path="beat_detection/reaper3")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="csv"
     ), "Exported files do not match with expected files."
@@ -199,10 +209,11 @@ def test_export_reaper_with_arguments():
 
 def test_export_reaper_with_no_marker_template():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigReaper()
     output = remove_and_get_output_folder(path="factory/reaper4")
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
-        partiels.export(audiofile, template_factory, output, export_config)
+        partiels.export(audiofile, document, output, export_config)
     assert excinfo.value.returncode != 0, "Export didn't fail with no marker template"
     assert (
         sorted(os.listdir(output)) == []
@@ -217,9 +228,10 @@ def test_export_reaper_with_wrong_parameters():
 
 def test_export_lab_default():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigLab()
     output = remove_and_get_output_folder(path="factory/lab")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="lab"
     ), "Exported files do not match with expected files."
@@ -227,10 +239,11 @@ def test_export_lab_default():
 
 def test_export_lab_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigLab()
     export_config.adapt_to_sample_rate = True
     output = remove_and_get_output_folder(path="factory/lab2")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="lab"
     ), "Exported files do not match with expected files."
@@ -238,9 +251,10 @@ def test_export_lab_editing_arguments():
 
 def test_export_lab_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigLab(adapt_to_sample_rate=True)
     output = remove_and_get_output_folder(path="factory/lab3")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="lab"
     ), "Exported files do not match with expected files."
@@ -248,9 +262,10 @@ def test_export_lab_with_arguments():
 
 def test_export_json_default():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigJson()
     output = remove_and_get_output_folder(path="factory/json")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="json"
     ), "Exported files do not match with expected files."
@@ -258,12 +273,13 @@ def test_export_json_default():
 
 def test_export_json_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigJson()
     export_config.include_plugin_description = True
     export_config.ignore_matrix_tracks = True
     export_config.adapt_to_sample_rate = True
     output = remove_and_get_output_folder("factory/json2")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     expected = get_expected_filenames(
         filenames=expected_filenames_factory, extension="json"
     )
@@ -274,13 +290,14 @@ def test_export_json_editing_arguments():
 
 def test_export_json_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigJson(
         include_plugin_description=True,
         ignore_matrix_tracks=True,
         adapt_to_sample_rate=True,
     )
     output = remove_and_get_output_folder(path="factory/json2")
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     expected = get_expected_filenames(
         filenames=expected_filenames_factory, extension="json"
     )
@@ -291,9 +308,10 @@ def test_export_json_with_arguments():
 
 def test_export_cue_default():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigCue()
     output = remove_and_get_output_folder(path="beat_detection/cue")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="cue"
     ), "Exported files do not match with expected files."
@@ -301,11 +319,12 @@ def test_export_cue_default():
 
 def test_export_cue_editing_arguments():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigCue()
     export_config.ignore_matrix_tracks = False
     export_config.adapt_to_sample_rate = False
     output = remove_and_get_output_folder(path="beat_detection/cue2")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="cue"
     ), "Exported files do not match with expected files."
@@ -313,11 +332,12 @@ def test_export_cue_editing_arguments():
 
 def test_export_cue_with_arguments():
     partiels = Partiels()
+    document = Document.load(template_beat_detection)
     export_config = ExportConfigCue(
         ignore_matrix_tracks=False, adapt_to_sample_rate=False
     )
     output = remove_and_get_output_folder(path="beat_detection/cue3")
-    partiels.export(audiofile, template_beat_detection, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_beat_detection, extension="cue"
     ), "Exported files do not match with expected files."
@@ -325,10 +345,11 @@ def test_export_cue_with_arguments():
 
 def test_export_cue_with_no_marker_template():
     partiels = Partiels()
+    document = Document.load(template_factory)
     export_config = ExportConfigCue()
     output = remove_and_get_output_folder(path="factory/cue4")
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
-        partiels.export(audiofile, template_factory, output, export_config)
+        partiels.export(audiofile, document, output, export_config)
     assert excinfo.value.returncode != 0, "Export didn't fail with no marker template"
     assert (
         sorted(os.listdir(output)) == []
@@ -337,18 +358,18 @@ def test_export_cue_with_no_marker_template():
 
 def test_export_vamp_plugins():
     partiels = Partiels()
+    document = Document.load(template_waveform_fft)
     export_config = ExportConfigImage()
     output = remove_and_get_output_folder(path="waveform_fft/jpeg")
-    partiels.export(audiofile, template_waveform_fft, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_waveform_fft, extension="jpeg"
     ), "Exported files do not match with expected files."
 
+    document = Document.load(template_harmonic_partials_tracking)
     export_config = ExportConfigJson()
     output = remove_and_get_output_folder(path="harmonic_partials_tracking/json")
-    partiels.export(
-        audiofile, template_harmonic_partials_tracking, output, export_config
-    )
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(
         os.listdir(output)
     ) == get_expected_filenames_harmonic_partials_tracking(
@@ -358,11 +379,12 @@ def test_export_vamp_plugins():
 
 def test_export_image_with_wrong_vamp_path():
     partiels = Partiels()
+    document = Document.load(template_factory)
     vamp_path = os.environ.get("VAMP_PATH", "")
     os.environ["VAMP_PATH"] = "/dummy/path/"
     output = remove_and_get_output_folder(path="factory/jpeg2")
     export_config = ExportConfigImage()
-    partiels.export(audiofile, template_factory, output, export_config)
+    partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
         filenames=expected_filenames_factory, extension="jpeg"
     ), "Exported files do not match with expected files."
@@ -374,12 +396,13 @@ def test_export_image_with_wrong_vamp_path():
 
 def test_export_vamp_plugins_with_wrong_vamp_path():
     partiels = Partiels()
+    document = Document.load(template_waveform_fft)
     vamp_path = os.environ.get("VAMP_PATH", "")
     os.environ["VAMP_PATH"] = "/dummy/path/"
     output = remove_and_get_output_folder(path="waveform_fft/error")
     export_config = ExportConfigImage()
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
-        partiels.export(audiofile, template_waveform_fft, output, export_config)
+        partiels.export(audiofile, document, output, export_config)
     assert excinfo.value.returncode != 0, "Export didn't fail with wrong VAMP_PATH"
     assert (
         sorted(os.listdir(output)) == []
