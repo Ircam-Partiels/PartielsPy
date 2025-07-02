@@ -86,7 +86,7 @@ def test_load_save():
 def export_document_with_file(
     extension: str, config: ExportConfigBase, file_info: FileInfo
 ):
-    src = root / "results" / "document_with_file" / f"src.{extension}"
+    src = root.parent / "resource" / f"marker.{extension}"
     output = (
         root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
     )
