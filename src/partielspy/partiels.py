@@ -9,8 +9,10 @@ import warnings
 from pathlib import Path
 
 import semver
+from lxml import etree
 
 from .export_configs.base import ExportConfigBase
+from .plugin_list import PluginList
 from .version import Version
 
 
@@ -25,7 +27,7 @@ class Partiels:
     If the executable is not found, it raises a RuntimeError.
     If the executable is found, its version is compared to the PartielsPy compatibility \
     version and a warning is trigger if not matching.
-    For each call to the Partiels's CLI The VAMP_PATH environment variable is set to include \
+    For each call to the Partiels's CLI, the VAMP_PATH environment variable is set to include \
     the Partiels plugins. If the VAMP_PATH environment variable is already set, it is \
     prepended to the Partiels plugins path. If not set, the default VAMP plugins directories \
     are used.
@@ -133,3 +135,17 @@ class Partiels:
         if template_path.exists():
             os.remove(template_path)
         return ret
+
+    def get_plugin_list(self) -> PluginList:
+        """Get the list of all available plugins from Partiels installed in the VAMP paths
+        (defined by the VAMP_PATH environment variable).
+
+        Returns:
+            PluginList: A :class:`partielspy.plugin_list` object containing the list of plugins
+        """
+        cmd = [self.__executable_path, "--plugin-list", "--format=xml"]
+        return PluginList._from_xml(
+            etree.fromstring(
+                subprocess.run(cmd, capture_output=True, text=False, check=True).stdout
+            )
+        )
