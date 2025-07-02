@@ -5,12 +5,14 @@ import os
 import platform
 import shutil
 import subprocess
+import tempfile
 import warnings
 from pathlib import Path
 
 import semver
 from lxml import etree
 
+from .document import Document
 from .export_configs.base import ExportConfigBase
 from .plugin_list import PluginList
 from .version import Version
@@ -110,7 +112,7 @@ class Partiels:
     def export(
         self,
         audiofile_path: str | Path,
-        template_path: str | Path,
+        document: Document,
         output_path: str | Path,
         export_config: ExportConfigBase,
     ):
@@ -118,10 +120,17 @@ class Partiels:
 
         Args:
             audiofile_path (str): the path to the audio file
-            template_path (str): the path to the template
+            document (Document): the document to export
             output_path (str): the path to the output folder
             export_config (ExportConfigBase): the export configuration
         """
+        if not isinstance(document, Document):
+            raise TypeError("Expected a Document instance")
+        if not isinstance(export_config, ExportConfigBase):
+            raise TypeError("Expected an ExportConfigBase instance")
+        with tempfile.NamedTemporaryFile(suffix=".ptldoc", delete=False) as temp_file:
+            template_path = Path(temp_file.name)
+            document.save(template_path)
         cmd = [
             self.__executable_path,
             "--export",
