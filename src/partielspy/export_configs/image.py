@@ -17,6 +17,8 @@ class ExportConfigImage(ExportConfigBase):
         height (int): the height of the image in pixels (default: 720)
         group_overlay (bool): the images of groups are exported instead of the images of tracks \
         (default: False)
+        pixels_per_inch (int) : the pixel density of the exported image in pixels per inch \
+        (default: 72)
     """
 
     class Formats(StrEnum):
@@ -31,6 +33,7 @@ class ExportConfigImage(ExportConfigBase):
         width: int = 1280,
         height: int = 720,
         group_overlay: bool = False,
+        pixels_per_inch: int = 72,
         adapt_to_sample_rate: bool = False,
     ):
         super().__init__(adapt_to_sample_rate=adapt_to_sample_rate)
@@ -38,6 +41,7 @@ class ExportConfigImage(ExportConfigBase):
         self.width = width
         self.height = height
         self.group_overlay = group_overlay
+        self.pixels_per_inch = pixels_per_inch
 
     @property
     def format(self) -> Formats:
@@ -71,12 +75,21 @@ class ExportConfigImage(ExportConfigBase):
     def group_overlay(self, value: bool):
         self.__group_overlay = value
 
+    @property
+    def pixels_per_inch(self) -> int:
+        return self.__pixels_per_inch
+
+    @pixels_per_inch.setter
+    def pixels_per_inch(self, value: int):
+        self.__pixels_per_inch = value
+
     def to_cli_args(self) -> list[str]:
         res = super().to_cli_args()
         res += [
             "--format=" + self.format.value,
             "--width=" + str(self.width),
             "--height=" + str(self.height),
+            "--ppi=" + str(self.pixels_per_inch),
         ]
         if self.__group_overlay:
             res.append("--groups")
