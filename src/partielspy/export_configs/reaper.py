@@ -9,11 +9,11 @@ class ExportConfigReaper(ExportConfigBase):
     """Reaper export configuration class
 
     This class is used to configure the export of files in Reaper format.
-    it is used in the export method of the :class:`partielspy.partiels` class.
+    it is used in the export method of the :class:`Partiels <partielspy.partiels>` class.
 
     Args:
         reaper_type (ExportConfigReaper.ReaperTypes): the type of the reaper format\
-        (default: REGION)
+        (default: ``REGION``)
     """
 
     class ReaperTypes(StrEnum):

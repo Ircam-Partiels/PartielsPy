@@ -8,10 +8,10 @@ class ExportConfigBase(ABC):
 
     This is the base class used to configure the export of the document. Is not intended to \
     be used directly but inherited by the ExportConfig classes:
-    - :class:`PartielsPy.export_configs.image`
-    - :class:`PartielsPy.export_configs.lab`
-    - :class:`PartielsPy.export_configs.reaper`
-    - :class:`PartielsPy.export_configs.text_base`
+    - :class:`ExportConfigImage <partielspy.export_configs.image>`
+    - :class:`ExportConfigLab <partielspy.export_configs.lab>`
+    - :class:`ExportConfigReaper <partielspy.export_configs.reaper>`
+    - :class:`ExportConfigTextBase <partielspy.export_configs.text_base>`
 
     Args:
         adapt_to_sample_rate (bool): the block size and the step size of the analyzes \
