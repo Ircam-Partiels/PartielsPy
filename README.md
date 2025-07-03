@@ -192,6 +192,7 @@ config = ExportConfigImage(
     width=800,                             # Image width in pixels
     height=600,                            # Image height in pixels
     group_overlay=True,                    # Overlay all analysis groups
+    pixels_per_inch=144,                   # Pixel density in in pixels per inch
     adapt_to_sample_rate=True              # Adjust analysis to sample rate
 )
 partiels.export(audio_file, template_file, output_folder, config)
