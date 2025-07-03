@@ -65,6 +65,7 @@ def test_export_image_editing_arguments():
     export_config.width = 2000
     export_config.height = 1200
     export_config.group_overlay = True
+    export_config.pixels_per_inch = 100
     output = remove_and_get_output_folder(path="factory/png")
     partiels.export(audiofile, document, output, export_config)
     assert sorted(os.listdir(output)) == get_expected_filenames(
@@ -80,6 +81,7 @@ def test_export_image_with_arguments():
         width=200,
         height=200,
         group_overlay=True,
+        pixels_per_inch=100,
         adapt_to_sample_rate=True,
     )
     output = remove_and_get_output_folder(path="factory/png2")
