@@ -10,9 +10,9 @@ class ExportConfigTextBase(ExportConfigBase):
 
     This is the base text class used to configure the export of the document. Is not intended to \
     be used directly but inherited by the ExportConfig classes:
-    - :class:`partielspy.export_configs.csv.ExportConfigCsv`
-    - :class:`partielspy.export_configs.json.ExportConfigJson`
-    - :class:`partielspy.export_configs.cue.ExportConfigCue`
+    - :class:`ExportConfigCsv <partielspy.export_configs.csv>`
+    - :class:`ExportConfigJson <partielspy.export_configs.json>`
+    - :class:`ExportConfigCue <partielspy.export_configs.cue>`
 
     Args:
         ignore_matrix_tracks (bool): the matrix tracks are ignored (default: False)

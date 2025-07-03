@@ -9,7 +9,7 @@ class ExportConfigCsv(ExportConfigTextBase):
     """CSV export configuration class
 
     This class is used to configure the export of files in CSV format.
-    It is used in the export method of the :class:`partielspy.partiels` class.
+    It is used in the export method of the :class:`Partiels <partielspy.partiels>` class.
 
     Args:
         include_header (bool): the header row is included before the data rows (default: False)

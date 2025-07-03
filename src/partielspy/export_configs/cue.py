@@ -7,7 +7,7 @@ class ExportConfigCue(ExportConfigTextBase):
     """cue export configuration class
 
     This class is used to configure the export of files in cue format.
-    It is used in the export method of the :class:`partielspy.partiels` class.
+    It is used in the export method of the :class:`Partiels <partielspy.partiels>` class.
     """
 
     def __init__(

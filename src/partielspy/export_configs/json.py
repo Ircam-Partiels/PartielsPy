@@ -7,7 +7,7 @@ class ExportConfigJson(ExportConfigTextBase):
     """JSON export configuration class
 
     This class is used to configure the export of files in JSON format.
-    It is used in the export method of the :class:`partielspy.partiels` class.
+    It is used in the export method of the :class:`Partiels <partielspy.partiels>` class.
 
     Args:
         include_plugin_description (bool): the plugin description is included (default: False)
