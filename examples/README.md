@@ -72,8 +72,8 @@ partiels-vamp-plugins:partielswaveform, peaks
 
 ### Document using Track with File Example:
 
-The example [document_track_with_csv_file.py](document_track_with_csv_file.py) shows how to set a CSV file to a track. The result is exported to the **examples/exports/document_track_with_file** folder.
+The example [document_track_with_file.py](document_track_with_file.py) shows how to set a file to a track. The result is exported to the **examples/exports/document_track_with_file** folder.
 
 ```sh
-python3 examples/document_track_with_csv_file.py
+python3 examples/document_track_with_file.py
 ```
