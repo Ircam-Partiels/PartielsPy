@@ -4,9 +4,7 @@ import copy
 
 from lxml import etree
 
-from .file_info.base import FileInfo
-from .file_info.csv import FileInfoCsv
-from .file_info.lab import FileInfoLab
+from .file_info import FileInfo
 from .plugin_key import PluginKey
 from .version import Version
 
@@ -68,10 +66,7 @@ class Track:
             node.remove(plugin_key_node)
         file_node = node.find("file")
         if file_node is not None:
-            if file_node.get("path", "").endswith((".csv")):
-                self.file_info = FileInfoCsv()
-            if file_node.get("path", "").endswith((".lab")):
-                self.file_info = FileInfoLab()
+            self.file_info = FileInfo()
             self.file_info._from_xml(file_node)
             node.remove(file_node)
         self.__xml_node = copy.deepcopy(node)
