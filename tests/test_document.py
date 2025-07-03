@@ -83,9 +83,7 @@ def test_load_save():
             assert ef.read() == rf.read(), f"File {expected_file} contents do not match"
 
 
-def export_document_with_file(
-    extension: str, config: ExportConfigBase, file_info: FileInfo
-):
+def export_document_with_file(extension: str, config: ExportConfigBase):
     src = root.parent / "resource" / f"marker.{extension}"
     output = (
         root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
@@ -95,7 +93,7 @@ def export_document_with_file(
     document = Document()
     group = Group("Group")
     track = Track("Track")
-    track.file_info = file_info(src)
+    track.file_info = FileInfo(src)
     document.add_group(group)
     group.add_track(track)
 
@@ -110,16 +108,16 @@ def export_document_with_file(
 
 
 def test_document_with_file_csv():
-    export_document_with_file("csv", ExportConfigCsv(), FileInfoCsv)
+    export_document_with_file("csv", ExportConfigCsv())
 
 
 def test_document_with_file_lab():
-    export_document_with_file("lab", ExportConfigLab(), FileInfoLab)
+    export_document_with_file("lab", ExportConfigLab())
 
 
 def test_document_with_file_json():
-    export_document_with_file("json", ExportConfigJson(), FileInfo)
+    export_document_with_file("json", ExportConfigJson())
 
 
 def test_document_with_file_cue():
-    export_document_with_file("cue", ExportConfigCue(), FileInfo)
+    export_document_with_file("cue", ExportConfigCue())
