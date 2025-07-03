@@ -15,7 +15,7 @@ class Version:
     to create a single integer value.
     """
 
-    __compatibility_version = "2.1.0-dev2"
+    __compatibility_version = "2.1.0-dev4"
 
     @staticmethod
     def get_compatibility_version() -> str:
