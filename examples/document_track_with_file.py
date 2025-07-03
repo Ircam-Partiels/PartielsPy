@@ -10,7 +10,7 @@ partiels = Partiels()
 document = Document()
 group = Group("Group")
 track = Track("Track")
-track.file_info = FileInfoCsv(resource / "marker.csv")
+track.file_info = FileInfo(resource / "marker.csv")
 group.add_track(track)
 document.add_group(group)
 
