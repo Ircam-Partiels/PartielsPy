@@ -9,7 +9,7 @@ class ExportConfigImage(ExportConfigBase):
     """Image export configuration class
 
     This class is used to configure the export of files in image formats.
-    It is used in the export method of the :class:`PartielsPy.partiels` class.
+    It is used in the export method of the :class:`Partiels <partielspy.partiels>` class.
 
     Args:
         format (Formats): the format of the image (default: Formats.JPEG)
