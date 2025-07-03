@@ -29,10 +29,8 @@ class Partiels:
     If the executable is not found, it raises a RuntimeError.
     If the executable is found, its version is compared to the PartielsPy compatibility \
     version and a warning is trigger if not matching.
-    For each call to the Partiels's CLI, the VAMP_PATH environment variable is set to include \
-    the Partiels plugins. If the VAMP_PATH environment variable is already set, it is \
-    prepended to the Partiels plugins path. If not set, the default VAMP plugins directories \
-    are used.
+    If the VAMP_PATH environment variable is set, it will be used to find the VAMP plugins. \
+    If not set, the default VAMP plugins directories will be used.
     """
 
     def __init__(self):
@@ -120,9 +118,10 @@ class Partiels:
 
         Args:
             audiofile_path (str): the path to the audio file
-            document (Document): the document to export
+            document (:class:`Document <partielspy.document>`): the document to export
             output_path (str): the path to the output folder
-            export_config (ExportConfigBase): the export configuration
+            export_config (:class:`ExportConfig <partielspy.export_configs.base>`): \
+            the export configuration
         """
         if not isinstance(document, Document):
             raise TypeError("Expected a Document instance")
@@ -150,7 +149,8 @@ class Partiels:
         (defined by the VAMP_PATH environment variable).
 
         Returns:
-            PluginList: A :class:`partielspy.plugin_list` object containing the list of plugins
+            PluginList: A :class:`PluginList <partielspy.plugin_list>` object containing \
+            the list of plugins
         """
         cmd = [self.__executable_path, "--plugin-list", "--format=xml"]
         return PluginList._from_xml(
