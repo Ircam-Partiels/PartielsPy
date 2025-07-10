@@ -2,9 +2,7 @@ __pycache__/
 .venv
 *.egg-info
 dist
-docs/*
-!docs/index.rst
-!docs/conf.py
+docs/_build
 tests/exports
 examples/exports
 tests/templates

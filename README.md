@@ -83,7 +83,6 @@ The documentation is built using Sphinx. After running the commands below, gener
 cd PartielsPy
 source .venv/bin/activate  # Activate the virtual environment
 pip install sphinx furo
-sphinx-apidoc -o ./docs ./src/partielspy ./src/partielspy/templates/*
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 
@@ -92,7 +91,6 @@ sphinx-build -b html ./docs ./docs/_build/html
 cd PartielsPy
 .venv\Scripts\activate  # Activate the virtual environment
 pip install sphinx furo
-sphinx-apidoc -o ./docs ./src/partielspy ./src/partielspy/templates/*
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 
