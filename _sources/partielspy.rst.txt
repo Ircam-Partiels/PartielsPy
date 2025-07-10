@@ -1,4 +1,4 @@
-partielspy package
+PartielsPy package
 ==================
 
 Submodules
