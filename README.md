@@ -2,6 +2,8 @@
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/Ircam-Partiels/PartielsPy/actions/workflows/ci.yml/badge.svg)](https://github.com/Ircam-Partiels/PartielsPy/actions/workflows/ci.yml)
+[![Documentation](https://img.shields.io/badge/Documentation-green.svg)](https://ircam-partiels.github.io/PartielsPy/)
 
 A Python wrapper for **[Partiels](https://github.com/Ircam-Partiels/Partiels)** — a powerful audio analysis toolkit for spectral processing and transformation.
 
