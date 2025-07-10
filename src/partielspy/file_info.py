@@ -16,21 +16,21 @@ class FileInfo:
     and .cue).
     If the file path is defined, the track will use file instead of performing the analysis
     on the audio data.
-    The columns_separator and use_end_time arguments shoud only be used for CSV files.
+    The csv_columns_separator and csv_use_end_time arguments should only be used for CSV files.
 
     Args:
         path (Path | str): The path to the file associated with the track (default: "")
-        columns_separator (FileInfo.Separators): The separator used in the CSV file
+        csv_columns_separator (FileInfo.CsvColumnSeparators): The separator used in the CSV file
             (default: ``COMMA``)
-        use_end_time (bool): Whether to use the end time in the CSV file (default: False)
+        csv_use_end_time (bool): Whether to use the end time in the CSV file (default: False)
      Raises:
             ValueError: If the file is not empty and doesn't exist.
             TypeError: If the file extension is not supported.
-            TypeError: If the columns_separator or use_end_time is set for non-CSV files
+            TypeError: If the csv_columns_separator or csv_use_end_time is set for non-CSV files
     """
 
-    class Separators(StrEnum):
-        """Enum for the columns separator"""
+    class CsvColumnSeparators(StrEnum):
+        """Enum for the CSV column separators"""
 
         COMMA = ","
         SPACE = " "
@@ -42,11 +42,13 @@ class FileInfo:
     def __init__(
         self,
         path: Path | str = "",
-        columns_separator: Separators = None,
-        use_end_time: bool = None,
+        csv_columns_separator: CsvColumnSeparators = None,
+        csv_use_end_time: bool = None,
     ):
         self.__set_and_validate_member_values(
-            path=path, columns_separator=columns_separator, use_end_time=use_end_time
+            path=path,
+            csv_columns_separator=csv_columns_separator,
+            csv_use_end_time=csv_use_end_time,
         )
         self.__xml_node = etree.Element("file")
 
@@ -58,32 +60,32 @@ class FileInfo:
     def path(self, value: Path | str):
         self.__set_and_validate_member_values(
             path=value,
-            columns_separator=self.__columns_separator,
-            use_end_time=self.__use_end_time,
+            csv_columns_separator=self.__csv_columns_separator,
+            csv_use_end_time=self.__csv_use_end_time,
         )
 
     @property
-    def columns_separator(self) -> Separators:
-        return self.__columns_separator
+    def csv_columns_separator(self) -> CsvColumnSeparators:
+        return self.__csv_columns_separator
 
-    @columns_separator.setter
-    def columns_separator(self, columns_separator: Separators):
+    @csv_columns_separator.setter
+    def csv_columns_separator(self, csv_columns_separator: CsvColumnSeparators):
         self.__set_and_validate_member_values(
             path=self.__path,
-            columns_separator=columns_separator,
-            use_end_time=self.__use_end_time,
+            csv_columns_separator=csv_columns_separator,
+            csv_use_end_time=self.__csv_use_end_time,
         )
 
     @property
-    def use_end_time(self) -> bool:
-        return self.__use_end_time
+    def csv_use_end_time(self) -> bool:
+        return self.__csv_use_end_time
 
-    @use_end_time.setter
-    def use_end_time(self, use_end_time: bool):
+    @csv_use_end_time.setter
+    def csv_use_end_time(self, csv_use_end_time: bool):
         self.__set_and_validate_member_values(
             path=self.__path,
-            columns_separator=self.__columns_separator,
-            use_end_time=use_end_time,
+            csv_columns_separator=self.__csv_columns_separator,
+            csv_use_end_time=csv_use_end_time,
         )
 
     def _from_xml(self, node: etree.Element):
@@ -94,9 +96,11 @@ class FileInfo:
                 pair.get("key"): pair.get("value") for pair in args_node.findall("pair")
             }
             if "separator" in pairs:
-                self.__columns_separator = FileInfo.Separators(pairs.get("separator"))
+                self.__csv_columns_separator = FileInfo.CsvColumnSeparators(
+                    pairs.get("separator")
+                )
             if "useendtime" in pairs:
-                self.__use_end_time = pairs.get("useendtime") == "true"
+                self.__csv_use_end_time = pairs.get("useendtime") == "true"
             node.remove(args_node)
         self.__xml_node = copy.deepcopy(node)
 
@@ -104,16 +108,16 @@ class FileInfo:
         node = copy.deepcopy(self.__xml_node)
         node.set("path", self.__path)
         args_node = etree.Element("args")
-        if self.__columns_separator is not None:
+        if self.__csv_columns_separator is not None:
             args_node.append(
                 etree.Element(
-                    "pair", key="separator", value=self.__columns_separator.value
+                    "pair", key="separator", value=self.__csv_columns_separator.value
                 )
             )
-        if self.__use_end_time is not None:
+        if self.__csv_use_end_time is not None:
             args_node.append(
                 etree.Element(
-                    "pair", key="useendtime", value=str(self.__use_end_time).lower()
+                    "pair", key="useendtime", value=str(self.__csv_use_end_time).lower()
                 )
             )
         if len(args_node) > 0:
@@ -123,8 +127,8 @@ class FileInfo:
     def __set_and_validate_member_values(
         self,
         path: Path | str = "",
-        columns_separator: Separators = None,
-        use_end_time: bool = None,
+        csv_columns_separator: CsvColumnSeparators = None,
+        csv_use_end_time: bool = None,
     ):
         """Set the member and validate the file information."""
         path = str(path)
@@ -144,35 +148,37 @@ class FileInfo:
         self.__path = path
         if self.path.endswith(".csv"):
             # Set the columns separator (use COMMA by default)
-            if columns_separator is None:
-                self.__columns_separator = FileInfo.Separators.COMMA
-            elif isinstance(columns_separator, FileInfo.Separators):
-                self.__columns_separator = columns_separator
+            if csv_columns_separator is None:
+                self.__csv_columns_separator = FileInfo.CsvColumnSeparators.COMMA
+            elif isinstance(csv_columns_separator, FileInfo.CsvColumnSeparators):
+                self.__csv_columns_separator = csv_columns_separator
             else:
                 raise TypeError(
-                    f"The columns_separator must be an instance of FileInfo.Separators, \
-                        got '{columns_separator}'"
+                    f"The csv_columns_separator must be an instance of \
+                        '{FileInfo.CsvColumnSeparators}', got '{csv_columns_separator}'"
                 )
-            self.__use_end_time = use_end_time if use_end_time is not None else False
+            self.__csv_use_end_time = (
+                csv_use_end_time if csv_use_end_time is not None else False
+            )
         elif self.path.endswith(".lab"):
             if (
-                columns_separator is not None
-                and columns_separator != FileInfo.Separators.TAB
+                csv_columns_separator is not None
+                and csv_columns_separator != FileInfo.CsvColumnSeparators.TAB
             ):
                 raise ValueError(
-                    f"The column_separator must be '{FileInfo.Separators.TAB}' for LAB files, \
-                        got '{columns_separator}'"
+                    f"The csv_columns_separator must be '{FileInfo.CsvColumnSeparators.TAB}' \
+                        for LAB files, got '{csv_columns_separator}'"
                 )
-            if use_end_time is not None and not use_end_time:
+            if csv_use_end_time is not None and not csv_use_end_time:
                 raise ValueError(
-                    f"The use_end_time must be 'True' for LAB files, got '{use_end_time}'"
+                    f"The csv_use_end_time must be 'True' for LAB files, got '{csv_use_end_time}'"
                 )
-            self.__columns_separator = FileInfo.Separators.TAB
-            self.__use_end_time = True
+            self.__csv_columns_separator = FileInfo.CsvColumnSeparators.TAB
+            self.__csv_use_end_time = True
         else:
-            if columns_separator is not None:
-                raise TypeError("The column_separator is only used for CSV files")
-            if use_end_time is not None:
-                raise TypeError("The use_end_time is only used for CSV files")
-            self.__columns_separator = None
-            self.__use_end_time = None
+            if csv_columns_separator is not None:
+                raise TypeError("The csv_columns_separator is only used for CSV files")
+            if csv_use_end_time is not None:
+                raise TypeError("The csv_use_end_time is only used for CSV files")
+            self.__csv_columns_separator = None
+            self.__csv_use_end_time = None
