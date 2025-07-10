@@ -62,7 +62,7 @@ python3 -m venv .venv
 source .venv/bin/activate  # Activate the virtual environment
 pip install build
 python -m build
-pip install dist/partielspy-0.1.0-py3-none-any.whl
+pip install dist/partielspy-*.whl
 ```
 
 **Windows**
@@ -71,7 +71,7 @@ py -m venv .venv
 .venv\Scripts\activate  # Activate the virtual environment
 pip install build
 python -m build
-pip install dist\partielspy-0.1.0-py3-none-any.whl
+pip install dist\partielspy-*.whl
 ```
 
 ## Documentation
@@ -83,7 +83,7 @@ The documentation is built using Sphinx. After running the commands below, gener
 cd PartielsPy
 source .venv/bin/activate  # Activate the virtual environment
 pip install sphinx furo
-sphinx-apidoc -o ./docs ./src/partielspy --private --separate --force --no-toc
+sphinx-apidoc -o ./docs ./src/partielspy ./src/partielspy/templates/*
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 
@@ -92,7 +92,7 @@ sphinx-build -b html ./docs ./docs/_build/html
 cd PartielsPy
 .venv\Scripts\activate  # Activate the virtual environment
 pip install sphinx furo
-sphinx-apidoc -o ./docs ./src/partielspy --private --separate --force --no-toc
+sphinx-apidoc -o ./docs ./src/partielspy ./src/partielspy/templates/*
 sphinx-build -b html ./docs ./docs/_build/html
 ```
 
@@ -147,174 +147,48 @@ PartielsPy logging only uses the DEBUG level. To disable the debug messages you 
 
 PartielsPy provides a simple, flexible API for analyzing audio files and exporting the results in various formats. Here are some examples showing how to use the library, you can find more practical examples **[here](examples)**.
 
-### Basic Setup
+### Example of document export
 
 ```python
-from partielspy import Partiels
+from partielspy import Partiels, Document, ExportConfig
 
 # Initialize the Partiels wrapper
 partiels = Partiels()
 
-# Define paths for your files
-audio_file = "path/to/audiofile.wav"
-template_file = "path/to/template.ptldoc"
-output_folder = "path/to/output"
-```
+# Load the document from a Partiels document
+document = Document.load("path/to/template.ptldoc")
 
-### Catching Export Errors
+# Configure the export in the PNG format (the export format can be CSV, LAB, CUE, REAPER, JSON, PNG or JPG)
+export_config = ExportConfig(
+    format=ExportConfig.Formats.PNG,    # Format
+    image_width=800,                    # Image width in pixels
+    image_height=600,                   # Image height in pixels
+    image_ppi=144,                      # Image pixel density in pixels per inch
+    image_group_overlay=True            # Overlay all analysis groups
+)
 
-If the export process fails, `PartielsPy` raises a `subprocess.CalledProcessError`.  
-You can catch and handle this exception to inspect error details:
-
-```python
-from partielspy import Document, ExportConfigImage
-
-document = Document.load(template_file)
+# Analyze and export the results
 try:
-    partiels.export(audio_file, document, output_folder, ExportConfigImage())
+    partiels.export("path/to/audiofile.wav", document, "path/to/output", export_config)
 except subprocess.CalledProcessError as e:
     print(e.stderr)  # Prints detailed error message from the export process
-```
 
-### Image Export
-
-Export analysis as visual representations:
-
-```python
-from partielspy import Document, ExportConfigImage
-
-# Simple export with default settings
-document = Document.load(template_file)
-config = ExportConfigImage()
-partiels.export(audio_file, document, output_folder, config)
-
-# Customized image export
-config = ExportConfigImage(
-    format=ExportConfigImage.Formats.PNG,  # Set image format (PNG, JPG, etc)
-    width=800,                             # Image width in pixels
-    height=600,                            # Image height in pixels
-    group_overlay=True,                    # Overlay all analysis groups
-    pixels_per_inch=144,                   # Pixel density in in pixels per inch
-    adapt_to_sample_rate=True              # Adjust analysis to sample rate
+# Configure the export in the CSV format
+export_config = ExportConfig(
+    format=ExportConfig.Formats.CSV,                                # Format
+    csv_include_header=True,                                        # Include CSV column headers
+    csv_columns_separator=ExportConfig.CsvColumnSeparators.COMMA,   # Use comma as CSV column separators
+    ignore_matrix_tracks=True                                       # Skip matrix tracks
 )
-partiels.export(audio_file, document, output_folder, config)
+
+# Analyze and export the results
+try:
+    partiels.export("path/to/audiofile.wav", document, "path/to/output", export_config)
+except subprocess.CalledProcessError as e:
+    print(e.stderr)  # Prints detailed error message from the export process  
 ```
 
-### Structured Data Exports
-
-#### CSV Export
-
-Export analysis data in tabular format:
-
-```python
-from partielspy import Document, ExportConfigCsv
-
-document = Document.load(template_file)
-# Export with custom CSV settings
-config = ExportConfigCsv(
-    include_header=True,                         # Include column headers
-    columns_separator=ExportConfigCsv.Separators.COMMA,  # Use comma as separator
-    ignore_matrix_tracks=True,                   # Skip matrix data
-    adapt_to_sample_rate=True                    # Adjust to audio sample rate
-)
-partiels.export(audio_file, document, output_folder, config)
-```
-
-#### JSON Export
-
-Export analysis as structured JSON data:
-
-```python
-from partielspy import Document, ExportConfigJson
-
-document = Document.load(template_file)
-# Export with custom JSON settings
-config = ExportConfigJson(
-    include_plugin_description=True,  # Include details about processing plugins
-    ignore_matrix_tracks=True,        # Exclude matrix track data
-    adapt_to_sample_rate=True         # Adjust analysis to sample rate
-)
-partiels.export(audio_file, document, output_folder, config)
-```
-
-### Timeline Exports
-
-#### CUE File Export
-
-Generate CUE files for CD authoring or audio marking:
-
-```python
-from partielspy import Document, ExportConfigCue
-
-document = Document.load(template_file)
-# Export with custom CUE settings
-config = ExportConfigCue(
-    ignore_matrix_tracks=True,   # Skip matrix data
-    adapt_to_sample_rate=True    # Adjust to audio sample rate
-)
-partiels.export(audio_file, document, output_folder, config)
-```
-
-#### LAB File Export
-
-Create label files compatible with various audio editors:
-
-```python
-from partielspy import Document, ExportConfigLab
-
-document = Document.load(template_file)
-# Export with custom LAB settings
-config = ExportConfigLab(adapt_to_sample_rate=True)
-partiels.export(audio_file, document, output_folder, config)
-```
-
-#### Reaper Project Export
-
-Generate files for direct import into Reaper DAW:
-
-```python
-from partielspy import Document, ExportConfigReaper
-
-document = Document.load(template_file)
-# Export with custom Reaper settings
-config = ExportConfigReaper(
-    reaper_type=ExportConfigReaper.ReaperTypes.MARKER,  # Export as Reaper markers
-    adapt_to_sample_rate=True                          # Adjust to audio sample rate
-)
-partiels.export(audio_file, document, output_folder, config)
-```
-
-### Working with Multiple Export Types
-
-You can process a single audio file with multiple export configurations:
-
-```python
-from partielspy import Document, ExportConfigImage, ExportConfigCsv, ExportConfigJson
-
-document = Document.load(template_file)
-# Export in multiple formats
-partiels.export(audio_file, document, output_folder, ExportConfigImage())
-partiels.export(audio_file, document, output_folder, ExportConfigCsv())
-partiels.export(audio_file, document, output_folder, ExportConfigJson())
-```
-
-### Working with Multiple Audio Files and Templates
-
-You can process multiple audio files or templates with a single export configurations:
-
-```python
-from partielspy import Document, ExportConfigImage
-
-config = ExportConfigImage()
-# Export mutiple audio files and templates with a single export format
-document = Document.load(template_file_1)
-partiels.export(audio_file_1, document, output_folder, config)
-partiels.export(audio_file_2, document, output_folder, config)
-document = Document.load(template_file_2)
-partiels.export(audio_file_3, document, output_folder, config)
-```
-
-### Document Example
+### Example of document editing
 ```python
 from partielspy import *
 
@@ -324,13 +198,13 @@ document = Document()
 # Create a Group
 group = Group("Group")
 
-# Create a Track and set the plugin_key
+# Create a Track with a plugin
 track_1 = Track("Track With Plugin")
 track_1.plugin_key = PluginKey("plugin-identifier", "plugin-feature")
 
-# Create a Track and set the file_info
+# Create a Track and with a precomputed file
 track_2 = Track("Track With File")
-track_2.file_info = FileInfo("path/to/import/file")
+track_2.file_info = FileInfo("path/to/import/file.csv")
 
 # Add Tracks to the group
 group.add_track(track_1)
@@ -339,10 +213,9 @@ group.add_track(track_2)
 # Add Group to the Document
 document.add_group(group)
 
-# Save the Document to an XML (.ptldoc) file
-document.save("path/to/save/file.ptldoc")
-
 # Export the Document as CSV and JPEG
-partiels.export(audio_file, document, output_folder, ExportConfigCsv())
-partiels.export(audio_file, document, output_folder, ExportConfigImage())
+partiels.export("path/to/audiofile.wav", document, "path/to/output", ExportConfig(format=ExportConfig.Formats.JSON))
+
+# Save the Document to an XML (.ptldoc) file for later
+document.save("path/to/save/file.ptldoc")
 ```
