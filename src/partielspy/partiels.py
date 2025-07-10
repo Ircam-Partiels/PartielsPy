@@ -13,7 +13,7 @@ import semver
 from lxml import etree
 
 from .document import Document
-from .export_configs.base import ExportConfigBase
+from .export_config import ExportConfig
 from .plugin_list import PluginList
 from .version import Version
 
@@ -112,7 +112,7 @@ class Partiels:
         audiofile_path: str | Path,
         document: Document,
         output_path: str | Path,
-        export_config: ExportConfigBase,
+        export_config: ExportConfig,
     ):
         """Export the audiofile with the template and export configuration
 
@@ -120,13 +120,13 @@ class Partiels:
             audiofile_path (str): the path to the audio file
             document (:class:`Document <partielspy.document>`): the document to export
             output_path (str): the path to the output folder
-            export_config (:class:`ExportConfig <partielspy.export_configs.base>`): \
+            export_config (:class:`ExportConfig <partielspy.export_config>`): \
             the export configuration
         """
         if not isinstance(document, Document):
             raise TypeError("Expected a Document instance")
-        if not isinstance(export_config, ExportConfigBase):
-            raise TypeError("Expected an ExportConfigBase instance")
+        if not isinstance(export_config, ExportConfig):
+            raise TypeError("Expected an ExportConfig instance")
         with tempfile.NamedTemporaryFile(suffix=".ptldoc", delete=False) as temp_file:
             template_path = Path(temp_file.name)
             document.save(template_path)

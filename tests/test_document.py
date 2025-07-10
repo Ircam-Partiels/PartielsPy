@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from partielspy import *
-from partielspy.export_configs.base import ExportConfigBase
+from partielspy.export_config import ExportConfig
 
 root = Path(__file__).parent
 
@@ -69,7 +69,7 @@ def test_load_save():
     result_export_dir = export_dir / "result"
     expected_files = ["Sound Group 1_Spectrogram.csv", "Sound Group 2_Waveform.csv"]
     partiels = Partiels()
-    config = ExportConfigCsv()
+    config = ExportConfig(format=ExportConfig.Formats.CSV)
     document = Document.load(input_file)
     partiels.export(audio_file, document, expected_export_dir, config)
     document = Document.load(output_file)
@@ -83,7 +83,7 @@ def test_load_save():
             assert ef.read() == rf.read(), f"File {expected_file} contents do not match"
 
 
-def export_document_with_file(extension: str, config: ExportConfigBase):
+def export_document_with_file(extension: str, config: ExportConfig):
     src = root.parent / "resource" / f"marker.{extension}"
     output = (
         root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
@@ -108,16 +108,16 @@ def export_document_with_file(extension: str, config: ExportConfigBase):
 
 
 def test_document_with_file_csv():
-    export_document_with_file("csv", ExportConfigCsv())
+    export_document_with_file("csv", ExportConfig(format=ExportConfig.Formats.CSV))
 
 
 def test_document_with_file_lab():
-    export_document_with_file("lab", ExportConfigLab())
+    export_document_with_file("lab", ExportConfig(format=ExportConfig.Formats.LAB))
 
 
 def test_document_with_file_json():
-    export_document_with_file("json", ExportConfigJson())
+    export_document_with_file("json", ExportConfig(format=ExportConfig.Formats.JSON))
 
 
 def test_document_with_file_cue():
-    export_document_with_file("cue", ExportConfigCue())
+    export_document_with_file("cue", ExportConfig(format=ExportConfig.Formats.CUE))

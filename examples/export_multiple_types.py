@@ -9,6 +9,12 @@ output_folder = root / "examples" / "exports" / "multiple"
 
 partiels = Partiels()
 document = Document.load(template_file)
-partiels.export(audio_file, document, output_folder, ExportConfigImage())
-partiels.export(audio_file, document, output_folder, ExportConfigCsv())
-partiels.export(audio_file, document, output_folder, ExportConfigJson())
+partiels.export(
+    audio_file, document, output_folder, ExportConfig(format=ExportConfig.Formats.JPEG)
+)
+partiels.export(
+    audio_file, document, output_folder, ExportConfig(format=ExportConfig.Formats.CSV)
+)
+partiels.export(
+    audio_file, document, output_folder, ExportConfig(format=ExportConfig.Formats.JSON)
+)
