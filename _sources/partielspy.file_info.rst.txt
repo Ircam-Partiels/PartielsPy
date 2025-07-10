@@ -1,0 +1,37 @@
+partielspy.file\_info package
+=============================
+
+Submodules
+----------
+
+partielspy.file\_info.base module
+---------------------------------
+
+.. automodule:: partielspy.file_info.base
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+partielspy.file\_info.csv module
+--------------------------------
+
+.. automodule:: partielspy.file_info.csv
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+partielspy.file\_info.lab module
+--------------------------------
+
+.. automodule:: partielspy.file_info.lab
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: partielspy.file_info
+   :members:
+   :show-inheritance:
+   :undoc-members:
