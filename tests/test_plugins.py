@@ -47,7 +47,7 @@ def test_create_document_with_factory_plugins():
     export_output = root / "exports" / "test_factory_creation"
     export_output_expected = export_output / "expected"
     export_output_result = export_output / "result"
-    export_config = ExportConfigCsv()
+    export_config = ExportConfig(format=ExportConfig.Formats.CSV)
     document = Document.load(template_factory)
     partiels.export(audio_file, document, export_output_expected, export_config)
     document = Document.load(template_output)

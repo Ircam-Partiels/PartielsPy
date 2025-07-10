@@ -9,7 +9,7 @@ template_file = root / "templates" / "factory.ptldoc"
 output_folder = root / "examples" / "exports" / "CSV"
 
 partiels = Partiels()
-config = ExportConfigCsv(include_header=True)
+config = ExportConfig(format=ExportConfig.Formats.CSV, csv_include_header=True)
 document = Document.load(template_file)
 partiels.export(audio_file, document, output_folder, config)
 exported_csv_waveform_path = output_folder / "Sound Group 2_Waveform.csv"
