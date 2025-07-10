@@ -3,9 +3,9 @@ from pathlib import Path
 
 from partielspy import *
 
-root = Path(__file__).parent
+root = Path(__file__).parent.parent
 
-doc = Document()
+doc = Document(root / "resource" / "Sound.wav")
 group = Group("My Group")
 track = Track("My Track")
 
@@ -24,6 +24,6 @@ track_copy_copy.name = "Another Track Name"
 group_copy.add_track(track_copy_copy)
 doc.add_group(group_copy)
 
-filepath = root / "templates" / "example.xml"
+filepath = root / "examples" / "exports" / "documents" / "example.ptldoc"
 Path(filepath).parent.mkdir(parents=True, exist_ok=True)
 doc.save(filepath)

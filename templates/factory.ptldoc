@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<document MiscModelVersion="131082" viewport_x="0" viewport_y="0" path="/home/toto/Bureau/IRCAM/Projects/factory.ptldoc"
-          grid="1" autoresize="1" samplerate="44100.0" channels="2">
+<document MiscModelVersion="131328" viewport_x="0" viewport_y="0" path="/Users/guillot/Git/PartielsPy/templates/factory.ptldoc"
+          grid="1" autoresize="1" samplerate="44100.0" channels="1">
   <reader>
-    <value file="" channel="0"/>
+    <value file="/Users/guillot/Git/PartielsPy/resource/Sound.wav" channel="0"/>
   </reader>
   <layout value="1bc377ad28a84702b8a33231b2cd6d21"/>
   <layout value="2c15a17d1fae45e8a18a524f934532cf"/>
-  <timeZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="179.0103854875283"
+  <timeZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
             minimumLength="0.01160997732426304" visibleRange_start="0.0"
-            visibleRange_end="179.0103854875283">
-    <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="0"
+            visibleRange_end="1.0">
+    <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="0"
           tickPowerBase="2.0" tickDivisionFactor="10.0"/>
   </timeZoom>
-  <transport MiscModelVersion="131082" startPlayhead="14.6889894367685" looping="0"
-             loopRange_start="0.0" loopRange_end="0.0" stopAtLoopEnd="0" autoScroll="1"
-             gain="1.0" magnetize="1"/>
-  <groups MiscModelVersion="131082" identifier="2c15a17d1fae45e8a18a524f934532cf"
-          name="Group 1" height="496" colour="0" expanded="0" referenceid="">
+  <transport MiscModelVersion="131328" startPlayhead="0.2403156384505022"
+             looping="0" loopRange_start="0.0" loopRange_end="0.0" stopAtLoopEnd="0"
+             autoScroll="1" gain="1.0" magnetize="1"/>
+  <groups MiscModelVersion="131328" identifier="2c15a17d1fae45e8a18a524f934532cf"
+          name="Group 1" height="374" colour="0" expanded="0" referenceid="">
     <layout value="099f291fb42e471cbbb641c893d1b33e"/>
-    <zoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <zoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
           minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </zoom>
   </groups>
-  <groups MiscModelVersion="131082" identifier="1bc377ad28a84702b8a33231b2cd6d21"
-          name="Group 2" height="496" colour="0" expanded="0" referenceid="">
+  <groups MiscModelVersion="131328" identifier="1bc377ad28a84702b8a33231b2cd6d21"
+          name="Group 2" height="374" colour="0" expanded="0" referenceid="">
     <layout value="4dc11944062f4eafbeb5717a8fca099b"/>
-    <zoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <zoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
           minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </zoom>
   </groups>
-  <tracks MiscModelVersion="131082" identifier="4dc11944062f4eafbeb5717a8fca099b"
-          name="Waveform" input="" sampleRate="48000.0" height="217" font="Nunito Sans; 14.0 Regular"
+  <tracks MiscModelVersion="131328" identifier="4dc11944062f4eafbeb5717a8fca099b"
+          name="Waveform" input="" sampleRate="44100.0" height="217" font="Nunito Sans; 14.0 Regular"
           lineWidth="1.0" showInGroup="1" sendViaOsc="0" zoomValueMode="1"
           zoomLogScale="0" zoomLink="1">
     <file path="" commit="">
       <args/>
     </file>
-    <description name="Waveform" inputDomain="0" maker="Factory" version="1" category="Visualisation"
+    <description name="Waveform" inputDomain="0" maker="Factory" version="1" category=""
                  details="Display the waveform of the audio.&#10;Partiels factory plugin.">
       <defaultState blockSize="1024" stepSize="0" windowType="3"/>
       <output identifier="peaks" name="Peak" description="Peak from the input signal"
@@ -59,28 +59,27 @@
              text="0" shadow="ff000000"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="-1.0" globalRange_end="1.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="-1.0" globalRange_end="1.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="-1.0"
                visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="099f291fb42e471cbbb641c893d1b33e"
-          name="Spectrogram" input="" sampleRate="48000.0" height="217"
+  <tracks MiscModelVersion="131328" identifier="099f291fb42e471cbbb641c893d1b33e"
+          name="Spectrogram" input="" sampleRate="44100.0" height="217"
           font="Nunito Sans; 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
     <file path="" commit="">
       <args/>
     </file>
     <description name="Spectrogram" inputDomain="1" maker="Factory" version="1"
-                 category="Visualisation" details="Display the spectrogram of the audio.&#10;Partiels factory plugin.">
+                 category="" details="Display the spectrogram of the audio.&#10;Partiels factory plugin.">
       <defaultState blockSize="1024" stepSize="512" windowType="3"/>
       <output identifier="energies" name="Energy" description="Energy from the input signal"
               unit="dB" hasFixedBinCount="1" binCount="513" hasKnownExtents="1"
@@ -611,16 +610,15 @@
              text="ff000000" shadow="ff000000"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="-120.0" globalRange_end="12.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="-120.0" globalRange_end="12.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="-120.0"
                visibleRange_end="12.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="513.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="513.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="513.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>

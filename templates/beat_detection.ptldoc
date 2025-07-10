@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<document MiscModelVersion="131081" grid="1">
-
+<document MiscModelVersion="131328" viewport_x="0" viewport_y="0" path="/Users/guillot/Git/PartielsPy/templates/beat_detection.ptldoc"
+          grid="1" autoresize="0" samplerate="44100.0" channels="1">
+  <reader>
+    <value file="/Users/guillot/Git/PartielsPy/resource/Sound.wav" channel="0"/>
+  </reader>
   <layout value="2a93e4ac88a54ca0900d76d5c5482ca5"/>
-
-  <groups MiscModelVersion="131081" identifier="2a93e4ac88a54ca0900d76d5c5482ca5"
-          name="Group 1" height="144" colour="0" expanded="1" referenceid="">
+  <timeZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
+            minimumLength="0.01160997732426304" visibleRange_start="0.0"
+            visibleRange_end="1.0">
+    <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="0"
+          tickPowerBase="2.0" tickDivisionFactor="10.0"/>
+  </timeZoom>
+  <transport MiscModelVersion="131328" startPlayhead="0.1779053084648494"
+             looping="0" loopRange_start="0.0" loopRange_end="0.0" stopAtLoopEnd="0"
+             autoScroll="1" gain="1.0" magnetize="0"/>
+  <groups MiscModelVersion="131328" identifier="2a93e4ac88a54ca0900d76d5c5482ca5"
+          name="Group 1" height="748" colour="0" expanded="0" referenceid="">
     <layout value="ee3b81fbb6db40879bd2e9904e2cfe99"/>
-    <zoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="1.0"
+    <zoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
           minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </zoom>
   </groups>
-
-  <tracks MiscModelVersion="131081" identifier="ee3b81fbb6db40879bd2e9904e2cfe99"
-          name="Beat Detection" input="" sampleRate="48000.0" height="120"
+  <tracks MiscModelVersion="131328" identifier="ee3b81fbb6db40879bd2e9904e2cfe99"
+          name="Beat Detection" input="" sampleRate="44100.0" height="120"
           font="Nunito Sans; 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="0" zoomLogScale="0" zoomLink="1">
     <file path="" commit="">
@@ -73,16 +83,17 @@
     </state>
     <colours map="7" background="0" foreground="ff7e7a7d" duration="667e7a7d"
              text="0" shadow="0"/>
-    <valueZoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="0.0"
+    <labelLayout position="12.0" justification="0"/>
+    <channelsLayout value="1"/>
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="0.0"
                minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="0.0">
-      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131081" globalRange_start="0.0" globalRange_end="0.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="0.0"
              minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="0.0">
-      <grid MiscModelVersion="131081" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
 </document>
-

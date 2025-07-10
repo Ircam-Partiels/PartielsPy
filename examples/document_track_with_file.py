@@ -2,19 +2,18 @@ from pathlib import Path
 
 from partielspy import *
 
-folder = Path(__file__).parent
-resource = folder.parent / "resource"
+root = Path(__file__).parent.parent
+resource = root / "resource"
 
 partiels = Partiels()
 
-document = Document()
+document = Document(resource / "Sound.wav")
 group = Group("Group")
 track = Track("Track")
 track.file_info = FileInfo(resource / "marker.csv")
 group.add_track(track)
 document.add_group(group)
 
-audio_file = resource / "Sound.wav"
 config = ExportConfig(format=ExportConfig.Formats.JSON)
-output = folder / "exports" / "document_track_with_file"
-partiels.export(audio_file, document, output, config)
+output = root / "examples" / "exports" / "document_track_with_file"
+partiels.export(document, output, config)

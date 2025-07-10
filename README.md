@@ -151,12 +151,16 @@ PartielsPy provides a simple, flexible API for analyzing audio files and exporti
 
 ```python
 from partielspy import Partiels, Document, ExportConfig
+import subprocess
 
 # Initialize the Partiels wrapper
 partiels = Partiels()
 
 # Load the document from a Partiels document
 document = Document.load("path/to/template.ptldoc")
+
+# Add an audio file to the document
+document.audio_file_layout = "path/to/audiofile.wav"
 
 # Configure the export in the PNG format (the export format can be CSV, LAB, CUE, REAPER, JSON, PNG or JPG)
 export_config = ExportConfig(
@@ -169,7 +173,7 @@ export_config = ExportConfig(
 
 # Analyze and export the results
 try:
-    partiels.export("path/to/audiofile.wav", document, "path/to/output", export_config)
+    partiels.export(document, "path/to/output", export_config)
 except subprocess.CalledProcessError as e:
     print(e.stderr)  # Prints detailed error message from the export process
 
@@ -183,7 +187,7 @@ export_config = ExportConfig(
 
 # Analyze and export the results
 try:
-    partiels.export("path/to/audiofile.wav", document, "path/to/output", export_config)
+    partiels.export(document, "path/to/output", export_config)
 except subprocess.CalledProcessError as e:
     print(e.stderr)  # Prints detailed error message from the export process  
 ```
@@ -192,8 +196,8 @@ except subprocess.CalledProcessError as e:
 ```python
 from partielspy import *
 
-# Create a Document
-document = Document()
+# Create a Document with an audio file
+document = Document("path/to/audiofile.wav")
 
 # Create a Group
 group = Group("Group")
@@ -214,7 +218,7 @@ group.add_track(track_2)
 document.add_group(group)
 
 # Export the Document as CSV and JPEG
-partiels.export("path/to/audiofile.wav", document, "path/to/output", ExportConfig(format=ExportConfig.Formats.JSON))
+partiels.export(document, "path/to/output", ExportConfig(format=ExportConfig.Formats.JSON))
 
 # Save the Document to an XML (.ptldoc) file for later
 document.save("path/to/save/file.ptldoc")

@@ -10,8 +10,6 @@ class ExportConfig:
 
     Args:
         format (ExportConfig.Formats): the export format (default: ``CSV``)
-        adapt_to_sample_rate (bool): the block size and the step size of the analyzes \
-        are adapted following the sample rate (default: False)
         ignore_matrix_tracks (bool): the matrix tracks are ignored (default: False)
         csv_include_header (bool): the header row is included before the data rows (default: False)
         csv_columns_separator (ExportConfig.CsvColumnSeparators): the separator character between \
@@ -58,7 +56,6 @@ class ExportConfig:
     def __init__(
         self,
         format: Formats,
-        adapt_to_sample_rate: bool = False,
         ignore_matrix_tracks: bool = False,
         csv_include_header: bool = False,
         csv_columns_separator: CsvColumnSeparators = CsvColumnSeparators.COMMA,
@@ -70,7 +67,6 @@ class ExportConfig:
         image_group_overlay: bool = False,
     ):
         self.format = format
-        self.adapt_to_sample_rate = adapt_to_sample_rate
         self.ignore_matrix_tracks = ignore_matrix_tracks
         self.csv_include_header = csv_include_header
         self.csv_columns_separator = csv_columns_separator
@@ -88,14 +84,6 @@ class ExportConfig:
     @format.setter
     def format(self, value: Formats):
         self.__format = ExportConfig.Formats(value)
-
-    @property
-    def adapt_to_sample_rate(self) -> bool:
-        return self.__adapt_to_sample_rate
-
-    @adapt_to_sample_rate.setter
-    def adapt_to_sample_rate(self, value: bool):
-        self.__adapt_to_sample_rate = value
 
     @property
     def ignore_matrix_tracks(self) -> bool:
@@ -172,8 +160,6 @@ class ExportConfig:
     def to_cli_args(self) -> list[str]:
         res = []
         res.append("--format=" + self.format.value)
-        if self.adapt_to_sample_rate:
-            res.append("--adapt")
         if (
             self.format == ExportConfig.Formats.JPEG
             or self.format == ExportConfig.Formats.PNG

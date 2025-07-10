@@ -1,11 +1,10 @@
+import logging
 import os
+import shutil
+import subprocess
 from pathlib import Path
 
 from partielspy import *
-
-root = Path(__file__).parent
-audio_file = root.parent / "resource" / "Sound.wav"
-template_factory = root.parent / "templates" / "factory.ptldoc"
 
 
 def test_plugin_list():
@@ -24,40 +23,66 @@ def test_plugin_list():
 
 
 def test_create_document_with_factory_plugins():
-    partiels = Partiels()
-    doc = Document()
+    root = Path(__file__).parent
+    exported_filename = "Group 2_Waveform.csv"
+    audio_file_path = root.parent / "resource" / "Sound.wav"
+    export_output_dir = root / "exports" / "test_factory_creation"
 
+    # Remove the export directory
+    shutil.rmtree(export_output_dir, ignore_errors=True)
+
+    # Initialize Partiels instance
+    partiels = Partiels()
+
+    # Create the reference document
+    document_ref = Document.load(root.parent / "templates" / "factory.ptldoc")
+    document_ref.audio_file_layout = audio_file_path
+
+    # Export the reference document to the reference directory
+    try:
+        partiels.export(
+            document_ref,
+            export_output_dir / "reference",
+            ExportConfig(format=ExportConfig.Formats.CSV),
+        )
+    except subprocess.CalledProcessError as e:
+        logging.getLogger(__name__).error(e.stderr)
+        assert False, f"Export failed: {e}"
+
+    reference_file = export_output_dir / "reference" / exported_filename
+
+    # Create the result document
+    document_res = Document(audio_file_path)
+
+    # Create a first group and add a spectrogram track
     group1 = Group("Group 1")
     track1 = Track("Spectrogram")
     track1.plugin_key = PluginKey(
         "partiels-vamp-plugins:partielsspectrogram", "energies"
     )
     group1.add_track(track1)
-    doc.add_group(group1)
+    document_res.add_group(group1)
 
+    # Create a second group and add a waveform track
     group2 = Group("Group 2")
     track2 = Track("Waveform")
     track2.plugin_key = PluginKey("partiels-vamp-plugins:partielswaveform", "peaks")
     group2.add_track(track2)
-    doc.add_group(group2)
+    document_res.add_group(group2)
 
-    template_output = root / "templates" / "test_factory_creation.ptldoc"
-    Path(template_output).parent.mkdir(parents=True, exist_ok=True)
-    doc.save(template_output)
-    export_output = root / "exports" / "test_factory_creation"
-    export_output_expected = export_output / "expected"
-    export_output_result = export_output / "result"
-    export_config = ExportConfig(format=ExportConfig.Formats.CSV)
-    document = Document.load(template_factory)
-    partiels.export(audio_file, document, export_output_expected, export_config)
-    document = Document.load(template_output)
-    partiels.export(audio_file, document, export_output_result, export_config)
+    # Export the result document to the result directory
+    try:
+        partiels.export(
+            document_res,
+            export_output_dir / "result",
+            ExportConfig(format=ExportConfig.Formats.CSV),
+        )
+    except subprocess.CalledProcessError as e:
+        logging.getLogger(__name__).error(e.stderr)
+        assert False, f"Export failed: {e}"
+    result_file = export_output_dir / "result" / exported_filename
 
-    exported_filename = "Sound Group 2_Waveform.csv"
-
-    expected_file = export_output_expected / exported_filename
-    result_file = export_output_result / exported_filename
-    assert expected_file.exists(), f"Expected file {expected_file} does not exist"
+    assert reference_file.exists(), f"Reference file {reference_file} does not exist"
     assert result_file.exists(), f"Result file {result_file} does not exist"
-    with open(expected_file, "r") as ef, open(result_file, "r") as rf:
+    with open(reference_file, "r") as ef, open(result_file, "r") as rf:
         assert ef.read() == rf.read(), f"Content mismatch for {exported_filename}"
