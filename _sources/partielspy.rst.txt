@@ -8,7 +8,6 @@ Subpackages
    :maxdepth: 4
 
    partielspy.export_configs
-   partielspy.file_info
 
 Submodules
 ----------
@@ -17,6 +16,14 @@ partielspy.document module
 --------------------------
 
 .. automodule:: partielspy.document
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+partielspy.file\_info module
+----------------------------
+
+.. automodule:: partielspy.file_info
    :members:
    :show-inheritance:
    :undoc-members:
