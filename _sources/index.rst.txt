@@ -6,9 +6,9 @@
 Welcome to PartielsPy's documentation!
 --------------------------------------
 PartielsPy is a python wrapper for the audio analysis program `Partiels <https://github.com/Ircam-Partiels/Partiels>`_ 
-developped by Pierre Guillot.
-Please visit the `Github Page <https://github.com/Ircam-Partiels/PartielsPy>`_ of the project for more informations.
-Some pratical examples are avalaibles `here <https://github.com/Ircam-Partiels/PartielsPy/tree/main/examples>`_.
+developed by Pierre Guillot.
+Please visit the `Github Page <https://github.com/Ircam-Partiels/PartielsPy>`_ of the project for more information.
+Some practical examples are available `here <https://github.com/Ircam-Partiels/PartielsPy/tree/main/examples>`_.
 
 
 .. toctree::
