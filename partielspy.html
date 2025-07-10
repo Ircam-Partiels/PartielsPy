@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>PartielsPy package - PartielsPy 0.2.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -249,35 +249,1106 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="partielspy-document-module">
-<h2>partielspy.document module<a class="headerlink" href="#partielspy-document-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.document">
+<span id="partielspy-document-module"></span><h2>partielspy.document module<a class="headerlink" href="#module-partielspy.document" title="Link to this heading">¶</a></h2>
+<p>PartielsPy - Document Module</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.document.Document">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.document.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><a class="headerlink" href="#partielspy.document.Document" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a document in PartielsPy.</p>
+<p>It contains a collection of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>,    each of which can contain multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.
+The document can be loaded from and saved to an XML (ptldoc) file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.document.Document.add_group">
+<span class="sig-name descname"><span class="pre">add_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.add_group" title="Link to this definition">¶</a></dt>
+<dd><p>Add a group to the document.</p>
+<p>This method checks if the group is an instance of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>         and if it already exists in the document.
+If the group is valid and not already present, it adds the group to the document’s groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>) – The group to add to the document.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the group is not an instance of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>.</p></li>
+<li><p><strong>ValueError</strong> – If the group already exists in the document.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.document.Document.groups">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#partielspy.document.Document.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.document.Document.load">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.load" title="Link to this definition">¶</a></dt>
+<dd><p>Load a document from an XML (ptldoc) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>Any</em>) – The file to load.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the Document class populated with data from             the XML (ptldoc) file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#partielspy.document.Document" title="partielspy.document.Document">Document</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the XML document is invalid (does not have the correct             root ‘document’ tag).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.document.Document.remove_group">
+<span class="sig-name descname"><span class="pre">remove_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.remove_group" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a group from the document.</p>
+<p>This method searches for the group in the document’s groups and removes it if found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>) – The group to remove from the document.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the group is not found in the document.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.document.Document.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save the document to an XML (ptldoc) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the file where the document will be saved.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-export-config-module">
-<h2>partielspy.export_config module<a class="headerlink" href="#partielspy-export-config-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.export_config">
+<span id="partielspy-export-config-module"></span><h2>partielspy.export_config module<a class="headerlink" href="#module-partielspy.export_config" title="Link to this heading">¶</a></h2>
+<p>A class for export configuration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.export_config.</span></span><span class="sig-name descname"><span class="pre">ExportConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats" title="partielspy.export_config.ExportConfig.Formats"><span class="pre">Formats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_include_header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_columns_separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="partielspy.export_config.ExportConfig.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">CsvColumnSeparators.COMMA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_include_plugin_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaper_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="partielspy.export_config.ExportConfig.ReaperTypes"><span class="pre">ReaperTypes</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ReaperTypes.REGION</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_ppi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_group_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_config.ExportConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Export configuration class</p>
+<p>This is the class used to configure the export of the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> (<a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats" title="partielspy.export_config.ExportConfig.Formats"><em>ExportConfig.Formats</em></a>) – the export format (default: <code class="docutils literal notranslate"><span class="pre">CSV</span></code>)</p></li>
+<li><p><strong>adapt_to_sample_rate</strong> (<em>bool</em>) – the block size and the step size of the analyzes         are adapted following the sample rate (default: False)</p></li>
+<li><p><strong>ignore_matrix_tracks</strong> (<em>bool</em>) – the matrix tracks are ignored (default: False)</p></li>
+<li><p><strong>csv_include_header</strong> (<em>bool</em>) – the header row is included before the data rows (default: False)</p></li>
+<li><p><strong>csv_columns_separator</strong> (<a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="partielspy.export_config.ExportConfig.CsvColumnSeparators"><em>ExportConfig.CsvColumnSeparators</em></a>) – the separator character between         columns (default: COMMA)</p></li>
+<li><p><strong>json_include_plugin_description</strong> (<em>bool</em>) – the plugin description is included        (default: False)</p></li>
+<li><p><strong>reaper_type</strong> (<a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="partielspy.export_config.ExportConfig.ReaperTypes"><em>ExportConfig.ReaperTypes</em></a>) – the type of the reaper format        (default: <code class="docutils literal notranslate"><span class="pre">REGION</span></code>)</p></li>
+<li><p><strong>image_width</strong> (<em>int</em>) – the image_width of the image in pixels (default: 1280)</p></li>
+<li><p><strong>image_height</strong> (<em>int</em>) – the image_height of the image in pixels (default: 720)</p></li>
+<li><p><strong>image_ppi</strong> (<em>int</em>) – the pixel density of the exported image in pixels per inch         (default: 72)</p></li>
+<li><p><strong>image_group_overlay</strong> (<em>bool</em>) – the images of groups are exported instead of the        images of tracks (default: False)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CsvColumnSeparators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the CSV column separators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.COLON">
+<span class="sig-name descname"><span class="pre">COLON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colon'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.COLON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.COMMA">
+<span class="sig-name descname"><span class="pre">COMMA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comma'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.COMMA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.PIPE">
+<span class="sig-name descname"><span class="pre">PIPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pipe'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.PIPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.SLASH">
+<span class="sig-name descname"><span class="pre">SLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slash'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.SLASH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.SPACE">
+<span class="sig-name descname"><span class="pre">SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'space'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.SPACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.CsvColumnSeparators.TAB">
+<span class="sig-name descname"><span class="pre">TAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tab'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.TAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Formats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the export formats</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.CSV">
+<span class="sig-name descname"><span class="pre">CSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'csv'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.CSV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.CUE">
+<span class="sig-name descname"><span class="pre">CUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cue'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.CUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.JPEG">
+<span class="sig-name descname"><span class="pre">JPEG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jpeg'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.JPEG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'json'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.JSON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.LAB">
+<span class="sig-name descname"><span class="pre">LAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lab'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.LAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.PNG">
+<span class="sig-name descname"><span class="pre">PNG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'png'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.PNG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.Formats.REAPER">
+<span class="sig-name descname"><span class="pre">REAPER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reaper'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.Formats.REAPER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.ReaperTypes">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReaperTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the Reaper export types</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.ReaperTypes.MARKER">
+<span class="sig-name descname"><span class="pre">MARKER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'marker'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.ReaperTypes.MARKER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.ReaperTypes.REGION">
+<span class="sig-name descname"><span class="pre">REGION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'region'</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.ReaperTypes.REGION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.adapt_to_sample_rate">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adapt_to_sample_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.adapt_to_sample_rate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.csv_columns_separator">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_columns_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="partielspy.export_config.ExportConfig.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.csv_columns_separator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.csv_include_header">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_include_header</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.csv_include_header" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.format">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats" title="partielspy.export_config.ExportConfig.Formats"><span class="pre">Formats</span></a></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.ignore_matrix_tracks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ignore_matrix_tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.ignore_matrix_tracks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.image_group_overlay">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_group_overlay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.image_group_overlay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.image_height">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.image_height" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.image_ppi">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_ppi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.image_ppi" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.image_width">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.image_width" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.json_include_plugin_description">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">json_include_plugin_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.json_include_plugin_description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.reaper_type">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reaper_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="partielspy.export_config.ExportConfig.ReaperTypes"><span class="pre">ReaperTypes</span></a></em><a class="headerlink" href="#partielspy.export_config.ExportConfig.reaper_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.export_config.ExportConfig.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.export_config.ExportConfig.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-file-info-module">
-<h2>partielspy.file_info module<a class="headerlink" href="#partielspy-file-info-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.file_info">
+<span id="partielspy-file-info-module"></span><h2>partielspy.file_info module<a class="headerlink" href="#module-partielspy.file_info" title="Link to this heading">¶</a></h2>
+<p>A class for tracks file information</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.file_info.</span></span><span class="sig-name descname"><span class="pre">FileInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_columns_separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="partielspy.file_info.FileInfo.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_use_end_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.file_info.FileInfo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents file information in a track.</p>
+<p>It contains the path to the file used by the track for the export and parsing information for     the CSV format.
+The supported file formats are JSON, CSV, LAB and CUE (with the extension .json, .csv, .lab     and .cue).
+If the file path is defined, the track will use file instead of performing the analysis
+on the audio data.
+The csv_columns_separator and csv_use_end_time arguments should only be used for CSV files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em><em> | </em><em>str</em>) – The path to the file associated with the track (default: “”)</p></li>
+<li><p><strong>csv_columns_separator</strong> (<a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="partielspy.file_info.FileInfo.CsvColumnSeparators"><em>FileInfo.CsvColumnSeparators</em></a>) – The separator used in the CSV file
+(default: <code class="docutils literal notranslate"><span class="pre">COMMA</span></code>)</p></li>
+<li><p><strong>csv_use_end_time</strong> – Whether to use the end time in the CSV file (default: False)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CsvColumnSeparators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the CSV column separators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.COLON">
+<span class="sig-name descname"><span class="pre">COLON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':'</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.COLON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.COMMA">
+<span class="sig-name descname"><span class="pre">COMMA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">','</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.COMMA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.PIPE">
+<span class="sig-name descname"><span class="pre">PIPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'|'</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.PIPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.SLASH">
+<span class="sig-name descname"><span class="pre">SLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/'</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.SLASH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.SPACE">
+<span class="sig-name descname"><span class="pre">SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">'</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.SPACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.CsvColumnSeparators.TAB">
+<span class="sig-name descname"><span class="pre">TAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\t'</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.TAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.csv_columns_separator">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_columns_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="partielspy.file_info.FileInfo.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></em><a class="headerlink" href="#partielspy.file_info.FileInfo.csv_columns_separator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.csv_use_end_time">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_use_end_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.csv_use_end_time" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.file_info.FileInfo.path">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.file_info.FileInfo.path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-group-module">
-<h2>partielspy.group module<a class="headerlink" href="#partielspy-group-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.group">
+<span id="partielspy-group-module"></span><h2>partielspy.group module<a class="headerlink" href="#module-partielspy.group" title="Link to this heading">¶</a></h2>
+<p>PartielsPy - Group Module</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.group.Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.group.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'New</span> <span class="pre">Group'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.group.Group" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a group of tracks in PartielsPy.</p>
+<p>It contains a name and a collection of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the group (default: “New Group”)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.group.Group.add_track">
+<span class="sig-name descname"><span class="pre">add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.group.Group.add_track" title="Link to this definition">¶</a></dt>
+<dd><p>Add a track to the group.</p>
+<p>This method checks if the track is an instance of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>         and if it already exists in the group.
+If the track is valid and not already present, it adds the track to the group’s tracks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track</strong><strong>(</strong><strong>class</strong> – <cite>Track &lt;partielspy.track&gt;</cite>): The track to add to the group.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the track is not an instance of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.</p></li>
+<li><p><strong>ValueError</strong> – If the track already exists in the group.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.group.Group.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.group.Group.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.group.Group.remove_track">
+<span class="sig-name descname"><span class="pre">remove_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.group.Group.remove_track" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a track from the group.</p>
+<p>This method searches for the track in the group’s tracks and removes it if found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track</strong><strong>(</strong><strong>class</strong> – <cite>Track &lt;partielspy.track&gt;</cite>): The track to remove from the group.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the track is not found in the group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.group.Group.tracks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#partielspy.group.Group.tracks" title="Link to this definition">¶</a></dt>
+<dd><p>Return a list of tracks in the group.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-partiels-module">
-<h2>partielspy.partiels module<a class="headerlink" href="#partielspy-partiels-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.partiels">
+<span id="partielspy-partiels-module"></span><h2>partielspy.partiels module<a class="headerlink" href="#module-partielspy.partiels" title="Link to this heading">¶</a></h2>
+<p>A main class for Partiels Wrapper</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.partiels.Partiels">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.partiels.</span></span><span class="sig-name descname"><span class="pre">Partiels</span></span><a class="headerlink" href="#partielspy.partiels.Partiels" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to manage Partiels executable</p>
+<p>The executable path is determined by searching the system’s PATH environment variable.
+If the executable is still not found, it checks common installation directories based     on the operating system.
+You can use the PARTIELS_PATH environment variable to set the executable path, in this     case only the PARTIELS_PATH will be used.
+If the executable is not found, it raises a RuntimeError.
+If the executable is found, its version is compared to the PartielsPy compatibility     version and a warning is trigger if not matching.
+If the VAMP_PATH environment variable is set, it will be used to find the VAMP plugins.     If not set, the default VAMP plugins directories will be used.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.partiels.Partiels.executable_path">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">executable_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.partiels.Partiels.executable_path" title="Link to this definition">¶</a></dt>
+<dd><p>Return Partiels’s executable path</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.partiels.Partiels.executable_version">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">executable_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.partiels.Partiels.executable_version" title="Link to this definition">¶</a></dt>
+<dd><p>Return Partiels’s executable version</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.partiels.Partiels.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audiofile_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.document.Document" title="partielspy.document.Document"><span class="pre">Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig" title="partielspy.export_config.ExportConfig"><span class="pre">ExportConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.partiels.Partiels.export" title="Link to this definition">¶</a></dt>
+<dd><p>Export the audiofile with the template and export configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audiofile_path</strong> (<em>str</em>) – the path to the audio file</p></li>
+<li><p><strong>document</strong> (<a class="reference internal" href="#module-partielspy.document" title="partielspy.document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>) – the document to export</p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – the path to the output folder</p></li>
+<li><p><strong>export_config</strong> (<a class="reference internal" href="#module-partielspy.export_config" title="partielspy.export_config"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfig</span></code></a>) – the export configuration</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.partiels.Partiels.get_plugin_list">
+<span class="sig-name descname"><span class="pre">get_plugin_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#partielspy.plugin_list.PluginList" title="partielspy.plugin_list.PluginList"><span class="pre">PluginList</span></a></span></span><a class="headerlink" href="#partielspy.partiels.Partiels.get_plugin_list" title="Link to this definition">¶</a></dt>
+<dd><p>Get the list of all available plugins from Partiels installed in the VAMP paths
+(defined by the VAMP_PATH environment variable).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <a class="reference internal" href="#module-partielspy.plugin_list" title="partielspy.plugin_list"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginList</span></code></a> object containing             the list of plugins</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#partielspy.plugin_list.PluginList" title="partielspy.plugin_list.PluginList">PluginList</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-plugin-key-module">
-<h2>partielspy.plugin_key module<a class="headerlink" href="#partielspy-plugin-key-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.plugin_key">
+<span id="partielspy-plugin-key-module"></span><h2>partielspy.plugin_key module<a class="headerlink" href="#module-partielspy.plugin_key" title="Link to this heading">¶</a></h2>
+<p>A class to manage plugin keys</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.plugin_key.PluginKey">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.plugin_key.</span></span><span class="sig-name descname"><span class="pre">PluginKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.plugin_key.PluginKey" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to represent a key for a plugin.
+It contains an identifier and a feature, which are used to uniquely identify the key.
+Each <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a> class has a plugin key associated with it.
+The plugin key is used to identify the plugin that is associated with the track.
+The get_plugin_list() method of the <a class="reference internal" href="#module-partielspy.partiels" title="partielspy.partiels"><code class="xref py py-class docutils literal notranslate"><span class="pre">Partiels</span></code></a> class returns    a list of PluginKey based on all the available plugins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>identifier</strong> (<em>str</em>) – the identifier of the key (default: “”)</p></li>
+<li><p><strong>feature</strong> (<em>str</em>) – the feature of the key (default: “”)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.plugin_key.PluginKey.feature">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.plugin_key.PluginKey.feature" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.plugin_key.PluginKey.identifier">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identifier</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.plugin_key.PluginKey.identifier" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-plugin-list-module">
-<h2>partielspy.plugin_list module<a class="headerlink" href="#partielspy-plugin-list-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.plugin_list">
+<span id="partielspy-plugin-list-module"></span><h2>partielspy.plugin_list module<a class="headerlink" href="#module-partielspy.plugin_list" title="Link to this heading">¶</a></h2>
+<p>A class to display the list of available plugins in Partiels</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.plugin_list.PluginList">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.plugin_list.</span></span><span class="sig-name descname"><span class="pre">PluginList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.plugin_list.PluginList" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#partielspy.plugin_key.PluginKey" title="partielspy.plugin_key.PluginKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a>]</p>
+<p>This class is not intended to be instantiated directly, but rather through the
+get_plugin_list method of the <a class="reference internal" href="#module-partielspy.partiels" title="partielspy.partiels"><code class="xref py py-class docutils literal notranslate"><span class="pre">Partiels</span></code></a> class.
+It contains a list of <a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a>,
+each representing a plugin key with an identifier and a feature.
+Its purpose is to provide a convenient way to access and display the list of plugins.</p>
+<dl>
+<dt>Example usage:</dt><dd><p>from partielspy import Partiels</p>
+<p>partiels = Partiels()</p>
+<p>plugin_list = partiels.get_plugin_list()</p>
+<p>print(plugin_list)</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="partielspy-track-module">
-<h2>partielspy.track module<a class="headerlink" href="#partielspy-track-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.track">
+<span id="partielspy-track-module"></span><h2>partielspy.track module<a class="headerlink" href="#module-partielspy.track" title="Link to this heading">¶</a></h2>
+<p>PartielsPy - Track Module</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.track.Track">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.track.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'New</span> <span class="pre">Track'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.track.Track" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a track in PartielsPy.</p>
+<p>A track contains a <a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a> and a     <code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code>, along with a name.
+If the file_info is set (with a non-empty path) the plugin_key will be ignored for the export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the track (default: “New Track”)</p></li>
+<li><p><strong>plugin_key</strong> (<a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a>) – The plugin key associated with         the track (default: a new empty <a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a> instance)</p></li>
+<li><p><strong>file_info</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code>) – The file associated with         the track (default: a new empty <code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code> instance).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.track.Track.file_info">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.file_info.FileInfo" title="partielspy.file_info.FileInfo"><span class="pre">FileInfo</span></a></em><a class="headerlink" href="#partielspy.track.Track.file_info" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.track.Track.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.track.Track.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.track.Track.plugin_key">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plugin_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.plugin_key.PluginKey" title="partielspy.plugin_key.PluginKey"><span class="pre">PluginKey</span></a></em><a class="headerlink" href="#partielspy.track.Track.plugin_key" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="partielspy-version-module">
-<h2>partielspy.version module<a class="headerlink" href="#partielspy-version-module" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy.version">
+<span id="partielspy-version-module"></span><h2>partielspy.version module<a class="headerlink" href="#module-partielspy.version" title="Link to this heading">¶</a></h2>
+<p>A class for managing version compatibility in PartielsPy</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.version.Version">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.version.</span></span><span class="sig-name descname"><span class="pre">Version</span></span><a class="headerlink" href="#partielspy.version.Version" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Compatibility version class for PartielsPy</p>
+<p>This class is used to manage the compatibility version of PartielsPy     with the Partiels executable.
+It provides methods to retrieve the compatibility version as a string and as an integer.
+The compatibility version is defined as a string in semantic versioning     format (major.minor.patch).
+The integer representation is calculated by shifting the major, minor, and patch numbers
+to create a single integer value.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.version.Version.get_compatibility_version">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_compatibility_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_compatibility_version" title="Link to this definition">¶</a></dt>
+<dd><p>Return the compatibility version</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.version.Version.get_compatibility_version_int">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_compatibility_version_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_compatibility_version_int" title="Link to this definition">¶</a></dt>
+<dd><p>Return the integer representation of the compatibility version</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<section id="module-partielspy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-partielspy" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.Document">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><a class="headerlink" href="#partielspy.Document" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a document in PartielsPy.</p>
+<p>It contains a collection of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>,    each of which can contain multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.
+The document can be loaded from and saved to an XML (ptldoc) file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Document.add_group">
+<span class="sig-name descname"><span class="pre">add_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.add_group" title="Link to this definition">¶</a></dt>
+<dd><p>Add a group to the document.</p>
+<p>This method checks if the group is an instance of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>         and if it already exists in the document.
+If the group is valid and not already present, it adds the group to the document’s groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>) – The group to add to the document.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the group is not an instance of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>.</p></li>
+<li><p><strong>ValueError</strong> – If the group already exists in the document.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Document.groups">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#partielspy.Document.groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Document.load">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.load" title="Link to this definition">¶</a></dt>
+<dd><p>Load a document from an XML (ptldoc) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>Any</em>) – The file to load.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the Document class populated with data from             the XML (ptldoc) file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#partielspy.Document" title="partielspy.Document">Document</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the XML document is invalid (does not have the correct             root ‘document’ tag).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Document.remove_group">
+<span class="sig-name descname"><span class="pre">remove_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.remove_group" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a group from the document.</p>
+<p>This method searches for the group in the document’s groups and removes it if found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>) – The group to remove from the document.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the group is not found in the document.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Document.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save the document to an XML (ptldoc) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the file where the document will be saved.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.ExportConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">ExportConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats" title="partielspy.export_config.ExportConfig.Formats"><span class="pre">Formats</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt_to_sample_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_matrix_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_include_header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_columns_separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="partielspy.export_config.ExportConfig.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">CsvColumnSeparators.COMMA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_include_plugin_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaper_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="partielspy.export_config.ExportConfig.ReaperTypes"><span class="pre">ReaperTypes</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ReaperTypes.REGION</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">720</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_ppi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">72</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_group_overlay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.ExportConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Export configuration class</p>
+<p>This is the class used to configure the export of the document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>format</strong> (<a class="reference internal" href="#partielspy.ExportConfig.Formats" title="partielspy.ExportConfig.Formats"><em>ExportConfig.Formats</em></a>) – the export format (default: <code class="docutils literal notranslate"><span class="pre">CSV</span></code>)</p></li>
+<li><p><strong>adapt_to_sample_rate</strong> (<em>bool</em>) – the block size and the step size of the analyzes         are adapted following the sample rate (default: False)</p></li>
+<li><p><strong>ignore_matrix_tracks</strong> (<em>bool</em>) – the matrix tracks are ignored (default: False)</p></li>
+<li><p><strong>csv_include_header</strong> (<em>bool</em>) – the header row is included before the data rows (default: False)</p></li>
+<li><p><strong>csv_columns_separator</strong> (<a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators" title="partielspy.ExportConfig.CsvColumnSeparators"><em>ExportConfig.CsvColumnSeparators</em></a>) – the separator character between         columns (default: COMMA)</p></li>
+<li><p><strong>json_include_plugin_description</strong> (<em>bool</em>) – the plugin description is included        (default: False)</p></li>
+<li><p><strong>reaper_type</strong> (<a class="reference internal" href="#partielspy.ExportConfig.ReaperTypes" title="partielspy.ExportConfig.ReaperTypes"><em>ExportConfig.ReaperTypes</em></a>) – the type of the reaper format        (default: <code class="docutils literal notranslate"><span class="pre">REGION</span></code>)</p></li>
+<li><p><strong>image_width</strong> (<em>int</em>) – the image_width of the image in pixels (default: 1280)</p></li>
+<li><p><strong>image_height</strong> (<em>int</em>) – the image_height of the image in pixels (default: 720)</p></li>
+<li><p><strong>image_ppi</strong> (<em>int</em>) – the pixel density of the exported image in pixels per inch         (default: 72)</p></li>
+<li><p><strong>image_group_overlay</strong> (<em>bool</em>) – the images of groups are exported instead of the        images of tracks (default: False)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CsvColumnSeparators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the CSV column separators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.COLON">
+<span class="sig-name descname"><span class="pre">COLON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'colon'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.COLON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.COMMA">
+<span class="sig-name descname"><span class="pre">COMMA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comma'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.COMMA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.PIPE">
+<span class="sig-name descname"><span class="pre">PIPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'pipe'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.PIPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.SLASH">
+<span class="sig-name descname"><span class="pre">SLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slash'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.SLASH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.SPACE">
+<span class="sig-name descname"><span class="pre">SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'space'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.SPACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.CsvColumnSeparators.TAB">
+<span class="sig-name descname"><span class="pre">TAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tab'</span></em><a class="headerlink" href="#partielspy.ExportConfig.CsvColumnSeparators.TAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Formats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.ExportConfig.Formats" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the export formats</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.CSV">
+<span class="sig-name descname"><span class="pre">CSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'csv'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.CSV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.CUE">
+<span class="sig-name descname"><span class="pre">CUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cue'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.CUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.JPEG">
+<span class="sig-name descname"><span class="pre">JPEG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jpeg'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.JPEG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'json'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.JSON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.LAB">
+<span class="sig-name descname"><span class="pre">LAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lab'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.LAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.PNG">
+<span class="sig-name descname"><span class="pre">PNG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'png'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.PNG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.Formats.REAPER">
+<span class="sig-name descname"><span class="pre">REAPER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reaper'</span></em><a class="headerlink" href="#partielspy.ExportConfig.Formats.REAPER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.ReaperTypes">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ReaperTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.ExportConfig.ReaperTypes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the Reaper export types</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.ReaperTypes.MARKER">
+<span class="sig-name descname"><span class="pre">MARKER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'marker'</span></em><a class="headerlink" href="#partielspy.ExportConfig.ReaperTypes.MARKER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.ReaperTypes.REGION">
+<span class="sig-name descname"><span class="pre">REGION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'region'</span></em><a class="headerlink" href="#partielspy.ExportConfig.ReaperTypes.REGION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.adapt_to_sample_rate">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adapt_to_sample_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.ExportConfig.adapt_to_sample_rate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.csv_columns_separator">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_columns_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators" title="partielspy.export_config.ExportConfig.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></em><a class="headerlink" href="#partielspy.ExportConfig.csv_columns_separator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.csv_include_header">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_include_header</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.ExportConfig.csv_include_header" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.format">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats" title="partielspy.export_config.ExportConfig.Formats"><span class="pre">Formats</span></a></em><a class="headerlink" href="#partielspy.ExportConfig.format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.ignore_matrix_tracks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ignore_matrix_tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.ExportConfig.ignore_matrix_tracks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.image_group_overlay">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_group_overlay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.ExportConfig.image_group_overlay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.image_height">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.ExportConfig.image_height" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.image_ppi">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_ppi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.ExportConfig.image_ppi" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.image_width">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">image_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#partielspy.ExportConfig.image_width" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.json_include_plugin_description">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">json_include_plugin_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.ExportConfig.json_include_plugin_description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.reaper_type">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reaper_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes" title="partielspy.export_config.ExportConfig.ReaperTypes"><span class="pre">ReaperTypes</span></a></em><a class="headerlink" href="#partielspy.ExportConfig.reaper_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.ExportConfig.to_cli_args">
+<span class="sig-name descname"><span class="pre">to_cli_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#partielspy.ExportConfig.to_cli_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.FileInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">FileInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_columns_separator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="partielspy.file_info.FileInfo.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_use_end_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.FileInfo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents file information in a track.</p>
+<p>It contains the path to the file used by the track for the export and parsing information for     the CSV format.
+The supported file formats are JSON, CSV, LAB and CUE (with the extension .json, .csv, .lab     and .cue).
+If the file path is defined, the track will use file instead of performing the analysis
+on the audio data.
+The csv_columns_separator and csv_use_end_time arguments should only be used for CSV files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em><em> | </em><em>str</em>) – The path to the file associated with the track (default: “”)</p></li>
+<li><p><strong>csv_columns_separator</strong> (<a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators" title="partielspy.FileInfo.CsvColumnSeparators"><em>FileInfo.CsvColumnSeparators</em></a>) – The separator used in the CSV file
+(default: <code class="docutils literal notranslate"><span class="pre">COMMA</span></code>)</p></li>
+<li><p><strong>csv_use_end_time</strong> – Whether to use the end time in the CSV file (default: False)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CsvColumnSeparators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></p>
+<p>Enum for the CSV column separators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.COLON">
+<span class="sig-name descname"><span class="pre">COLON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">':'</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.COLON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.COMMA">
+<span class="sig-name descname"><span class="pre">COMMA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">','</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.COMMA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.PIPE">
+<span class="sig-name descname"><span class="pre">PIPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'|'</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.PIPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.SLASH">
+<span class="sig-name descname"><span class="pre">SLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/'</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.SLASH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.SPACE">
+<span class="sig-name descname"><span class="pre">SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">'</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.SPACE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="partielspy.FileInfo.CsvColumnSeparators.TAB">
+<span class="sig-name descname"><span class="pre">TAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\t'</span></em><a class="headerlink" href="#partielspy.FileInfo.CsvColumnSeparators.TAB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.FileInfo.csv_columns_separator">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_columns_separator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators" title="partielspy.file_info.FileInfo.CsvColumnSeparators"><span class="pre">CsvColumnSeparators</span></a></em><a class="headerlink" href="#partielspy.FileInfo.csv_columns_separator" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.FileInfo.csv_use_end_time">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">csv_use_end_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#partielspy.FileInfo.csv_use_end_time" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.FileInfo.path">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.FileInfo.path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'New</span> <span class="pre">Group'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Group" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a group of tracks in PartielsPy.</p>
+<p>It contains a name and a collection of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the group (default: “New Group”)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Group.add_track">
+<span class="sig-name descname"><span class="pre">add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Group.add_track" title="Link to this definition">¶</a></dt>
+<dd><p>Add a track to the group.</p>
+<p>This method checks if the track is an instance of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>         and if it already exists in the group.
+If the track is valid and not already present, it adds the track to the group’s tracks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track</strong><strong>(</strong><strong>class</strong> – <cite>Track &lt;partielspy.track&gt;</cite>): The track to add to the group.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the track is not an instance of <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.</p></li>
+<li><p><strong>ValueError</strong> – If the track already exists in the group.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Group.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.Group.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Group.remove_track">
+<span class="sig-name descname"><span class="pre">remove_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Group.remove_track" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a track from the group.</p>
+<p>This method searches for the track in the group’s tracks and removes it if found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track</strong><strong>(</strong><strong>class</strong> – <cite>Track &lt;partielspy.track&gt;</cite>): The track to remove from the group.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the track is not found in the group.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Group.tracks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tracks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#partielspy.track.Track" title="partielspy.track.Track"><span class="pre">Track</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#partielspy.Group.tracks" title="Link to this definition">¶</a></dt>
+<dd><p>Return a list of tracks in the group.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.Partiels">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Partiels</span></span><a class="headerlink" href="#partielspy.Partiels" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to manage Partiels executable</p>
+<p>The executable path is determined by searching the system’s PATH environment variable.
+If the executable is still not found, it checks common installation directories based     on the operating system.
+You can use the PARTIELS_PATH environment variable to set the executable path, in this     case only the PARTIELS_PATH will be used.
+If the executable is not found, it raises a RuntimeError.
+If the executable is found, its version is compared to the PartielsPy compatibility     version and a warning is trigger if not matching.
+If the VAMP_PATH environment variable is set, it will be used to find the VAMP plugins.     If not set, the default VAMP plugins directories will be used.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Partiels.executable_path">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">executable_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.Partiels.executable_path" title="Link to this definition">¶</a></dt>
+<dd><p>Return Partiels’s executable path</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Partiels.executable_version">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">executable_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.Partiels.executable_version" title="Link to this definition">¶</a></dt>
+<dd><p>Return Partiels’s executable version</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Partiels.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audiofile_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">document</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.document.Document" title="partielspy.document.Document"><span class="pre">Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.export_config.ExportConfig" title="partielspy.export_config.ExportConfig"><span class="pre">ExportConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Partiels.export" title="Link to this definition">¶</a></dt>
+<dd><p>Export the audiofile with the template and export configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audiofile_path</strong> (<em>str</em>) – the path to the audio file</p></li>
+<li><p><strong>document</strong> (<a class="reference internal" href="#module-partielspy.document" title="partielspy.document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>) – the document to export</p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – the path to the output folder</p></li>
+<li><p><strong>export_config</strong> (<a class="reference internal" href="#module-partielspy.export_config" title="partielspy.export_config"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportConfig</span></code></a>) – the export configuration</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.Partiels.get_plugin_list">
+<span class="sig-name descname"><span class="pre">get_plugin_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#partielspy.plugin_list.PluginList" title="partielspy.plugin_list.PluginList"><span class="pre">PluginList</span></a></span></span><a class="headerlink" href="#partielspy.Partiels.get_plugin_list" title="Link to this definition">¶</a></dt>
+<dd><p>Get the list of all available plugins from Partiels installed in the VAMP paths
+(defined by the VAMP_PATH environment variable).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <a class="reference internal" href="#module-partielspy.plugin_list" title="partielspy.plugin_list"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginList</span></code></a> object containing             the list of plugins</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#partielspy.plugin_list.PluginList" title="partielspy.plugin_list.PluginList">PluginList</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.PluginKey">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">PluginKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.PluginKey" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to represent a key for a plugin.
+It contains an identifier and a feature, which are used to uniquely identify the key.
+Each <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a> class has a plugin key associated with it.
+The plugin key is used to identify the plugin that is associated with the track.
+The get_plugin_list() method of the <a class="reference internal" href="#module-partielspy.partiels" title="partielspy.partiels"><code class="xref py py-class docutils literal notranslate"><span class="pre">Partiels</span></code></a> class returns    a list of PluginKey based on all the available plugins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>identifier</strong> (<em>str</em>) – the identifier of the key (default: “”)</p></li>
+<li><p><strong>feature</strong> (<em>str</em>) – the feature of the key (default: “”)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.PluginKey.feature">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.PluginKey.feature" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.PluginKey.identifier">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identifier</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.PluginKey.identifier" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="partielspy.Track">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'New</span> <span class="pre">Track'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Track" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a track in PartielsPy.</p>
+<p>A track contains a <a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a> and a     <code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code>, along with a name.
+If the file_info is set (with a non-empty path) the plugin_key will be ignored for the export.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the track (default: “New Track”)</p></li>
+<li><p><strong>plugin_key</strong> (<a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a>) – The plugin key associated with         the track (default: a new empty <a class="reference internal" href="#module-partielspy.plugin_key" title="partielspy.plugin_key"><code class="xref py py-class docutils literal notranslate"><span class="pre">PluginKey</span></code></a> instance)</p></li>
+<li><p><strong>file_info</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code>) – The file associated with         the track (default: a new empty <code class="xref py py-class docutils literal notranslate"><span class="pre">FileInfo</span></code> instance).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Track.file_info">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.file_info.FileInfo" title="partielspy.file_info.FileInfo"><span class="pre">FileInfo</span></a></em><a class="headerlink" href="#partielspy.Track.file_info" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Track.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#partielspy.Track.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="partielspy.Track.plugin_key">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plugin_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.plugin_key.PluginKey" title="partielspy.plugin_key.PluginKey"><span class="pre">PluginKey</span></a></em><a class="headerlink" href="#partielspy.Track.plugin_key" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -330,16 +1401,216 @@
             <ul>
 <li><a class="reference internal" href="#">PartielsPy package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#partielspy-document-module">partielspy.document module</a></li>
-<li><a class="reference internal" href="#partielspy-export-config-module">partielspy.export_config module</a></li>
-<li><a class="reference internal" href="#partielspy-file-info-module">partielspy.file_info module</a></li>
-<li><a class="reference internal" href="#partielspy-group-module">partielspy.group module</a></li>
-<li><a class="reference internal" href="#partielspy-partiels-module">partielspy.partiels module</a></li>
-<li><a class="reference internal" href="#partielspy-plugin-key-module">partielspy.plugin_key module</a></li>
-<li><a class="reference internal" href="#partielspy-plugin-list-module">partielspy.plugin_list module</a></li>
-<li><a class="reference internal" href="#partielspy-track-module">partielspy.track module</a></li>
-<li><a class="reference internal" href="#partielspy-version-module">partielspy.version module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-partielspy.document">partielspy.document module</a><ul>
+<li><a class="reference internal" href="#partielspy.document.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.document.Document.add_group"><code class="docutils literal notranslate"><span class="pre">Document.add_group()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.document.Document.groups"><code class="docutils literal notranslate"><span class="pre">Document.groups</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.document.Document.load"><code class="docutils literal notranslate"><span class="pre">Document.load()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.document.Document.remove_group"><code class="docutils literal notranslate"><span class="pre">Document.remove_group()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.document.Document.save"><code class="docutils literal notranslate"><span class="pre">Document.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.export_config">partielspy.export_config module</a><ul>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig"><code class="docutils literal notranslate"><span class="pre">ExportConfig</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.COLON"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.COLON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.COMMA"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.COMMA</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.PIPE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.PIPE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.SLASH"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.SLASH</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.SPACE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.SPACE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.CsvColumnSeparators.TAB"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.TAB</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.CSV"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.CSV</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.CUE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.CUE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.JPEG"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.JPEG</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.JSON"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.JSON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.LAB"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.LAB</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.PNG"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.PNG</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.Formats.REAPER"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.REAPER</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes.MARKER"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes.MARKER</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.ReaperTypes.REGION"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes.REGION</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.adapt_to_sample_rate"><code class="docutils literal notranslate"><span class="pre">ExportConfig.adapt_to_sample_rate</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_columns_separator</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.csv_include_header"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_include_header</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.format"><code class="docutils literal notranslate"><span class="pre">ExportConfig.format</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.ignore_matrix_tracks"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ignore_matrix_tracks</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.image_group_overlay"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_group_overlay</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.image_height"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_height</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.image_ppi"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_ppi</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.image_width"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_width</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.json_include_plugin_description"><code class="docutils literal notranslate"><span class="pre">ExportConfig.json_include_plugin_description</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.reaper_type"><code class="docutils literal notranslate"><span class="pre">ExportConfig.reaper_type</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.export_config.ExportConfig.to_cli_args"><code class="docutils literal notranslate"><span class="pre">ExportConfig.to_cli_args()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.file_info">partielspy.file_info module</a><ul>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo"><code class="docutils literal notranslate"><span class="pre">FileInfo</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.COLON"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.COLON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.COMMA"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.COMMA</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.PIPE"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.PIPE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.SLASH"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.SLASH</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.SPACE"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.SPACE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.CsvColumnSeparators.TAB"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.TAB</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">FileInfo.csv_columns_separator</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.csv_use_end_time"><code class="docutils literal notranslate"><span class="pre">FileInfo.csv_use_end_time</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.file_info.FileInfo.path"><code class="docutils literal notranslate"><span class="pre">FileInfo.path</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.group">partielspy.group module</a><ul>
+<li><a class="reference internal" href="#partielspy.group.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.group.Group.add_track"><code class="docutils literal notranslate"><span class="pre">Group.add_track()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.group.Group.name"><code class="docutils literal notranslate"><span class="pre">Group.name</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.group.Group.remove_track"><code class="docutils literal notranslate"><span class="pre">Group.remove_track()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.group.Group.tracks"><code class="docutils literal notranslate"><span class="pre">Group.tracks</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.partiels">partielspy.partiels module</a><ul>
+<li><a class="reference internal" href="#partielspy.partiels.Partiels"><code class="docutils literal notranslate"><span class="pre">Partiels</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.partiels.Partiels.executable_path"><code class="docutils literal notranslate"><span class="pre">Partiels.executable_path</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.partiels.Partiels.executable_version"><code class="docutils literal notranslate"><span class="pre">Partiels.executable_version</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.partiels.Partiels.export"><code class="docutils literal notranslate"><span class="pre">Partiels.export()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.partiels.Partiels.get_plugin_list"><code class="docutils literal notranslate"><span class="pre">Partiels.get_plugin_list()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.plugin_key">partielspy.plugin_key module</a><ul>
+<li><a class="reference internal" href="#partielspy.plugin_key.PluginKey"><code class="docutils literal notranslate"><span class="pre">PluginKey</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.plugin_key.PluginKey.feature"><code class="docutils literal notranslate"><span class="pre">PluginKey.feature</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.plugin_key.PluginKey.identifier"><code class="docutils literal notranslate"><span class="pre">PluginKey.identifier</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.plugin_list">partielspy.plugin_list module</a><ul>
+<li><a class="reference internal" href="#partielspy.plugin_list.PluginList"><code class="docutils literal notranslate"><span class="pre">PluginList</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.track">partielspy.track module</a><ul>
+<li><a class="reference internal" href="#partielspy.track.Track"><code class="docutils literal notranslate"><span class="pre">Track</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.track.Track.file_info"><code class="docutils literal notranslate"><span class="pre">Track.file_info</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.track.Track.name"><code class="docutils literal notranslate"><span class="pre">Track.name</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.track.Track.plugin_key"><code class="docutils literal notranslate"><span class="pre">Track.plugin_key</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy.version">partielspy.version module</a><ul>
+<li><a class="reference internal" href="#partielspy.version.Version"><code class="docutils literal notranslate"><span class="pre">Version</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.version.Version.get_compatibility_version"><code class="docutils literal notranslate"><span class="pre">Version.get_compatibility_version()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.version.Version.get_compatibility_version_int"><code class="docutils literal notranslate"><span class="pre">Version.get_compatibility_version_int()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-partielspy">Module contents</a><ul>
+<li><a class="reference internal" href="#partielspy.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.Document.add_group"><code class="docutils literal notranslate"><span class="pre">Document.add_group()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Document.groups"><code class="docutils literal notranslate"><span class="pre">Document.groups</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Document.load"><code class="docutils literal notranslate"><span class="pre">Document.load()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Document.remove_group"><code class="docutils literal notranslate"><span class="pre">Document.remove_group()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Document.save"><code class="docutils literal notranslate"><span class="pre">Document.save()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.ExportConfig"><code class="docutils literal notranslate"><span class="pre">ExportConfig</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.COLON"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.COLON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.COMMA"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.COMMA</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.PIPE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.PIPE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.SLASH"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.SLASH</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.SPACE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.SPACE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.CsvColumnSeparators.TAB"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators.TAB</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.CSV"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.CSV</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.CUE"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.CUE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.JPEG"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.JPEG</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.JSON"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.JSON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.LAB"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.LAB</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.PNG"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.PNG</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.Formats.REAPER"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats.REAPER</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.ReaperTypes"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.ExportConfig.ReaperTypes.MARKER"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes.MARKER</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.ReaperTypes.REGION"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes.REGION</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.adapt_to_sample_rate"><code class="docutils literal notranslate"><span class="pre">ExportConfig.adapt_to_sample_rate</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_columns_separator</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.csv_include_header"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_include_header</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.format"><code class="docutils literal notranslate"><span class="pre">ExportConfig.format</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.ignore_matrix_tracks"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ignore_matrix_tracks</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.image_group_overlay"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_group_overlay</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.image_height"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_height</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.image_ppi"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_ppi</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.image_width"><code class="docutils literal notranslate"><span class="pre">ExportConfig.image_width</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.json_include_plugin_description"><code class="docutils literal notranslate"><span class="pre">ExportConfig.json_include_plugin_description</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.reaper_type"><code class="docutils literal notranslate"><span class="pre">ExportConfig.reaper_type</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.ExportConfig.to_cli_args"><code class="docutils literal notranslate"><span class="pre">ExportConfig.to_cli_args()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.FileInfo"><code class="docutils literal notranslate"><span class="pre">FileInfo</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.COLON"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.COLON</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.COMMA"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.COMMA</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.PIPE"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.PIPE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.SLASH"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.SLASH</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.SPACE"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.SPACE</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.CsvColumnSeparators.TAB"><code class="docutils literal notranslate"><span class="pre">FileInfo.CsvColumnSeparators.TAB</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.FileInfo.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">FileInfo.csv_columns_separator</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.csv_use_end_time"><code class="docutils literal notranslate"><span class="pre">FileInfo.csv_use_end_time</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.FileInfo.path"><code class="docutils literal notranslate"><span class="pre">FileInfo.path</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.Group.add_track"><code class="docutils literal notranslate"><span class="pre">Group.add_track()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Group.name"><code class="docutils literal notranslate"><span class="pre">Group.name</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Group.remove_track"><code class="docutils literal notranslate"><span class="pre">Group.remove_track()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Group.tracks"><code class="docutils literal notranslate"><span class="pre">Group.tracks</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.Partiels"><code class="docutils literal notranslate"><span class="pre">Partiels</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.Partiels.executable_path"><code class="docutils literal notranslate"><span class="pre">Partiels.executable_path</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Partiels.executable_version"><code class="docutils literal notranslate"><span class="pre">Partiels.executable_version</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Partiels.export"><code class="docutils literal notranslate"><span class="pre">Partiels.export()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Partiels.get_plugin_list"><code class="docutils literal notranslate"><span class="pre">Partiels.get_plugin_list()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.PluginKey"><code class="docutils literal notranslate"><span class="pre">PluginKey</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.PluginKey.feature"><code class="docutils literal notranslate"><span class="pre">PluginKey.feature</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.PluginKey.identifier"><code class="docutils literal notranslate"><span class="pre">PluginKey.identifier</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partielspy.Track"><code class="docutils literal notranslate"><span class="pre">Track</span></code></a><ul>
+<li><a class="reference internal" href="#partielspy.Track.file_info"><code class="docutils literal notranslate"><span class="pre">Track.file_info</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Track.name"><code class="docutils literal notranslate"><span class="pre">Track.name</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.Track.plugin_key"><code class="docutils literal notranslate"><span class="pre">Track.plugin_key</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
