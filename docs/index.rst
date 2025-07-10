@@ -15,12 +15,4 @@ Some practical examples are available `here <https://github.com/Ircam-Partiels/P
    :maxdepth: 2
    :caption: API Reference:
 
-   partielspy.partiels
-   partielspy.export_configs
-   partielspy.document
-   partielspy.group
-   partielspy.track
-   partielspy.plugin_key
-   partielspy.plugin_list
-   partielspy.file_info
-   partielspy.version
+   modules
