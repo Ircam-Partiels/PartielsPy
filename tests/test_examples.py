@@ -11,7 +11,7 @@ def test_examples():
     for file in files:
         try:
             result = subprocess.run(
-                [sys.executable, file], capture_output=True, text=True, timeout=5
+                [sys.executable, file], capture_output=True, text=True, timeout=1
             )
         except subprocess.TimeoutExpired:
             if file.name == "export_image_and_display.py":
