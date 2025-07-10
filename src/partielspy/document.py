@@ -7,6 +7,7 @@ from typing import Any
 
 from lxml import etree
 
+from .audio_file_layout import AudioFileChannel, AudioFileLayout
 from .group import Group
 from .version import Version
 
@@ -19,9 +20,32 @@ class Document:
     The document can be loaded from and saved to an XML (ptldoc) file.
     """
 
-    def __init__(self):
+    def __init__(
+        self, audio_file_layout: AudioFileLayout | str | Path | AudioFileChannel = None
+    ):
         self.__xml_node = etree.Element("document")
         self.__groups = {}
+        if audio_file_layout is not None:
+            self.audio_file_layout = audio_file_layout
+        else:
+            self.audio_file_layout = AudioFileLayout()
+
+    @property
+    def audio_file_layout(self) -> AudioFileLayout:
+        return self.__audio_file_layout
+
+    @audio_file_layout.setter
+    def audio_file_layout(self, value: AudioFileLayout | AudioFileChannel | str | Path):
+        if isinstance(value, AudioFileLayout):
+            self.__audio_file_layout = value
+        elif isinstance(value, AudioFileChannel):
+            self.__audio_file_layout = AudioFileLayout([value])
+        elif isinstance(value, str | Path):
+            self.__audio_file_layout = AudioFileLayout([AudioFileChannel(file=value)])
+        else:
+            raise TypeError(
+                "Expected an AudioFileLayout, AudioFileChannel, str, or Path instance"
+            )
 
     @property
     def groups(self) -> list[Group]:
@@ -63,8 +87,13 @@ class Document:
         raise ValueError("Group not found in document")
 
     def _from_xml(self, root: etree):
-        group_layouts = root.findall("layout")
-        for group_layout in group_layouts:
+        audio_file_layout = []
+        for reader_node in root.findall("reader"):
+            value_elem = reader_node.find("value")
+            audio_file_layout.append(value_elem)
+            root.remove(reader_node)
+        self.audio_file_layout._from_xml(audio_file_layout)
+        for group_layout in root.findall("layout"):
             layout_value = group_layout.get("value")
             group_node = root.find(f"./groups[@identifier='{layout_value}']")
             group = Group()
@@ -98,6 +127,11 @@ class Document:
     def _to_xml(self) -> etree.Element:
         root = copy.deepcopy(self.__xml_node)
         root.set("MiscModelVersion", str(Version.get_compatibility_version_int()))
+        reader_nodes = self.audio_file_layout._to_xml()
+        for reader_node in reader_nodes:
+            reader = etree.Element("reader")
+            reader.append(reader_node)
+            root.append(reader)
         for group_identifier, group in self.__groups.items():
             layout = etree.Element("layout")
             layout.set("value", group_identifier)

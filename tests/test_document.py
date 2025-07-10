@@ -8,8 +8,6 @@ from partielspy.export_config import ExportConfig
 
 root = Path(__file__).parent
 
-audio_file = root.parent / "resource" / "Sound.wav"
-
 
 def test_basic_creation():
     doc = Document()
@@ -22,7 +20,7 @@ def test_basic_creation():
     assert len(group.tracks) == 1, "Group should have one track after adding"
     doc.add_group(group)
     assert len(doc.groups) == 1, "Document should have one group after adding"
-    output = root / "templates" / "test_basic_creation.ptldoc"
+    output = root / "exports" / "document" / "test_basic_creation.ptldoc"
     Path(output).parent.mkdir(parents=True, exist_ok=True)
     doc.save(output)
     assert output.exists(), "Output file was not created"
@@ -54,26 +52,37 @@ def test_basic_errors():
 
 
 def test_load_save():
-    input_file = root.parent / "templates" / "factory.ptldoc"
-    output_file = root / "templates" / "test_load_save.ptldoc"
+    document_template = root.parent / "templates" / "factory.ptldoc"
+    document_generated = root / "exports" / "document" / "test_load_save.ptldoc"
+    audio_file = root.parent / "resource" / "Sound.wav"
+    expected_export_dir = root / "exports" / "test_load_save" / "expected"
+    result_export_dir = root / "exports" / "test_load_save" / "result"
+    expected_files = ["Group 1_Spectrogram.csv", "Group 2_Waveform.csv"]
 
-    doc = Document.load(input_file)
-    assert len(doc.groups) > 0, "Document should have groups after loading"
-
-    Path(output_file).parent.mkdir(parents=True, exist_ok=True)
-    doc.save(output_file)
-    assert output_file.exists(), "Output file was not created after saving"
-
-    export_dir = root / "exports" / "test_load_save"
-    expected_export_dir = export_dir / "expected"
-    result_export_dir = export_dir / "result"
-    expected_files = ["Sound Group 1_Spectrogram.csv", "Sound Group 2_Waveform.csv"]
     partiels = Partiels()
-    config = ExportConfig(format=ExportConfig.Formats.CSV)
-    document = Document.load(input_file)
-    partiels.export(audio_file, document, expected_export_dir, config)
-    document = Document.load(output_file)
-    partiels.export(audio_file, document, result_export_dir, config)
+
+    # Load the template document, set the audio file and save it
+    document = Document.load(document_template)
+    document.audio_file_layout = audio_file
+    assert len(document.groups) > 0, "Document should have groups after loading"
+    Path(document_generated).parent.mkdir(parents=True, exist_ok=True)
+    document.save(document_generated)
+    assert document_generated.exists(), "Output file was not created after saving"
+
+    # Load the generated document and export it to CSV
+    document = Document.load(document_generated)
+    partiels.export(
+        document, result_export_dir, ExportConfig(format=ExportConfig.Formats.CSV)
+    )
+
+    # Load the template document, set the audio file and export it to CSV
+    document = Document.load(document_template)
+    document.audio_file_layout = audio_file
+    partiels.export(
+        document, expected_export_dir, ExportConfig(format=ExportConfig.Formats.CSV)
+    )
+
+    # Compare the expected and result export directories
     for expected_file in expected_files:
         expected_path = expected_export_dir / expected_file
         result_path = result_export_dir / expected_file
@@ -85,9 +94,7 @@ def test_load_save():
 
 def export_document_with_file(extension: str, config: ExportConfig):
     src = root.parent / "resource" / f"marker.{extension}"
-    output = (
-        root / "exports" / "file_result" / extension / f"Sound Group_Track.{extension}"
-    )
+    output = root / "exports" / "file_result" / extension / f"Group_Track.{extension}"
 
     partiels = Partiels()
     document = Document()
@@ -98,7 +105,7 @@ def export_document_with_file(extension: str, config: ExportConfig):
     group.add_track(track)
 
     shutil.rmtree(output.parent, ignore_errors=True)
-    partiels.export(audio_file, document, output.parent, config)
+    partiels.export(document, output.parent, config)
 
     with (
         open(src, "r") as ef,

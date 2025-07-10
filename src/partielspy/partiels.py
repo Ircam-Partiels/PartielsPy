@@ -109,15 +109,13 @@ class Partiels:
 
     def export(
         self,
-        audiofile_path: str | Path,
         document: Document,
         output_path: str | Path,
         export_config: ExportConfig,
     ):
-        """Export the audiofile with the template and export configuration
+        """Export the document to the specified output path using the given export configuration.
 
         Args:
-            audiofile_path (str): the path to the audio file
             document (:class:`Document <partielspy.document>`): the document to export
             output_path (str): the path to the output folder
             export_config (:class:`ExportConfig <partielspy.export_config>`): \
@@ -128,20 +126,19 @@ class Partiels:
         if not isinstance(export_config, ExportConfig):
             raise TypeError("Expected an ExportConfig instance")
         with tempfile.NamedTemporaryFile(suffix=".ptldoc", delete=False) as temp_file:
-            template_path = Path(temp_file.name)
-            document.save(template_path)
+            document_path = Path(temp_file.name)
+            document.save(document_path)
         cmd = [
             self.__executable_path,
             "--export",
-            f"--input={audiofile_path}",
-            f"--template={template_path}",
+            f"--document={document_path}",
             f"--output={output_path}",
         ]
         cmd += export_config.to_cli_args()
         logging.getLogger(__name__).debug(cmd)
         ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        if template_path.exists():
-            os.remove(template_path)
+        if document_path.exists():
+            os.remove(document_path)
         return ret
 
     def get_plugin_list(self) -> PluginList:

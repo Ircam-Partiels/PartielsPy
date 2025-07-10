@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<document MiscModelVersion="131082" viewport_x="0" viewport_y="0" path="/Users/guillot/Git/PartielsPy/src/PartielsPy/templates/harmonic_partials_tracking.ptldoc"
-          grid="2" autoresize="1" samplerate="44100.0" channels="2">
+<document MiscModelVersion="131328" viewport_x="0" viewport_y="0" path="/Users/guillot/Git/PartielsPy/templates/harmonic_partials_tracking.ptldoc"
+          grid="2" autoresize="1" samplerate="44100.0" channels="1">
+  <reader>
+    <value file="/Users/guillot/Git/PartielsPy/resource/Sound.wav" channel="0"/>
+  </reader>
   <layout value="83dedecf23354c8e836c80a01cdcf515"/>
-  <timeZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="4.996077097505669"
+  <timeZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
             minimumLength="0.01160997732426304" visibleRange_start="0.0"
-            visibleRange_end="4.996077097505669">
-    <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="0"
+            visibleRange_end="1.0">
+    <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="0"
           tickPowerBase="2.0" tickDivisionFactor="10.0"/>
   </timeZoom>
-  <transport MiscModelVersion="131082" startPlayhead="2.727413680919522" looping="0"
-             loopRange_start="0.0" loopRange_end="0.0" stopAtLoopEnd="0" autoScroll="1"
-             gain="1.0" magnetize="0"/>
-  <groups MiscModelVersion="131082" identifier="83dedecf23354c8e836c80a01cdcf515"
-          name="Group 1" height="746" colour="0" expanded="0" referenceid="">
+  <transport MiscModelVersion="131328" startPlayhead="0.2130559540889526"
+             looping="0" loopRange_start="0.0" loopRange_end="0.0" stopAtLoopEnd="0"
+             autoScroll="1" gain="1.0" magnetize="0"/>
+  <groups MiscModelVersion="131328" identifier="83dedecf23354c8e836c80a01cdcf515"
+          name="Group 1" height="748" colour="0" expanded="0" referenceid="">
     <layout value="4e6128fd8e744b23afb354ae03e2b7d0"/>
     <layout value="f7bccfc6684b440595d7e00e1d3c7ff3"/>
     <layout value="b327117cbcee4cb5aa0715619cfa71b0"/>
@@ -36,13 +39,13 @@
     <layout value="5210e47243c747fbaec6043badf5da9f"/>
     <layout value="0abfb35dd96542728f6fdc4682dbc320"/>
     <layout value="33d2a0d006d547659682c3e1f41e38f2"/>
-    <zoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <zoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
           minimumLength="0.0" visibleRange_start="0.0" visibleRange_end="0.5414700053497655">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </zoom>
   </groups>
-  <tracks MiscModelVersion="131082" identifier="5210e47243c747fbaec6043badf5da9f"
+  <tracks MiscModelVersion="131328" identifier="5210e47243c747fbaec6043badf5da9f"
           name="Partial 1" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -168,22 +171,21 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
     <extraThresholds/>
     <extraThresholds/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="91b0c0d369664c99b1f71f4e7a724d90"
+  <tracks MiscModelVersion="131328" identifier="91b0c0d369664c99b1f71f4e7a724d90"
           name="Partial 2" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -309,20 +311,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="0781f8f8fc9b4e91a4466e77ea7ac897"
+  <tracks MiscModelVersion="131328" identifier="0781f8f8fc9b4e91a4466e77ea7ac897"
           name="Partial 3" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -448,20 +449,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="54bbf0276b4240b3b054017f69c1ece3"
+  <tracks MiscModelVersion="131328" identifier="54bbf0276b4240b3b054017f69c1ece3"
           name="Partial 4" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -587,20 +587,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="ddcf476fd742499ab3d6361071534485"
+  <tracks MiscModelVersion="131328" identifier="ddcf476fd742499ab3d6361071534485"
           name="Partial 5" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -726,20 +725,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="a654582e26f244178f6d68faa327bc1d"
+  <tracks MiscModelVersion="131328" identifier="a654582e26f244178f6d68faa327bc1d"
           name="Partial 6" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -865,20 +863,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="1638b98c8873403f88c6f0e8a11fe8d9"
+  <tracks MiscModelVersion="131328" identifier="1638b98c8873403f88c6f0e8a11fe8d9"
           name="Partial 7" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1004,20 +1001,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="c6ff3c85fb23441a85d1f60d04995c85"
+  <tracks MiscModelVersion="131328" identifier="c6ff3c85fb23441a85d1f60d04995c85"
           name="Partial 8" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1143,20 +1139,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="e88d2970cbfe4155b29a6bea6a2b9064"
+  <tracks MiscModelVersion="131328" identifier="e88d2970cbfe4155b29a6bea6a2b9064"
           name="Partial 9" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1282,20 +1277,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="dbefa0d17c0e42438c2ad05c6a4a872d"
+  <tracks MiscModelVersion="131328" identifier="dbefa0d17c0e42438c2ad05c6a4a872d"
           name="Partial 10" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1421,20 +1415,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="9147b8fee62a4c58b3c809c133d6847e"
+  <tracks MiscModelVersion="131328" identifier="9147b8fee62a4c58b3c809c133d6847e"
           name="Partial 11" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1560,20 +1553,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="6cd6a053ac2043f9b4db9ad73400ee46"
+  <tracks MiscModelVersion="131328" identifier="6cd6a053ac2043f9b4db9ad73400ee46"
           name="Partial 12" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1699,20 +1691,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="99ae4b410771430b873ad8ee868e3185"
+  <tracks MiscModelVersion="131328" identifier="99ae4b410771430b873ad8ee868e3185"
           name="Partial 13" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1838,20 +1829,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="6af35ffdea40480fa772c1c38baf8980"
+  <tracks MiscModelVersion="131328" identifier="6af35ffdea40480fa772c1c38baf8980"
           name="Partial 14" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -1977,20 +1967,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="7bac9cc292ad4902a9610b481c3dce82"
+  <tracks MiscModelVersion="131328" identifier="7bac9cc292ad4902a9610b481c3dce82"
           name="Partial 16" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -2116,20 +2105,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="695c77585af846e199eb8573aed178e6"
+  <tracks MiscModelVersion="131328" identifier="695c77585af846e199eb8573aed178e6"
           name="Partial 17" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -2255,22 +2243,21 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
     <extraThresholds/>
     <extraThresholds/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="b327117cbcee4cb5aa0715619cfa71b0"
+  <tracks MiscModelVersion="131328" identifier="b327117cbcee4cb5aa0715619cfa71b0"
           name="Partial 18" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -2396,20 +2383,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="f7bccfc6684b440595d7e00e1d3c7ff3"
+  <tracks MiscModelVersion="131328" identifier="f7bccfc6684b440595d7e00e1d3c7ff3"
           name="Partial 19" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="32" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -2535,20 +2521,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="4e6128fd8e744b23afb354ae03e2b7d0"
+  <tracks MiscModelVersion="131328" identifier="4e6128fd8e744b23afb354ae03e2b7d0"
           name="Partial 20" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -2674,20 +2659,19 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="33d2a0d006d547659682c3e1f41e38f2"
+  <tracks MiscModelVersion="131328" identifier="33d2a0d006d547659682c3e1f41e38f2"
           name="Fast Fourier Transform" input="" sampleRate="44100.0" height="32"
           font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -3271,20 +3255,19 @@
              text="ff000000" shadow="ff000000"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="-120.0" globalRange_end="0.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="-120.0" globalRange_end="0.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="-120.0"
                visibleRange_end="0.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="513.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="513.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="277.7741127444297">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="0abfb35dd96542728f6fdc4682dbc320"
+  <tracks MiscModelVersion="131328" identifier="0abfb35dd96542728f6fdc4682dbc320"
           name="Feature Scoring" input="" sampleRate="44100.0" height="33"
           font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -3411,20 +3394,19 @@
              text="ff000000" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>
-  <tracks MiscModelVersion="131082" identifier="c1d2b9c0008d4f30935f73b805cb8d40"
+  <tracks MiscModelVersion="131328" identifier="c1d2b9c0008d4f30935f73b805cb8d40"
           name="Partial 15" input="0abfb35dd96542728f6fdc4682dbc320" sampleRate="44100.0"
           height="33" font="10.0 Sans 14.0 Regular" lineWidth="1.0" showInGroup="1"
           sendViaOsc="0" zoomValueMode="1" zoomLogScale="0" zoomLink="1">
@@ -3550,16 +3532,15 @@
              text="ffe6" shadow="0"/>
     <labelLayout position="12.0" justification="0"/>
     <channelsLayout value="1"/>
-    <channelsLayout value="1"/>
-    <valueZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="22050.0"
+    <valueZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="22050.0"
                minimumLength="1.192092895507812e-7" visibleRange_start="0.0"
                visibleRange_end="11939.41361796233">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </valueZoom>
-    <binZoom MiscModelVersion="131082" globalRange_start="0.0" globalRange_end="1.0"
+    <binZoom MiscModelVersion="131328" globalRange_start="0.0" globalRange_end="1.0"
              minimumLength="1.0" visibleRange_start="0.0" visibleRange_end="1.0">
-      <grid MiscModelVersion="131082" tickReference="0.0" mainTickInterval="3"
+      <grid MiscModelVersion="131328" tickReference="0.0" mainTickInterval="3"
             tickPowerBase="2.0" tickDivisionFactor="5.0"/>
     </binZoom>
   </tracks>

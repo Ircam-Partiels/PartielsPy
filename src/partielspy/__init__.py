@@ -1,3 +1,4 @@
+from .audio_file_layout import AudioFileChannel, AudioFileLayout
 from .document import Document
 from .export_config import ExportConfig
 from .file_info import FileInfo
@@ -14,4 +15,6 @@ __all__ = [
     "Track",
     "PluginKey",
     "FileInfo",
+    "AudioFileLayout",
+    "AudioFileChannel",
 ]
