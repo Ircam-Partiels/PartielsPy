@@ -1,14 +1,6 @@
 partielspy package
 ==================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   partielspy.export_configs
-
 Submodules
 ----------
 
@@ -16,6 +8,14 @@ partielspy.document module
 --------------------------
 
 .. automodule:: partielspy.document
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+partielspy.export\_config module
+--------------------------------
+
+.. automodule:: partielspy.export_config
    :members:
    :show-inheritance:
    :undoc-members:
