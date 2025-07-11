@@ -15,20 +15,35 @@ from .version import Version
 class Document:
     """This class represents a document in PartielsPy.
 
-    It contains a collection of :class:`Group <partielspy.group>`,\
-    each of which can contain multiple :class:`Track <partielspy.track>`.
-    The document can be loaded from and saved to an XML (ptldoc) file.
+    It contains an :class:`AudioFileLayout <partielspy.audio_file_layout>`\
+    that describes the audio file layout of the document, and a collection \
+    of :class:`Group <partielspy.group>`, each of which can contain \
+    multiple :class:`Track <partielspy.track>`. The document can be loaded \
+    from and saved to an ptldoc file.
+
+    Args:
+        document_file (str | Path, optional): The path to the ptldoc file to load.
+            If not provided, an empty document is created.
+        audio_file_layout (AudioFileLayout | str | Path | AudioFileChannel, optional):
+            The audio file layout for the document. This can be an instance of \
+            :class:`AudioFileLayout <partielspy.audio_file_layout>`, a string or
+            a Path to an audio file, or an instance of \
+            :class:`AudioFileChannel <partielspy.audio_file_layout>`.
+            If not provided, an empty audio file layout is created.
     """
 
     def __init__(
-        self, audio_file_layout: AudioFileLayout | str | Path | AudioFileChannel = None
+        self,
+        document_file: str | Path = None,
+        audio_file_layout: AudioFileLayout | str | Path | AudioFileChannel = None,
     ):
         self.__xml_node = etree.Element("document")
         self.__groups = {}
+        self.audio_file_layout = AudioFileLayout()
+        if document_file is not None:
+            self._from_xml(etree.parse(document_file).getroot())
         if audio_file_layout is not None:
             self.audio_file_layout = audio_file_layout
-        else:
-            self.audio_file_layout = AudioFileLayout()
 
     @property
     def audio_file_layout(self) -> AudioFileLayout:
@@ -40,7 +55,7 @@ class Document:
             self.__audio_file_layout = value
         elif isinstance(value, AudioFileChannel):
             self.__audio_file_layout = AudioFileLayout([value])
-        elif isinstance(value, str | Path):
+        elif isinstance(value, (str | Path)):
             self.__audio_file_layout = AudioFileLayout([AudioFileChannel(file=value)])
         else:
             raise TypeError(
@@ -87,6 +102,8 @@ class Document:
         raise ValueError("Group not found in document")
 
     def _from_xml(self, root: etree):
+        if root.tag != "document":
+            raise ValueError("Invalid document: root tag must be 'document'")
         audio_file_layout = []
         for reader_node in root.findall("reader"):
             value_elem = reader_node.find("value")
@@ -105,23 +122,20 @@ class Document:
 
     @classmethod
     def load(cls, file: Any):
-        """Load a document from an XML (ptldoc) file.
+        """Load a document from an ptldoc file.
 
         Args:
             file (Any): The file to load.
         Returns:
             Document: An instance of the Document class populated with data from \
-            the XML (ptldoc) file.
+            the ptldoc file.
         Raises:
-            ValueError: If the XML document is invalid (does not have the correct \
+            ValueError: If the document is invalid (does not have the correct \
             root 'document' tag).
         """
         tree = etree.parse(file)
-        root = tree.getroot()
-        if root.tag != "document":
-            raise ValueError("Invalid XML document: root tag must be 'document'")
         document = cls()
-        document._from_xml(root)
+        document._from_xml(tree.getroot())
         return document
 
     def _to_xml(self) -> etree.Element:
@@ -140,7 +154,7 @@ class Document:
         return root
 
     def save(self, file: str | Path):
-        """Save the document to an XML (ptldoc) file.
+        """Save the document to an ptldoc file.
 
         Args:
             file (str | Path): The path to the file where the document will be saved.

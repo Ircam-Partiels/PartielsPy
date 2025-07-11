@@ -7,7 +7,7 @@ resource = root / "resource"
 
 partiels = Partiels()
 
-document = Document(resource / "Sound.wav")
+document = Document(audio_file_layout=resource / "Sound.wav")
 group = Group("Group")
 track = Track("Track")
 track.file_info = FileInfo(resource / "marker.csv")
