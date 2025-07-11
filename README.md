@@ -156,11 +156,8 @@ import subprocess
 # Initialize the Partiels wrapper
 partiels = Partiels()
 
-# Load the document from a Partiels document
-document = Document.load("path/to/template.ptldoc")
-
-# Add an audio file to the document
-document.audio_file_layout = "path/to/audiofile.wav"
+# Load the document with a Partiels document and an audio file
+document = Document(document_file="path/to/template.ptldoc", audio_file_layout="path/to/audiofile.wav")
 
 # Configure the export in the PNG format (the export format can be CSV, LAB, CUE, REAPER, JSON, PNG or JPG)
 export_config = ExportConfig(
@@ -197,7 +194,7 @@ except subprocess.CalledProcessError as e:
 from partielspy import *
 
 # Create a Document with an audio file
-document = Document("path/to/audiofile.wav")
+document = Document(audio_file_layout="path/to/audiofile.wav")
 
 # Create a Group
 group = Group("Group")
@@ -220,6 +217,6 @@ document.add_group(group)
 # Export the Document as CSV and JPEG
 partiels.export(document, "path/to/output", ExportConfig(format=ExportConfig.Formats.JSON))
 
-# Save the Document to an XML (.ptldoc) file for later
+# Save the Document to a ptldoc file for later
 document.save("path/to/save/file.ptldoc")
 ```

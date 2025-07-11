@@ -35,8 +35,10 @@ def test_create_document_with_factory_plugins():
     partiels = Partiels()
 
     # Create the reference document
-    document_ref = Document.load(root.parent / "templates" / "factory.ptldoc")
-    document_ref.audio_file_layout = audio_file_path
+    document_ref = Document(
+        document_file=root.parent / "templates" / "factory.ptldoc",
+        audio_file_layout=audio_file_path,
+    )
 
     # Export the reference document to the reference directory
     try:
@@ -52,7 +54,7 @@ def test_create_document_with_factory_plugins():
     reference_file = export_output_dir / "reference" / exported_filename
 
     # Create the result document
-    document_res = Document(audio_file_path)
+    document_res = Document(audio_file_layout=audio_file_path)
 
     # Create a first group and add a spectrogram track
     group1 = Group("Group 1")

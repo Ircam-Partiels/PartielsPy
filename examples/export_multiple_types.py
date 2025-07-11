@@ -7,7 +7,7 @@ template_file = root / "templates" / "factory.ptldoc"
 output_folder = root / "examples" / "exports" / "multiple"
 
 partiels = Partiels()
-document = Document.load(template_file)
+document = Document(document_file=template_file)
 document.audio_file_layout = root / "resource" / "Sound.wav"
 partiels.export(document, output_folder, ExportConfig(format=ExportConfig.Formats.JPEG))
 partiels.export(document, output_folder, ExportConfig(format=ExportConfig.Formats.CSV))

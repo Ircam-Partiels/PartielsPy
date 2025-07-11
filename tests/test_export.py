@@ -47,8 +47,7 @@ def get_expected_filenames_harmonic_partials_tracking(extension):
 
 def test_export_image_default():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     output = remove_and_get_output_folder(path="factory/jpeg")
     partiels.export(document, output, ExportConfig(format=ExportConfig.Formats.JPEG))
     assert sorted(os.listdir(output)) == get_expected_filenames(
@@ -58,8 +57,7 @@ def test_export_image_default():
 
 def test_export_image_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.JPEG)
     export_config.format = ExportConfig.Formats.PNG
     export_config.image_width = 2000
@@ -75,8 +73,7 @@ def test_export_image_editing_arguments():
 
 def test_export_image_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(
         format=ExportConfig.Formats.PNG,
         image_width=200,
@@ -93,8 +90,7 @@ def test_export_image_with_arguments():
 
 def test_export_image_with_wrong_parameters():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     output = remove_and_get_output_folder(path="factory/error")
     export_config = ExportConfig(format=ExportConfig.Formats.JPEG)
     with pytest.raises(ValueError):
@@ -119,8 +115,7 @@ def test_export_image_with_wrong_parameters():
 
 def test_export_csv_default():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.CSV)
     output = remove_and_get_output_folder(path="factory/csv")
     partiels.export(document, output, export_config)
@@ -131,8 +126,7 @@ def test_export_csv_default():
 
 def test_export_csv_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.CSV)
     export_config.csv_include_header = True
     export_config.csv_columns_separator = ExportConfig.CsvColumnSeparators.SPACE
@@ -149,8 +143,7 @@ def test_export_csv_editing_arguments():
 
 def test_export_csv_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(
         format=ExportConfig.Formats.CSV,
         csv_include_header=True,
@@ -175,8 +168,9 @@ def test_export_csv_with_wrong_parameters():
 
 def test_export_reaper_default():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.REAPER)
     output = remove_and_get_output_folder(path="beat_detection/reaper")
     partiels.export(document, output, export_config)
@@ -187,8 +181,9 @@ def test_export_reaper_default():
 
 def test_export_reaper_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.REAPER)
     export_config.reaper_type = ExportConfig.ReaperTypes.MARKER
     output = remove_and_get_output_folder(path="beat_detection/reaper2")
@@ -200,8 +195,9 @@ def test_export_reaper_editing_arguments():
 
 def test_export_reaper_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(
         format=ExportConfig.Formats.REAPER,
         reaper_type=ExportConfig.ReaperTypes.MARKER,
@@ -215,8 +211,7 @@ def test_export_reaper_with_arguments():
 
 def test_export_reaper_with_no_marker_template():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.REAPER)
     output = remove_and_get_output_folder(path="factory/reaper4")
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
@@ -235,8 +230,7 @@ def test_export_reaper_with_wrong_parameters():
 
 def test_export_lab_default():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.LAB)
     output = remove_and_get_output_folder(path="factory/lab")
     partiels.export(document, output, export_config)
@@ -247,8 +241,7 @@ def test_export_lab_default():
 
 def test_export_lab_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.LAB)
     output = remove_and_get_output_folder(path="factory/lab2")
     partiels.export(document, output, export_config)
@@ -259,8 +252,7 @@ def test_export_lab_editing_arguments():
 
 def test_export_lab_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.LAB)
     output = remove_and_get_output_folder(path="factory/lab3")
     partiels.export(document, output, export_config)
@@ -271,8 +263,7 @@ def test_export_lab_with_arguments():
 
 def test_export_json_default():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.JSON)
     output = remove_and_get_output_folder(path="factory/json")
     partiels.export(document, output, export_config)
@@ -283,8 +274,7 @@ def test_export_json_default():
 
 def test_export_json_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.JSON)
     export_config.json_include_plugin_description = True
     export_config.ignore_matrix_tracks = True
@@ -300,8 +290,7 @@ def test_export_json_editing_arguments():
 
 def test_export_json_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(
         format=ExportConfig.Formats.JSON,
         json_include_plugin_description=True,
@@ -319,8 +308,9 @@ def test_export_json_with_arguments():
 
 def test_export_cue_default():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.CUE)
     output = remove_and_get_output_folder(path="beat_detection/cue")
     partiels.export(document, output, export_config)
@@ -331,8 +321,9 @@ def test_export_cue_default():
 
 def test_export_cue_editing_arguments():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.CUE)
     export_config.ignore_matrix_tracks = False
     output = remove_and_get_output_folder(path="beat_detection/cue2")
@@ -344,8 +335,9 @@ def test_export_cue_editing_arguments():
 
 def test_export_cue_with_arguments():
     partiels = Partiels()
-    document = Document.load(template_beat_detection)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_beat_detection, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(
         format=ExportConfig.Formats.CUE,
         ignore_matrix_tracks=False,
@@ -359,8 +351,7 @@ def test_export_cue_with_arguments():
 
 def test_export_cue_with_no_marker_template():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     export_config = ExportConfig(format=ExportConfig.Formats.CUE)
     output = remove_and_get_output_folder(path="factory/cue4")
     with pytest.raises(subprocess.CalledProcessError) as excinfo:
@@ -373,8 +364,9 @@ def test_export_cue_with_no_marker_template():
 
 def test_export_vamp_plugins():
     partiels = Partiels()
-    document = Document.load(template_waveform_fft)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_waveform_fft, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.JPEG)
     output = remove_and_get_output_folder(path="waveform_fft/jpeg")
     partiels.export(document, output, export_config)
@@ -382,8 +374,9 @@ def test_export_vamp_plugins():
         filenames=expected_filenames_waveform_fft, extension="jpeg"
     ), "Exported files do not match with expected files."
 
-    document = Document.load(template_harmonic_partials_tracking)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_harmonic_partials_tracking, audio_file_layout=audio_file
+    )
     export_config = ExportConfig(format=ExportConfig.Formats.JSON)
     output = remove_and_get_output_folder(path="harmonic_partials_tracking/json")
     partiels.export(document, output, export_config)
@@ -396,8 +389,7 @@ def test_export_vamp_plugins():
 
 def test_export_image_with_wrong_vamp_path():
     partiels = Partiels()
-    document = Document.load(template_factory)
-    document.audio_file_layout = audio_file
+    document = Document(document_file=template_factory, audio_file_layout=audio_file)
     vamp_path = os.environ.get("VAMP_PATH", "")
     os.environ["VAMP_PATH"] = "/dummy/path/"
     output = remove_and_get_output_folder(path="factory/jpeg2")
@@ -414,8 +406,9 @@ def test_export_image_with_wrong_vamp_path():
 
 def test_export_vamp_plugins_with_wrong_vamp_path():
     partiels = Partiels()
-    document = Document.load(template_waveform_fft)
-    document.audio_file_layout = audio_file
+    document = Document(
+        document_file=template_waveform_fft, audio_file_layout=audio_file
+    )
     vamp_path = os.environ.get("VAMP_PATH", "")
     os.environ["VAMP_PATH"] = "/dummy/path/"
     output = remove_and_get_output_folder(path="waveform_fft/error")

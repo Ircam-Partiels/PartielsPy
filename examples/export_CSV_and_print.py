@@ -10,8 +10,9 @@ output_folder = root / "examples" / "exports" / "CSV"
 
 partiels = Partiels()
 config = ExportConfig(format=ExportConfig.Formats.CSV, csv_include_header=True)
-document = Document.load(template_file)
-document.audio_file_layout = root / "resource" / "Sound.wav"
+document = Document(
+    document_file=template_file, audio_file_layout=root / "resource" / "Sound.wav"
+)
 partiels.export(document, output_folder, config)
 exported_csv_waveform_path = output_folder / "Group 2_Waveform.csv"
 with open(exported_csv_waveform_path, newline="", encoding="utf-8") as csv_file:
