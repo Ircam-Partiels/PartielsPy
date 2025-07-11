@@ -254,11 +254,21 @@
 <p>PartielsPy - Document Module</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="partielspy.document.Document">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.document.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio_file_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.audio_file_layout.AudioFileLayout"><span class="pre">AudioFileLayout</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.audio_file_layout.AudioFileChannel"><span class="pre">AudioFileChannel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.document.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_file_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.audio_file_layout.AudioFileLayout"><span class="pre">AudioFileLayout</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.audio_file_layout.AudioFileChannel"><span class="pre">AudioFileChannel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class represents a document in PartielsPy.</p>
-<p>It contains a collection of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>,    each of which can contain multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.
-The document can be loaded from and saved to an XML (ptldoc) file.</p>
+<p>It contains an <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileLayout</span></code>    that describes the audio file layout of the document, and a collection     of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>, each of which can contain     multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>. The document can be loaded     from and saved to an ptldoc file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document_file</strong> (<em>str</em><em> | </em><em>Path</em><em>, </em><em>optional</em>) – The path to the ptldoc file to load.
+If not provided, an empty document is created.</p></li>
+<li><p><strong>audio_file_layout</strong> (<a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.AudioFileLayout"><em>AudioFileLayout</em></a><em> | </em><em>str</em><em> | </em><em>Path</em><em> | </em><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.AudioFileChannel"><em>AudioFileChannel</em></a><em>, </em><em>optional</em>) – The audio file layout for the document. This can be an instance of             <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileLayout</span></code>, a string or
+a Path to an audio file, or an instance of             <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileChannel</span></code>.
+If not provided, an empty audio file layout is created.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.document.Document.add_group">
 <span class="sig-name descname"><span class="pre">add_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.add_group" title="Link to this definition">¶</a></dt>
@@ -291,19 +301,19 @@ If the group is valid and not already present, it adds the group to the document
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.document.Document.load">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.load" title="Link to this definition">¶</a></dt>
-<dd><p>Load a document from an XML (ptldoc) file.</p>
+<dd><p>Load a document from an ptldoc file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>Any</em>) – The file to load.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An instance of the Document class populated with data from             the XML (ptldoc) file.</p>
+<dd class="field-even"><p>An instance of the Document class populated with data from             the ptldoc file.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#partielspy.document.Document" title="partielspy.document.Document">Document</a></p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the XML document is invalid (does not have the correct             root ‘document’ tag).</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If the document is invalid (does not have the correct             root ‘document’ tag).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,7 +336,7 @@ If the group is valid and not already present, it adds the group to the document
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.document.Document.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.document.Document.save" title="Link to this definition">¶</a></dt>
-<dd><p>Save the document to an XML (ptldoc) file.</p>
+<dd><p>Save the document to an ptldoc file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the file where the document will be saved.</p>
@@ -863,11 +873,21 @@ to create a single integer value.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="partielspy.Document">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audio_file_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.audio_file_layout.AudioFileLayout"><span class="pre">AudioFileLayout</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.audio_file_layout.AudioFileChannel"><span class="pre">AudioFileChannel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_file_layout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.audio_file_layout.AudioFileLayout"><span class="pre">AudioFileLayout</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.audio_file_layout.AudioFileChannel"><span class="pre">AudioFileChannel</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class represents a document in PartielsPy.</p>
-<p>It contains a collection of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>,    each of which can contain multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>.
-The document can be loaded from and saved to an XML (ptldoc) file.</p>
+<p>It contains an <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileLayout</span></code>    that describes the audio file layout of the document, and a collection     of <a class="reference internal" href="#module-partielspy.group" title="partielspy.group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>, each of which can contain     multiple <a class="reference internal" href="#module-partielspy.track" title="partielspy.track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a>. The document can be loaded     from and saved to an ptldoc file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document_file</strong> (<em>str</em><em> | </em><em>Path</em><em>, </em><em>optional</em>) – The path to the ptldoc file to load.
+If not provided, an empty document is created.</p></li>
+<li><p><strong>audio_file_layout</strong> (<a class="reference internal" href="#partielspy.AudioFileLayout" title="partielspy.AudioFileLayout"><em>AudioFileLayout</em></a><em> | </em><em>str</em><em> | </em><em>Path</em><em> | </em><a class="reference internal" href="#partielspy.AudioFileChannel" title="partielspy.AudioFileChannel"><em>AudioFileChannel</em></a><em>, </em><em>optional</em>) – The audio file layout for the document. This can be an instance of             <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileLayout</span></code>, a string or
+a Path to an audio file, or an instance of             <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioFileChannel</span></code>.
+If not provided, an empty audio file layout is created.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.Document.add_group">
 <span class="sig-name descname"><span class="pre">add_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#partielspy.group.Group" title="partielspy.group.Group"><span class="pre">Group</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.add_group" title="Link to this definition">¶</a></dt>
@@ -900,19 +920,19 @@ If the group is valid and not already present, it adds the group to the document
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.Document.load">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.load" title="Link to this definition">¶</a></dt>
-<dd><p>Load a document from an XML (ptldoc) file.</p>
+<dd><p>Load a document from an ptldoc file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>Any</em>) – The file to load.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An instance of the Document class populated with data from             the XML (ptldoc) file.</p>
+<dd class="field-even"><p>An instance of the Document class populated with data from             the ptldoc file.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#partielspy.Document" title="partielspy.Document">Document</a></p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the XML document is invalid (does not have the correct             root ‘document’ tag).</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If the document is invalid (does not have the correct             root ‘document’ tag).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -935,7 +955,7 @@ If the group is valid and not already present, it adds the group to the document
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.Document.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partielspy.Document.save" title="Link to this definition">¶</a></dt>
-<dd><p>Save the document to an XML (ptldoc) file.</p>
+<dd><p>Save the document to an ptldoc file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the file where the document will be saved.</p>
