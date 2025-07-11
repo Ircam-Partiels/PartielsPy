@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="PartielsPy package" href="partielspy.html" /><link rel="prev" title="Welcome to PartielsPy’s documentation!" href="index.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>partielspy - PartielsPy 0.2.0 documentation</title>
+        <title>partielspy - PartielsPy 0.3.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">PartielsPy 0.2.0 documentation</div></a>
+      <a href="index.html"><div class="brand">PartielsPy 0.3.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">PartielsPy 0.2.0 documentation</span>
+  <span class="sidebar-brand-text">PartielsPy 0.3.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -253,6 +253,7 @@
 <li class="toctree-l2"><a class="reference internal" href="partielspy.html#module-partielspy.document">partielspy.document module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="partielspy.html#partielspy.document.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.document.Document.add_group"><code class="docutils literal notranslate"><span class="pre">Document.add_group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.document.Document.audio_file_layout"><code class="docutils literal notranslate"><span class="pre">Document.audio_file_layout</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.document.Document.groups"><code class="docutils literal notranslate"><span class="pre">Document.groups</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.document.Document.load"><code class="docutils literal notranslate"><span class="pre">Document.load()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.document.Document.remove_group"><code class="docutils literal notranslate"><span class="pre">Document.remove_group()</span></code></a></li>
@@ -266,7 +267,6 @@
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.Formats"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.ReaperTypes"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.adapt_to_sample_rate"><code class="docutils literal notranslate"><span class="pre">ExportConfig.adapt_to_sample_rate</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_columns_separator</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.csv_include_header"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_include_header</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.export_config.ExportConfig.format"><code class="docutils literal notranslate"><span class="pre">ExportConfig.format</span></code></a></li>
@@ -342,8 +342,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="partielspy.html#module-partielspy">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="partielspy.html#partielspy.AudioFileChannel"><code class="docutils literal notranslate"><span class="pre">AudioFileChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.AudioFileChannel.channel"><code class="docutils literal notranslate"><span class="pre">AudioFileChannel.channel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.AudioFileChannel.file"><code class="docutils literal notranslate"><span class="pre">AudioFileChannel.file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="partielspy.html#partielspy.AudioFileLayout"><code class="docutils literal notranslate"><span class="pre">AudioFileLayout</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="partielspy.html#partielspy.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.Document.add_group"><code class="docutils literal notranslate"><span class="pre">Document.add_group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.Document.audio_file_layout"><code class="docutils literal notranslate"><span class="pre">Document.audio_file_layout</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.Document.groups"><code class="docutils literal notranslate"><span class="pre">Document.groups</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.Document.load"><code class="docutils literal notranslate"><span class="pre">Document.load()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.Document.remove_group"><code class="docutils literal notranslate"><span class="pre">Document.remove_group()</span></code></a></li>
@@ -354,7 +361,6 @@
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.CsvColumnSeparators"><code class="docutils literal notranslate"><span class="pre">ExportConfig.CsvColumnSeparators</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.Formats"><code class="docutils literal notranslate"><span class="pre">ExportConfig.Formats</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.ReaperTypes"><code class="docutils literal notranslate"><span class="pre">ExportConfig.ReaperTypes</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.adapt_to_sample_rate"><code class="docutils literal notranslate"><span class="pre">ExportConfig.adapt_to_sample_rate</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.csv_columns_separator"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_columns_separator</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.csv_include_header"><code class="docutils literal notranslate"><span class="pre">ExportConfig.csv_include_header</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="partielspy.html#partielspy.ExportConfig.format"><code class="docutils literal notranslate"><span class="pre">ExportConfig.format</span></code></a></li>
@@ -437,7 +443,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2025, Pierre Guillot - Thomas Barbé
+                Copyright &#169; 2025 IRCAM
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -457,7 +463,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=938c9ccc"></script>
+</div><script src="_static/documentation_options.js?v=e259d695"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
