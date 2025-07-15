@@ -79,7 +79,7 @@ class Partiels:
                 + ") is greater than Partiels's executable version ("
                 + str(self.__executable_version)
                 + ").\n"
-                "Please update the version of Partiels to compatibility version."
+                "Please, update the version of Partiels to compatibility version."
             )
         version_diff = semver.VersionInfo.parse(
             Version.get_compatibility_version()
