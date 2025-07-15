@@ -825,9 +825,9 @@ If the file_info is set (with a non-empty path) the plugin_key will be ignored f
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">partielspy.version.</span></span><span class="sig-name descname"><span class="pre">Version</span></span><a class="headerlink" href="#partielspy.version.Version" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Compatibility version class for PartielsPy</p>
-<p>This class is used to manage the compatibility version of PartielsPy     with the Partiels executable.
-It provides methods to retrieve the compatibility version as a string and as an integer.
-The compatibility version is defined as a string in semantic versioning     format (major.minor.patch).
+<p>This class is used to manage the compatibility versions of PartielsPy with the Partiels    executable.
+It provides methods to retrieve the compatibility version and the minimum compatibility    versions.
+The versions are defined as a string in semantic versioning format (major.minor.patch).
 The integer representation is calculated by shifting the major, minor, and patch numbers
 to create a single integer value.</p>
 <dl class="py method">
@@ -838,8 +838,20 @@ to create a single integer value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="partielspy.version.Version.get_compatibility_version_int">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_compatibility_version_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_compatibility_version_int" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_compatibility_version_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_compatibility_version_int" title="Link to this definition">¶</a></dt>
 <dd><p>Return the integer representation of the compatibility version</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.version.Version.get_min_compatibility_version">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_min_compatibility_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_min_compatibility_version" title="Link to this definition">¶</a></dt>
+<dd><p>Return the minimum compatibility version</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="partielspy.version.Version.get_min_compatibility_version_int">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_min_compatibility_version_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#partielspy.version.Version.get_min_compatibility_version_int" title="Link to this definition">¶</a></dt>
+<dd><p>Return the integer representation of the minimum compatibility version</p>
 </dd></dl>
 
 </dd></dl>
@@ -1557,6 +1569,8 @@ If the file_info is set (with a non-empty path) the plugin_key will be ignored f
 <li><a class="reference internal" href="#partielspy.version.Version"><code class="docutils literal notranslate"><span class="pre">Version</span></code></a><ul>
 <li><a class="reference internal" href="#partielspy.version.Version.get_compatibility_version"><code class="docutils literal notranslate"><span class="pre">Version.get_compatibility_version()</span></code></a></li>
 <li><a class="reference internal" href="#partielspy.version.Version.get_compatibility_version_int"><code class="docutils literal notranslate"><span class="pre">Version.get_compatibility_version_int()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.version.Version.get_min_compatibility_version"><code class="docutils literal notranslate"><span class="pre">Version.get_min_compatibility_version()</span></code></a></li>
+<li><a class="reference internal" href="#partielspy.version.Version.get_min_compatibility_version_int"><code class="docutils literal notranslate"><span class="pre">Version.get_min_compatibility_version_int()</span></code></a></li>
 </ul>
 </li>
 </ul>
