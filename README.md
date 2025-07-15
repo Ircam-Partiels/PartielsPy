@@ -31,7 +31,8 @@ This package requires:
 - **Partiels**
 - **Partiels plugin suite** 
 
-Partiels and its plugin suite can be downloaded from the **[Partiels release page](https://github.com/Ircam-Partiels/Partiels/releases)**
+Partiels and its plugin suite can be downloaded from the **[Partiels release page](https://github.com/Ircam-Partiels/Partiels/releases)**. You can use the [scripts/install_partiels.sh](./scripts/install_partiels.sh) (Unix) and [scripts/install_partiels.ps1](./scripts/install_partiels.ps1) (Windows) scripts to download and install automatically Partiels and its plugin suite.
+
 ## Installation
 
 PartielsPy can be installed either directly from GitHub using pip, or from source after cloning the repository.
