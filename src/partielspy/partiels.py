@@ -70,6 +70,17 @@ class Partiels:
             .stdout.split(" v")[1]
             .strip()
         )
+        if semver.VersionInfo.parse(
+            Version.get_min_compatibility_version()
+        ) > semver.VersionInfo.parse(self.__executable_version):
+            raise RuntimeError(
+                "PartielsPy minimum compatibility version ("
+                + str(Version.get_min_compatibility_version())
+                + ") is greater than Partiels's executable version ("
+                + str(self.__executable_version)
+                + ").\n"
+                "Please update the version of Partiels to compatibility version."
+            )
         version_diff = semver.VersionInfo.parse(
             Version.get_compatibility_version()
         ).compare(self.__executable_version)
