@@ -6,15 +6,6 @@ on:
   schedule:
     - cron: '0 8 * * 1' # Each Monday at 8 am
 
-env:
-  PARTIELS_URL: https://github.com/Ircam-Partiels/Partiels/releases/download
-  IRCAM_VAMP_URL : https://github.com/Ircam-Partiels/ircam-vamp-plugins/releases/download
-  IRCAM_VAMP_VERSION: 2.1.0
-  CREPE_VAMP_URL : https://github.com/Ircam-Partiels/crepe-vamp-plugin/releases/download
-  CREPE_VAMP_VERSION: 3.0.0
-  WHISPER_VAMP_URL : https://github.com/Ircam-Partiels/whisper-vamp-plugin/releases/download
-  WHISPER_VAMP_VERSION: 3.0.0
-  
 jobs:
   Prepare:
     runs-on: ubuntu-latest
@@ -76,29 +67,8 @@ jobs:
         python-version: '3.11'
     - name: Prepare
       run: sudo apt update && sudo apt install -y unzip wget
-    - name: Download and install Partiels binary
-      run: |
-        wget $PARTIELS_URL/$PARTIELS_VERSION/Partiels-Linux.tar.gz
-        tar -xzf Partiels-Linux.tar.gz
-        sh Partiels/Partiels-install.sh
-    - name: Download Vamp Plugins
-      run: |
-        wget $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-Linux.zip
-        wget $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/VAX-Vamp-Plugin-v1.0.0-Linux.zip
-        wget $CREPE_VAMP_URL/$CREPE_VAMP_VERSION/Crepe-Linux.tar.gz
-        wget $WHISPER_VAMP_URL/$WHISPER_VAMP_VERSION/Whisper-Linux.tar.gz
-    - name: Install Vamp Plugins
-      run: |
-        mkdir $HOME/vamp $HOME/.config/Ircam
-        unzip Ircam-Vamp-Plugins-Linux.zip
-        sh Ircam-Vamp-Plugins-Linux/Install.sh
-        unzip VAX-Vamp-Plugin-v1.0.0-Linux.zip
-        tar -xzf VAX-Vamp-Plugin-Linux.tar.gz
-        sh VAX-Vamp-Plugin/Install.sh
-        tar -xzf Crepe-Linux.tar.gz
-        sh Crepe/Install.sh
-        tar -xzf Whisper-Linux.tar.gz
-        sh Whisper/Install.sh
+    - name: Download and install Partiels and plugins
+      run: ./scripts/install_partiels.sh --partiels_version $PARTIELS_VERSION
     - name: Upgrade pip and setuptools
       run: python -m pip install --upgrade pip setuptools
     - name: Install dependencies
@@ -121,33 +91,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Download and install Partiels binary
-        shell: powershell
-        run: |
-          Invoke-WebRequest -Uri $env:PARTIELS_URL/$env:PARTIELS_VERSION/Partiels-Windows.exe -OutFile "Partiels-Windows.exe"
-          $signature = Get-AuthenticodeSignature .\Partiels-Windows.exe
-          if ($signature.Status -ne 'Valid') {
-            throw "The installer isn't signed or the signature is invalid"
-          }
-          $proc = Start-Process .\Partiels-Windows.exe -ArgumentList "/VERYSILENT /NORESTART /SP-" -Wait -PassThru
-          if ($proc.ExitCode -ne 0) {
-            throw "The installation failed with the exit code $($proc.ExitCode)"
-          }
-      - name: Download Vamp Plugins
-        run: |
-          Invoke-WebRequest -Uri $env:IRCAM_VAMP_URL/$env:IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-Windows.zip -OutFile "Ircam-Vamp-Plugins-Windows.zip"
-          Invoke-WebRequest -Uri $env:IRCAM_VAMP_URL/$env:IRCAM_VAMP_VERSION/VAX-Vamp-Plugin-v1.0.0-Windows.zip -OutFile "VAX-Vamp-Plugin-v1.0.0-Windows.zip"
-          Invoke-WebRequest -Uri $env:CREPE_VAMP_URL/$env:CREPE_VAMP_VERSION/Crepe-Windows.exe -OutFile "Crepe-Windows.exe"
-          Invoke-WebRequest -Uri $env:WHISPER_VAMP_URL/$env:WHISPER_VAMP_VERSION/Whisper-Windows.exe -OutFile "Whisper-Windows.exe"
-      - name: Install Vamp Plugins
-        shell: powershell
-        run: |
-          Expand-Archive -Path "Ircam-Vamp-Plugins-Windows.zip" -DestinationPath "Ircam-Vamp-Plugins-Windows"
-          Start-Process -FilePath "Ircam-Vamp-Plugins-Windows\Ircam Vamp Plugins-install.exe" -ArgumentList "/VERYSILENT" -Wait
-          Expand-Archive -Path "VAX-Vamp-Plugin-v1.0.0-Windows.zip" -DestinationPath "VAX-Vamp-Plugin"
-          Start-Process -FilePath "VAX-Vamp-Plugin\VAX-Vamp-Plugin-Windows.exe" -ArgumentList "/VERYSILENT" -Wait
-          Start-Process -FilePath ".\Crepe-Windows.exe" -ArgumentList "/VERYSILENT" -Wait
-          Start-Process -FilePath ".\Whisper-Windows.exe" -ArgumentList "/VERYSILENT" -Wait
+      - name: Download and install Partiels and plugins
+        run: .\scripts\install_partiels.ps1 -partiels_version $env:PARTIELS_VERSION
       - name: Upgrade pip and setuptools
         run: python -m pip install --upgrade pip setuptools
       - name: Install dependencies
@@ -171,26 +116,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Download and install Partiels binary
-        shell: bash
-        run: |
-          curl -L -v -o Partiels-MacOS.dmg $PARTIELS_URL/$PARTIELS_VERSION/Partiels-MacOS.dmg
-          MOUNT_DIR=$(hdiutil attach Partiels-MacOS.dmg | grep Volumes | awk '{print $3}')
-          cp -r "$MOUNT_DIR/Partiels.app" /Applications/
-      - name: Download Vamp Plugins
-        run: |
-          curl -L -v -o Ircam-Vamp-Plugins-MacOS.zip $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/Ircam-Vamp-Plugins-MacOS.zip
-          curl -L -v -o VAX-Vamp-Plugin-v1.0.0-MacOS.zip $IRCAM_VAMP_URL/$IRCAM_VAMP_VERSION/VAX-Vamp-Plugin-v1.0.0-MacOS.zip
-          curl -L -v -o Crepe-MacOs.pkg $CREPE_VAMP_URL/$CREPE_VAMP_VERSION/Crepe-MacOs.pkg
-          curl -L -v -o Whisper-MacOs.pkg $WHISPER_VAMP_URL/$WHISPER_VAMP_VERSION/Whisper-MacOs.pkg
-      - name: Install Vamp Plugins
-        run: |
-          unzip Ircam-Vamp-Plugins-MacOS.zip
-          sudo installer -pkg "Ircam Vamp Plugins.pkg" -target /
-          unzip VAX-Vamp-Plugin-v1.0.0-MacOS.zip
-          sudo installer -pkg VAX-Vamp-Plugin-MacOS.pkg -target /
-          sudo installer -pkg Crepe-MacOs.pkg -target /
-          sudo installer -pkg Whisper-MacOs.pkg -target /
+      - name: Download and install Partiels and plugins
+        run: sudo ./scripts/install_partiels.sh --partiels_version $PARTIELS_VERSION
       - name: Upgrade pip and setuptools
         run: python -m pip install --upgrade pip setuptools
       - name: Install dependencies
