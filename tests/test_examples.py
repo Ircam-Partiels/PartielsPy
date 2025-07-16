@@ -9,13 +9,9 @@ def test_examples():
     files = folder.glob("*.py")
 
     for file in files:
-        try:
-            result = subprocess.run(
-                [sys.executable, file], capture_output=True, text=True, timeout=1
-            )
-        except subprocess.TimeoutExpired:
-            if file.name == "export_image_and_display.py":
-                continue
+        result = subprocess.run(
+            [sys.executable, file], capture_output=True, text=True, check=True
+        )
         if result.stderr:
             print("Errors:\n", result.stderr)
         assert result.returncode == 0, f"example {file} failed"
