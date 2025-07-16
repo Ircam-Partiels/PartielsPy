@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageShow
 
 from partielspy import *
 
@@ -15,5 +15,6 @@ Partiels().export(
     document, output_folder, ExportConfig(format=ExportConfig.Formats.JPEG)
 )
 exported_image_spectrogram_path = output_folder / "Group 1_Spectrogram.jpeg"
-image = Image.open(exported_image_spectrogram_path)
-image.show()
+with Image.open(exported_image_spectrogram_path) as image:
+    result = ImageShow.show(image)
+    assert result is True, "Image display failed"
